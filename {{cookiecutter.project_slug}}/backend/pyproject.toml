@@ -8,8 +8,12 @@ authors = []
 python = "^3.7"
 fastapi = "^0.68.0"
 uvicorn = "^0.15.0"
+pydantic = "^1.8.2"
+requests = "^2.26.0"
 
 [tool.poetry.dev-dependencies]
+black = "^21.7b0"
+pytest = "^6.2.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

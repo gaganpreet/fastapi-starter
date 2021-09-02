@@ -1,23 +1,17 @@
-from typing import Generator
-
+import databases
 from sqlalchemy import create_engine
-from sqlalchemy.orm import registry, sessionmaker
+from sqlalchemy.ext.declarative import DeclarativeMeta, declarative_base
+from sqlalchemy.orm import sessionmaker
 
 from app.core.config import settings
 
 
-engine = create_engine(settings.DATABASE_URL, echo=True, future=True)
-_Session = sessionmaker(bind=engine, autocommit=False, autoflush=False)
+engine = create_engine(
+    settings.DATABASE_URL,
+    echo=True,
+)
+Session = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 
-mapper_registry = registry()
-Base = mapper_registry.generate_base()
+Base: DeclarativeMeta = declarative_base()
 
-
-def get_db() -> Generator:
-    db = None
-    try:
-        db = _Session(future=True)
-        yield db
-    finally:
-        if db is not None:
-            db.close()
+database = databases.Database(settings.DATABASE_URL)

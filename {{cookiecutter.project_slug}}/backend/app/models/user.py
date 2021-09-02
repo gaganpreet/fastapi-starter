@@ -1,16 +1,14 @@
-from app.db import Base
-from sqlalchemy import Boolean, Column, Integer, String, DateTime
+from fastapi_users.db import SQLAlchemyBaseUserTable, SQLAlchemyUserDatabase
+from sqlalchemy import Boolean, Column, DateTime, Integer, String
 from sqlalchemy.sql.functions import func
 
+from app.db import Base, database
+from app.schemas.user import UserDB
 
-class User(Base):
+
+class User(Base, SQLAlchemyBaseUserTable):
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True)
-    email = Column(String, index=True)
-    hashed_password = Column(String, nullable=False)
-    is_active = Column(Boolean, default=True)
-    is_admin = Column(Boolean, default=False)
     created = Column(DateTime(timezone=True), server_default=func.now())
     updated = Column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
@@ -18,3 +16,7 @@ class User(Base):
 
     def __repr__(self):
         return f"User(id={self.id!r}, name={self.email!r})"
+
+
+users = User.__table__
+user_db = SQLAlchemyUserDatabase(UserDB, database, users)

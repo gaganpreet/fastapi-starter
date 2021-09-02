@@ -17,20 +17,3 @@ class UserUpdate(User, models.BaseUserUpdate):
 
 class UserDB(User, models.BaseUserDB):
     pass
-
-
-# class CreateUserSchema(BaseModel):
-# email: EmailStr
-# password: str
-
-
-# class UpdateUserSchema(BaseModel):
-# email: EmailStr
-# password: str
-
-
-# class UserSchema(BaseModel):
-# id: int
-# email: EmailStr
-# is_active: bool
-# is_admin: bool

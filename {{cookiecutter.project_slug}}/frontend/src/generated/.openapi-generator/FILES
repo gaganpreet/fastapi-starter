@@ -1,0 +1,16 @@
+.gitignore
+.npmignore
+api.ts
+api/auth-api.ts
+api/users-api.ts
+base.ts
+common.ts
+configuration.ts
+git_push.sh
+index.ts
+models/httpvalidation-error.ts
+models/index.ts
+models/user-create.ts
+models/user-update.ts
+models/user.ts
+models/validation-error.ts

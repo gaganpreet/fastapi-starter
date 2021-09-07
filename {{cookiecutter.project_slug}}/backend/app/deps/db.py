@@ -1,11 +1,11 @@
 from typing import Generator
-from app.db import Session
+from app.db import SessionLocal
 
 
 def get_db() -> Generator:
     db = None
     try:
-        db = Session()
+        db = SessionLocal()
         yield db
     finally:
         if db is not None:

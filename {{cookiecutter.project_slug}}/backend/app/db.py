@@ -8,10 +8,9 @@ from app.core.config import settings
 
 engine = create_engine(
     settings.DATABASE_URL,
-    echo=True,
 )
-Session = sessionmaker(bind=engine, autocommit=False, autoflush=False)
+SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 
-Base: DeclarativeMeta = declarative_base()
+Base: DeclarativeMeta = declarative_base(bind=engine)
 
 database = databases.Database(settings.DATABASE_URL)

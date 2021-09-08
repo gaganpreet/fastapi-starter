@@ -17,7 +17,7 @@ const authProvider = {
         localStorage.setItem("token", data);
       })
       .catch((e) => {
-        if (e.response.data?.detail === "LOGIN_BAD_CREDENTIALS") {
+        if (e.response?.data?.detail === "LOGIN_BAD_CREDENTIALS") {
           throw new Error("Invalid credentials");
         }
         throw new Error("Network error");

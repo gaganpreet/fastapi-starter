@@ -5,17 +5,12 @@ import {
   Button,
   Card,
   CardActions,
-  CircularProgress,
+  TextField,
 } from "@material-ui/core";
 import { createTheme, makeStyles } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import LockIcon from "@material-ui/icons/Lock";
-import {
-  defaultTheme,
-  Notification,
-  useLogin,
-  useNotify,
-} from "react-admin";
+import { defaultTheme, Notification, useLogin, useNotify } from "react-admin";
 
 const theme = createTheme(defaultTheme);
 
@@ -43,12 +38,6 @@ const useStyles = makeStyles((theme) => ({
   form: {
     padding: "0 1em 1em 1em",
   },
-  input: {
-    marginTop: "1em",
-  },
-  field: {
-    width: "100%",
-  },
   actions: {
     padding: "0 1em 1em 1em",
   },
@@ -63,7 +52,12 @@ const Login = () => {
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
-    login({ email, password }).catch(() => notify("Invalid email or password"));
+    login({ email, password }).catch((e) => {
+        if (e.response?.data?.detail === "LOGIN_BAD_CREDENTIALS") {
+          notify("Invalid credentials");
+        }
+        notify("Network error");
+      });
   };
 
   return (
@@ -77,29 +71,22 @@ const Login = () => {
               </Avatar>
             </div>
             <div className={classes.form}>
-              <div className={classes.input}>
-                <label htmlFor="email">Email</label>
-                <div>
-                  <input
-                    name="email"
-                    type="email"
-                    value={email}
-                    className={classes.field}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
+              <div >
+                <TextField
+                  id="email"
+                  label="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  fullWidth
+                />
               </div>
-              <div className={classes.input}>
-                <label htmlFor="password">Password</label>
-                <div>
-                  <input
-                    name="password"
-                    type="password"
-                    value={password}
-                    className={classes.field}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
+              <div >
+                <TextField
+                  id="password"
+                  label="password"
+                  type="password"
+                  fullWidth
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
             </div>
             <CardActions className={classes.actions}>

@@ -1,13 +1,13 @@
 import { authApi } from "./env";
 
 type loginFormType = {
-  username: string;
+  email: string;
   password: string;
 };
 
 const authProvider = {
-  login: ({ username, password }: loginFormType) => {
-    const formData = { username, password };
+  login: ({ email, password }: loginFormType) => {
+    const formData = { username: email, password };
     return authApi
       .loginAuthJwtLoginPost(formData)
       .then((response) => {
@@ -15,12 +15,6 @@ const authProvider = {
       })
       .then((data) => {
         localStorage.setItem("token", data);
-      })
-      .catch((e) => {
-        if (e.response?.data?.detail === "LOGIN_BAD_CREDENTIALS") {
-          throw new Error("Invalid credentials");
-        }
-        throw new Error("Network error");
       });
   },
   logout: () => {

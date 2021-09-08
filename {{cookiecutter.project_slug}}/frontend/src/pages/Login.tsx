@@ -4,6 +4,7 @@ import {
   Avatar,
   Button,
   Card,
+  CardHeader,
   CardActions,
   TextField,
 } from "@material-ui/core";
@@ -27,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 300,
     marginTop: "6em",
   },
+    header: {
+        textAlign: "center",
+    },
   avatar: {
     margin: "1em",
     display: "flex",
@@ -53,11 +57,11 @@ const Login = () => {
   const submit = (e: FormEvent) => {
     e.preventDefault();
     login({ email, password }).catch((e) => {
-        if (e.response?.data?.detail === "LOGIN_BAD_CREDENTIALS") {
-          notify("Invalid credentials");
-        }
-        notify("Network error");
-      });
+      if (e.response?.data?.detail === "LOGIN_BAD_CREDENTIALS") {
+        notify("Invalid credentials");
+      }
+      notify("Network error");
+    });
   };
 
   return (
@@ -70,19 +74,20 @@ const Login = () => {
                 <LockIcon />
               </Avatar>
             </div>
+            <CardHeader title="Login" className={classes.header}/>
             <div className={classes.form}>
-              <div >
+              <div>
                 <TextField
                   id="email"
-                  label="email"
+                  label="Email"
                   onChange={(e) => setEmail(e.target.value)}
                   fullWidth
                 />
               </div>
-              <div >
+              <div>
                 <TextField
                   id="password"
-                  label="password"
+                  label="Password"
                   type="password"
                   fullWidth
                   onChange={(e) => setPassword(e.target.value)}

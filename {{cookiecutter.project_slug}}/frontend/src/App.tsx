@@ -1,12 +1,25 @@
-import { Admin, Resource } from "react-admin";
-import jsonServerProvider from "ra-data-json-server";
-import authProvider from "./providers/authProvider";
-import { RouteWithoutLayout } from "react-admin";
+import { createBrowserHistory as createHistory } from "history";
+import simpleRestProvider from "ra-data-simple-rest";
+import {
+  Admin,
+  fetchUtils,
+  Resource,
+  RouteWithoutLayout,
+} from "react-admin";
 import LoginPage from "./pages/Login";
 import Register from "./pages/Register";
-import { createBrowserHistory as createHistory } from "history";
+import authProvider from "./providers/authProvider";
+import { basePath } from "./providers/env";
 
-const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
+const httpClient = (url: string, options: any = {}) => {
+  options.user = {
+    authenticated: true,
+    token: localStorage.getItem("token"),
+  };
+  return fetchUtils.fetchJson(url, options);
+};
+
+const dataProvider = simpleRestProvider(`${basePath}/api/v1/`, httpClient);
 
 const customRoutes = [
   <RouteWithoutLayout exact path="/register" component={Register} noLayout />,
@@ -21,7 +34,6 @@ const App = () => {
       customRoutes={customRoutes}
       history={createHistory()}
     >
-      <Resource name="users" />
     </Admin>
   );
 };

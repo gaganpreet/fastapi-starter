@@ -12,7 +12,7 @@ import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import LockIcon from "@material-ui/icons/Lock";
 import { defaultTheme, Notification } from "react-admin";
-import useStyles from "./authTheme";
+import useStyles from "./authStyles";
 
 const theme = createTheme(defaultTheme);
 

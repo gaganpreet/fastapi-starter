@@ -54,7 +54,6 @@ def setup_routers(app: FastAPI, fastapi_users: FastAPIUsers) -> None:
 
 
 def setup_cors_middleware(app):
-    print([str(origin) for origin in settings.BACKEND_CORS_ORIGINS])
     if settings.BACKEND_CORS_ORIGINS:
         app.add_middleware(
             CORSMiddleware,

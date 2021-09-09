@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 
 import { useLogin, useNotify } from "react-admin";
-import Auth from "./Auth";
+import Auth from "../components/Auth";
 
 import {
   Button,

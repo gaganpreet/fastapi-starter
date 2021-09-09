@@ -1,8 +1,8 @@
 import { FormEvent, useState } from "react";
 
 import { Button } from "@material-ui/core";
-import { useLogin, useNotify } from "react-admin";
-import Auth from "./Auth";
+import { useNotify } from "react-admin";
+import Auth from "../components/Auth";
 import { useHistory } from "react-router-dom";
 import { authApi } from "../providers/env";
 import {AxiosError} from "axios";

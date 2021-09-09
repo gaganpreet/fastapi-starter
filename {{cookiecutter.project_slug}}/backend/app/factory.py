@@ -36,7 +36,7 @@ def setup_routers(app: FastAPI, fastapi_users: FastAPIUsers) -> None:
     app.include_router(
         fastapi_users.get_auth_router(
             jwt_authentication,
-            requires_verification=True,
+            requires_verification=False,
         ),
         prefix="/auth/jwt",
         tags=["auth"],
@@ -47,7 +47,7 @@ def setup_routers(app: FastAPI, fastapi_users: FastAPIUsers) -> None:
         tags=["auth"],
     )
     app.include_router(
-        fastapi_users.get_users_router(requires_verification=True),
+        fastapi_users.get_users_router(requires_verification=False),
         prefix="/users",
         tags=["users"],
     )

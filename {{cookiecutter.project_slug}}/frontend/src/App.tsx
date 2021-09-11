@@ -8,6 +8,7 @@ import {
   RouteWithoutLayout,
 } from "react-admin";
 import { Route } from "react-router";
+import MyLayout from "./components/AdminLayout";
 import { ProfileEdit, ProfileProvider } from "./components/ProfileEdit";
 import LoginPage from "./pages/Login";
 import Register from "./pages/Register";
@@ -38,6 +39,7 @@ const App = () => {
         loginPage={LoginPage}
         customRoutes={customRoutes}
         history={createHistory()}
+        appLayout={MyLayout}
       >
         <Resource name="users" list={ListGuesser} />
       </Admin>

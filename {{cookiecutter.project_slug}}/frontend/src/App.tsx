@@ -8,7 +8,7 @@ import {
   RouteWithoutLayout,
 } from "react-admin";
 import { Route } from "react-router";
-import { ProfileEdit } from "./components/ProfileEdit";
+import { ProfileEdit, ProfileProvider } from "./components/ProfileEdit";
 import LoginPage from "./pages/Login";
 import Register from "./pages/Register";
 import authProvider from "./providers/authProvider";
@@ -31,15 +31,17 @@ const customRoutes = [
 
 const App = () => {
   return (
-    <Admin
-      dataProvider={dataProvider}
-      authProvider={authProvider}
-      loginPage={LoginPage}
-      customRoutes={customRoutes}
-      history={createHistory()}
-    >
-      <Resource name="users" list={ListGuesser} />
-    </Admin>
+    <ProfileProvider>
+      <Admin
+        dataProvider={dataProvider}
+        authProvider={authProvider}
+        loginPage={LoginPage}
+        customRoutes={customRoutes}
+        history={createHistory()}
+      >
+        <Resource name="users" list={ListGuesser} />
+      </Admin>
+    </ProfileProvider>
   );
 };
 

@@ -3,9 +3,12 @@ import simpleRestProvider from "ra-data-simple-rest";
 import {
   Admin,
   fetchUtils,
+  ListGuesser,
   Resource,
   RouteWithoutLayout,
 } from "react-admin";
+import { Route } from "react-router";
+import { ProfileEdit } from "./components/ProfileEdit";
 import LoginPage from "./pages/Login";
 import Register from "./pages/Register";
 import authProvider from "./providers/authProvider";
@@ -23,6 +26,7 @@ const dataProvider = simpleRestProvider(`${basePath}/api/v1/`, httpClient);
 
 const customRoutes = [
   <RouteWithoutLayout exact path="/register" component={Register} noLayout />,
+  <Route key="my-profile" path="/my-profile" render={() => <ProfileEdit />} />,
 ];
 
 const App = () => {
@@ -34,6 +38,7 @@ const App = () => {
       customRoutes={customRoutes}
       history={createHistory()}
     >
+      <Resource name="users" list={ListGuesser} />
     </Admin>
   );
 };

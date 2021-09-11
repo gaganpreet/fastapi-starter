@@ -1,4 +1,5 @@
-import { authApi } from "./env";
+import { UserIdentity } from "react-admin";
+import { authApi, userApi } from "./env";
 
 type loginFormType = {
   email: string;
@@ -6,16 +7,10 @@ type loginFormType = {
 };
 
 const authProvider = {
-  login: ({ email, password }: loginFormType) => {
+  login: async ({ email, password }: loginFormType) => {
     const formData = { username: email, password };
-    return authApi
-      .loginAuthJwtLoginPost(formData)
-      .then((response) => {
-        return response.data;
-      })
-      .then((data) => {
-        localStorage.setItem("token", data);
-      });
+    const resp = await authApi.loginAuthJwtLoginPost(formData);
+    localStorage.setItem("token", resp.data.access_token);
   },
   logout: () => {
     localStorage.removeItem("token");
@@ -34,6 +29,10 @@ const authProvider = {
   getPermissions: () => {
     const role = localStorage.getItem("permissions");
     return role ? Promise.resolve(role) : Promise.reject();
+  },
+  getIdentity: async (): Promise<UserIdentity> => {
+    const resp = await userApi.meUsersMeGet();
+    return resp.data as UserIdentity;
   },
 };
 

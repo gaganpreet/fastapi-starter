@@ -17,39 +17,45 @@
 /**
  * Base User model.
  * @export
- * @interface User
+ * @interface UserDB
  */
-export interface User {
+export interface UserDB {
     /**
      * 
      * @type {string}
-     * @memberof User
+     * @memberof UserDB
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof User
+     * @memberof UserDB
      */
     email: string;
     /**
      * 
      * @type {boolean}
-     * @memberof User
+     * @memberof UserDB
      */
     is_active?: boolean;
     /**
      * 
      * @type {boolean}
-     * @memberof User
+     * @memberof UserDB
      */
     is_superuser?: boolean;
     /**
      * 
      * @type {boolean}
-     * @memberof User
+     * @memberof UserDB
      */
     is_verified?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserDB
+     */
+    hashed_password: string;
 }
 
 

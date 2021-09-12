@@ -25,13 +25,13 @@ export interface UserUpdate {
      * @type {string}
      * @memberof UserUpdate
      */
-    id?: string;
+    password?: string;
     /**
      * 
      * @type {string}
      * @memberof UserUpdate
      */
-    email?: string;
+    email: string;
     /**
      * 
      * @type {boolean}
@@ -55,7 +55,7 @@ export interface UserUpdate {
      * @type {string}
      * @memberof UserUpdate
      */
-    password?: string;
+    id?: string;
 }
 
 

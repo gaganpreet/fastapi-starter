@@ -39,10 +39,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserUsersIdDelete: async (id: string, options: any = {}): Promise<RequestArgs> => {
+        deleteUser: async (id: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('deleteUserUsersIdDelete', 'id', id)
-            const localVarPath = `/users/{id}`
+            assertParamExists('deleteUser', 'id', id)
+            const localVarPath = `/api/v1/users/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -77,10 +77,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserUsersIdGet: async (id: string, options: any = {}): Promise<RequestArgs> => {
+        getUser: async (id: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('getUserUsersIdGet', 'id', id)
-            const localVarPath = `/users/{id}`
+            assertParamExists('getUser', 'id', id)
+            const localVarPath = `/api/v1/users/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -110,12 +110,56 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Get Users
+         * @param {number} [skip] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsers: async (skip?: number, limit?: number, options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/users/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2PasswordBearer required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2PasswordBearer", [], configuration)
+
+            if (skip !== undefined) {
+                localVarQueryParameter['skip'] = skip;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Me
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meUsersMeGet: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/users/me`;
+        me: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/users/me`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -149,10 +193,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateMeUsersMePatch: async (userUpdate: UserUpdate, options: any = {}): Promise<RequestArgs> => {
+        updateMe: async (userUpdate: UserUpdate, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'userUpdate' is not null or undefined
-            assertParamExists('updateMeUsersMePatch', 'userUpdate', userUpdate)
-            const localVarPath = `/users/me`;
+            assertParamExists('updateMe', 'userUpdate', userUpdate)
+            const localVarPath = `/api/v1/users/me`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -190,12 +234,12 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserUsersIdPatch: async (id: string, userUpdate: UserUpdate, options: any = {}): Promise<RequestArgs> => {
+        updateUser: async (id: string, userUpdate: UserUpdate, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('updateUserUsersIdPatch', 'id', id)
+            assertParamExists('updateUser', 'id', id)
             // verify required parameter 'userUpdate' is not null or undefined
-            assertParamExists('updateUserUsersIdPatch', 'userUpdate', userUpdate)
-            const localVarPath = `/users/{id}`
+            assertParamExists('updateUser', 'userUpdate', userUpdate)
+            const localVarPath = `/api/v1/users/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -243,8 +287,8 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteUserUsersIdDelete(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUserUsersIdDelete(id, options);
+        async deleteUser(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUser(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -254,8 +298,20 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserUsersIdGet(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserUsersIdGet(id, options);
+        async getUser(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUser(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Get Users
+         * @param {number} [skip] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUsers(skip?: number, limit?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<User>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUsers(skip, limit, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -264,8 +320,8 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async meUsersMeGet(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.meUsersMeGet(options);
+        async me(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.me(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -275,8 +331,8 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateMeUsersMePatch(userUpdate: UserUpdate, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateMeUsersMePatch(userUpdate, options);
+        async updateMe(userUpdate: UserUpdate, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateMe(userUpdate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -287,8 +343,8 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUserUsersIdPatch(id: string, userUpdate: UserUpdate, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateUserUsersIdPatch(id, userUpdate, options);
+        async updateUser(id: string, userUpdate: UserUpdate, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateUser(id, userUpdate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -308,8 +364,8 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserUsersIdDelete(id: string, options?: any): AxiosPromise<void> {
-            return localVarFp.deleteUserUsersIdDelete(id, options).then((request) => request(axios, basePath));
+        deleteUser(id: string, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteUser(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -318,8 +374,19 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserUsersIdGet(id: string, options?: any): AxiosPromise<User> {
-            return localVarFp.getUserUsersIdGet(id, options).then((request) => request(axios, basePath));
+        getUser(id: string, options?: any): AxiosPromise<User> {
+            return localVarFp.getUser(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get Users
+         * @param {number} [skip] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsers(skip?: number, limit?: number, options?: any): AxiosPromise<Array<User>> {
+            return localVarFp.getUsers(skip, limit, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -327,8 +394,8 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meUsersMeGet(options?: any): AxiosPromise<User> {
-            return localVarFp.meUsersMeGet(options).then((request) => request(axios, basePath));
+        me(options?: any): AxiosPromise<User> {
+            return localVarFp.me(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -337,8 +404,8 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateMeUsersMePatch(userUpdate: UserUpdate, options?: any): AxiosPromise<User> {
-            return localVarFp.updateMeUsersMePatch(userUpdate, options).then((request) => request(axios, basePath));
+        updateMe(userUpdate: UserUpdate, options?: any): AxiosPromise<User> {
+            return localVarFp.updateMe(userUpdate, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -348,71 +415,92 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserUsersIdPatch(id: string, userUpdate: UserUpdate, options?: any): AxiosPromise<User> {
-            return localVarFp.updateUserUsersIdPatch(id, userUpdate, options).then((request) => request(axios, basePath));
+        updateUser(id: string, userUpdate: UserUpdate, options?: any): AxiosPromise<User> {
+            return localVarFp.updateUser(id, userUpdate, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for deleteUserUsersIdDelete operation in UsersApi.
+ * Request parameters for deleteUser operation in UsersApi.
  * @export
- * @interface UsersApiDeleteUserUsersIdDeleteRequest
+ * @interface UsersApiDeleteUserRequest
  */
-export interface UsersApiDeleteUserUsersIdDeleteRequest {
+export interface UsersApiDeleteUserRequest {
     /**
      * 
      * @type {string}
-     * @memberof UsersApiDeleteUserUsersIdDelete
+     * @memberof UsersApiDeleteUser
      */
     readonly id: string
 }
 
 /**
- * Request parameters for getUserUsersIdGet operation in UsersApi.
+ * Request parameters for getUser operation in UsersApi.
  * @export
- * @interface UsersApiGetUserUsersIdGetRequest
+ * @interface UsersApiGetUserRequest
  */
-export interface UsersApiGetUserUsersIdGetRequest {
+export interface UsersApiGetUserRequest {
     /**
      * 
      * @type {string}
-     * @memberof UsersApiGetUserUsersIdGet
+     * @memberof UsersApiGetUser
      */
     readonly id: string
 }
 
 /**
- * Request parameters for updateMeUsersMePatch operation in UsersApi.
+ * Request parameters for getUsers operation in UsersApi.
  * @export
- * @interface UsersApiUpdateMeUsersMePatchRequest
+ * @interface UsersApiGetUsersRequest
  */
-export interface UsersApiUpdateMeUsersMePatchRequest {
+export interface UsersApiGetUsersRequest {
+    /**
+     * 
+     * @type {number}
+     * @memberof UsersApiGetUsers
+     */
+    readonly skip?: number
+
+    /**
+     * 
+     * @type {number}
+     * @memberof UsersApiGetUsers
+     */
+    readonly limit?: number
+}
+
+/**
+ * Request parameters for updateMe operation in UsersApi.
+ * @export
+ * @interface UsersApiUpdateMeRequest
+ */
+export interface UsersApiUpdateMeRequest {
     /**
      * 
      * @type {UserUpdate}
-     * @memberof UsersApiUpdateMeUsersMePatch
+     * @memberof UsersApiUpdateMe
      */
     readonly userUpdate: UserUpdate
 }
 
 /**
- * Request parameters for updateUserUsersIdPatch operation in UsersApi.
+ * Request parameters for updateUser operation in UsersApi.
  * @export
- * @interface UsersApiUpdateUserUsersIdPatchRequest
+ * @interface UsersApiUpdateUserRequest
  */
-export interface UsersApiUpdateUserUsersIdPatchRequest {
+export interface UsersApiUpdateUserRequest {
     /**
      * 
      * @type {string}
-     * @memberof UsersApiUpdateUserUsersIdPatch
+     * @memberof UsersApiUpdateUser
      */
     readonly id: string
 
     /**
      * 
      * @type {UserUpdate}
-     * @memberof UsersApiUpdateUserUsersIdPatch
+     * @memberof UsersApiUpdateUser
      */
     readonly userUpdate: UserUpdate
 }
@@ -427,25 +515,37 @@ export class UsersApi extends BaseAPI {
     /**
      * 
      * @summary Delete User
-     * @param {UsersApiDeleteUserUsersIdDeleteRequest} requestParameters Request parameters.
+     * @param {UsersApiDeleteUserRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public deleteUserUsersIdDelete(requestParameters: UsersApiDeleteUserUsersIdDeleteRequest, options?: any) {
-        return UsersApiFp(this.configuration).deleteUserUsersIdDelete(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
+    public deleteUser(requestParameters: UsersApiDeleteUserRequest, options?: any) {
+        return UsersApiFp(this.configuration).deleteUser(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get User
-     * @param {UsersApiGetUserUsersIdGetRequest} requestParameters Request parameters.
+     * @param {UsersApiGetUserRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUserUsersIdGet(requestParameters: UsersApiGetUserUsersIdGetRequest, options?: any) {
-        return UsersApiFp(this.configuration).getUserUsersIdGet(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
+    public getUser(requestParameters: UsersApiGetUserRequest, options?: any) {
+        return UsersApiFp(this.configuration).getUser(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get Users
+     * @param {UsersApiGetUsersRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public getUsers(requestParameters: UsersApiGetUsersRequest = {}, options?: any) {
+        return UsersApiFp(this.configuration).getUsers(requestParameters.skip, requestParameters.limit, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -455,31 +555,31 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public meUsersMeGet(options?: any) {
-        return UsersApiFp(this.configuration).meUsersMeGet(options).then((request) => request(this.axios, this.basePath));
+    public me(options?: any) {
+        return UsersApiFp(this.configuration).me(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Update Me
-     * @param {UsersApiUpdateMeUsersMePatchRequest} requestParameters Request parameters.
+     * @param {UsersApiUpdateMeRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public updateMeUsersMePatch(requestParameters: UsersApiUpdateMeUsersMePatchRequest, options?: any) {
-        return UsersApiFp(this.configuration).updateMeUsersMePatch(requestParameters.userUpdate, options).then((request) => request(this.axios, this.basePath));
+    public updateMe(requestParameters: UsersApiUpdateMeRequest, options?: any) {
+        return UsersApiFp(this.configuration).updateMe(requestParameters.userUpdate, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Update User
-     * @param {UsersApiUpdateUserUsersIdPatchRequest} requestParameters Request parameters.
+     * @param {UsersApiUpdateUserRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public updateUserUsersIdPatch(requestParameters: UsersApiUpdateUserUsersIdPatchRequest, options?: any) {
-        return UsersApiFp(this.configuration).updateUserUsersIdPatch(requestParameters.id, requestParameters.userUpdate, options).then((request) => request(this.axios, this.basePath));
+    public updateUser(requestParameters: UsersApiUpdateUserRequest, options?: any) {
+        return UsersApiFp(this.configuration).updateUser(requestParameters.id, requestParameters.userUpdate, options).then((request) => request(this.axios, this.basePath));
     }
 }

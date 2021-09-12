@@ -1,18 +1,11 @@
 from fastapi import FastAPI
+from fastapi.routing import APIRoute
 from fastapi_users import FastAPIUsers
-from fastapi_users.authentication import JWTAuthentication
 from starlette.middleware.cors import CORSMiddleware
 
 from app.api import api_router
 from app.core.config import settings
-from app.models.user import user_db
-from app.schemas.user import User, UserCreate, UserDB, UserUpdate
-
-
-jwt_authentication = JWTAuthentication(
-    secret=settings.SECRET_KEY,
-    lifetime_seconds=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
-)
+from app.deps.users import fastapi_users, jwt_authentication
 
 
 def create_app():
@@ -24,7 +17,6 @@ def create_app():
         description=description,
         redoc_url=None,
     )
-    fastapi_users = init_fastapi_users()
     setup_routers(app, fastapi_users)
     init_db_hooks(app)
     setup_cors_middleware(app)
@@ -38,19 +30,21 @@ def setup_routers(app: FastAPI, fastapi_users: FastAPIUsers) -> None:
             jwt_authentication,
             requires_verification=False,
         ),
-        prefix="/auth/jwt",
+        prefix=f"{settings.API_PATH}/auth/jwt",
         tags=["auth"],
     )
     app.include_router(
         fastapi_users.get_register_router(),
-        prefix="/auth",
+        prefix=f"{settings.API_PATH}/auth",
         tags=["auth"],
     )
     app.include_router(
         fastapi_users.get_users_router(requires_verification=False),
-        prefix="/users",
+        prefix=f"{settings.API_PATH}/users",
         tags=["users"],
     )
+    # The following operation needs to be at the end of this function
+    use_route_names_as_operation_ids(app)
 
 
 def setup_cors_middleware(app):
@@ -60,20 +54,25 @@ def setup_cors_middleware(app):
             allow_origins=[str(origin) for origin in settings.BACKEND_CORS_ORIGINS],
             allow_credentials=True,
             allow_methods=["*"],
-            allow_headers=["*"],
+            expose_headers=["Content-Range", "Range"],
+            allow_headers=["Authorization", "Range", "Content-Range"],
         )
 
 
-def init_fastapi_users() -> FastAPIUsers:
-    fastapi_users = FastAPIUsers(
-        user_db,
-        [jwt_authentication],
-        User,
-        UserCreate,
-        UserUpdate,
-        UserDB,
-    )
-    return fastapi_users
+def use_route_names_as_operation_ids(app: FastAPI) -> None:
+    """
+    Simplify operation IDs so that generated API clients have simpler function
+    names.
+
+    Should be called only after all routes have been added.
+    """
+    route_names = set()
+    for route in app.routes:
+        if isinstance(route, APIRoute):
+            if route.name in route_names:
+                raise Exception("Route function names should be unique")
+            route.operation_id = route.name
+            route_names.add(route.name)
 
 
 def init_db_hooks(app: FastAPI) -> None:

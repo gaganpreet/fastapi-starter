@@ -5,7 +5,7 @@ from app.db import SessionLocal
 def get_db() -> Generator:
     db = None
     try:
-        db = SessionLocal()
+        db = SessionLocal(future=True)
         yield db
     finally:
         if db is not None:

@@ -23,11 +23,11 @@ And for cases where react-admin is not enough:
 
 ### Things to do
 
-- [  ] Fix docker setup
-- [  ] Create Github action
-- [  ] Dependabot config
-- [  ] Coverage report in tests
-- [  ] Add pre-commit hooks: Black, isort, flake8, mypy, tslint
-- [  ] Setup FastAPI CRUD example
-- [  ] Email templates
-- [  ] Deployment instructions: Possibly provide an option to create a single docker image (where FastAPI serves static assets) that can be easily deployed
+- [ ] Fix docker setup
+- [ ] Create Github action
+- [ ] Dependabot config
+- [ ] Coverage report in tests
+- [ ] Add pre-commit hooks: Black, isort, flake8, mypy, tslint
+- [ ] Setup FastAPI CRUD example
+- [ ] Email templates
+- [ ] Deployment instructions: Possibly provide an option to create a single docker image (where FastAPI serves static assets) that can be easily deployed

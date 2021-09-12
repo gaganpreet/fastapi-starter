@@ -17,7 +17,7 @@ const Register = () => {
     e.preventDefault();
     const formData = { email, password };
     try {
-      const response = await authApi.registerAuthRegisterPost({
+      const response = await authApi.register({
         userCreate: formData,
       });
       if (response.data.id) {

@@ -1,4 +1,5 @@
 import { UserMenu, MenuItemLink, AppBar, Layout } from "react-admin";
+import { ProfileProvider } from "../pages/ProfileEdit";
 import SettingsIcon from "@material-ui/icons/Settings";
 
 const MyUserMenu = (props: any) => {
@@ -19,6 +20,10 @@ const MyAppBar = (props: any) => (
   <AppBar {...props} userMenu={<MyUserMenu />} />
 );
 
-const MyLayout = (props: any) => <Layout {...props} appBar={MyAppBar} />;
+const MyLayout = (props: any) => (
+  <ProfileProvider>
+    <Layout {...props} appBar={MyAppBar} />
+  </ProfileProvider>
+);
 
 export default MyLayout;

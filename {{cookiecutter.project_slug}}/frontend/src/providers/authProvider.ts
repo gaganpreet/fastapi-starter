@@ -9,7 +9,7 @@ type loginFormType = {
 const authProvider = {
   login: async ({ email, password }: loginFormType) => {
     const formData = { username: email, password };
-    const resp = await authApi.loginAuthJwtLoginPost(formData);
+    const resp = await authApi.login(formData);
     localStorage.setItem("token", resp.data.access_token);
   },
   logout: () => {
@@ -31,7 +31,7 @@ const authProvider = {
     return role ? Promise.resolve(role) : Promise.reject();
   },
   getIdentity: async (): Promise<UserIdentity> => {
-    const resp = await userApi.meUsersMeGet();
+    const resp = await userApi.me();
     return resp.data as UserIdentity;
   },
 };

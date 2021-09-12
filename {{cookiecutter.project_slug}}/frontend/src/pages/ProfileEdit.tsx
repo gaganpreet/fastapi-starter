@@ -50,7 +50,7 @@ export const ProfileEdit = ({ ...props }) => {
     (values) => {
       setSaving(true);
       userApi
-        .updateMeUsersMePatch({ userUpdate: values })
+        .updateMe({ userUpdate: values })
         .then(() => {
           setSaving(false);
           notify("Your profile has been updated", "info");
@@ -73,6 +73,7 @@ export const ProfileEdit = ({ ...props }) => {
     return null;
   }
 
+  // TODO: The save button is not disabled after save
   return (
     <SaveContextProvider value={saveContext} key={profileVersion}>
       <SimpleForm save={handleSave} record={identity ? identity : {}}>

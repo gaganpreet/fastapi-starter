@@ -9,21 +9,22 @@ import {
 } from "react-admin";
 import { Route } from "react-router";
 import MyLayout from "./components/AdminLayout";
-import { ProfileEdit, ProfileProvider } from "./components/ProfileEdit";
+import { ProfileEdit } from "./pages/ProfileEdit";
 import LoginPage from "./pages/Login";
 import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
 import authProvider from "./providers/authProvider";
 import { basePath } from "./providers/env";
 
 const httpClient = (url: string, options: any = {}) => {
   options.user = {
     authenticated: true,
-    token: localStorage.getItem("token"),
+    token: `Bearer ${localStorage.getItem("token")}`,
   };
   return fetchUtils.fetchJson(url, options);
 };
 
-const dataProvider = simpleRestProvider(`${basePath}/api/v1/`, httpClient);
+const dataProvider = simpleRestProvider(`${basePath}/api/v1`, httpClient);
 
 const customRoutes = [
   <RouteWithoutLayout exact path="/register" component={Register} noLayout />,
@@ -32,18 +33,17 @@ const customRoutes = [
 
 const App = () => {
   return (
-    <ProfileProvider>
-      <Admin
-        dataProvider={dataProvider}
-        authProvider={authProvider}
-        loginPage={LoginPage}
-        customRoutes={customRoutes}
-        history={createHistory()}
-        appLayout={MyLayout}
-      >
-        <Resource name="users" list={ListGuesser} />
-      </Admin>
-    </ProfileProvider>
+    <Admin
+      dataProvider={dataProvider}
+      authProvider={authProvider}
+      loginPage={LoginPage}
+      customRoutes={customRoutes}
+      history={createHistory()}
+      appLayout={MyLayout}
+      dashboard={Dashboard}
+    >
+      <Resource name="users" list={ListGuesser} />
+    </Admin>
   );
 };
 

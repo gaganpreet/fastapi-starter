@@ -31,3 +31,4 @@ And for cases where react-admin is not enough:
 - [ ] Setup FastAPI CRUD example
 - [ ] Email templates
 - [ ] Deployment instructions: Possibly provide an option to create a single docker image (where FastAPI serves static assets) that can be easily deployed
+- [ ] Async SQLAlchemy

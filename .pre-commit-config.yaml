@@ -1,0 +1,69 @@
+exclude: "(src/generated/|alembic/versions)"
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  # Backend hooks
+  - repo: https://github.com/psf/black
+    rev: 21.9b0
+    hooks:
+      - id: black
+        files: backend/
+        types: [file, python]
+  - repo: https://github.com/myint/autoflake
+    rev: v1.4
+    hooks:
+      - id: autoflake
+        args:
+          - --in-place
+          - --imports=sqlalchemy,pydantic
+        files: backend/
+        types: [file, python]
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.9.3
+    hooks:
+      - id: isort
+        name: isort (python)
+        files: backend/
+        types: [file, python]
+        args: [-o, alembic, --src, "{{cookiecutter.project_slug}}/backend"]
+      - id: isort
+        files: backend/
+        name: isort (cython)
+        types: [cython]
+      - id: isort
+        files: backend/
+        name: isort (pyi)
+        types: [pyi]
+
+  - repo: https://gitlab.com/PyCQA/flake8
+    rev: 3.8.3
+    hooks:
+      - id: flake8
+        files: backend/
+        # B008: Do not perform function calls in argument defaults. (FastAPI relies heavily on these)
+        # F401: Unused imports (kinda annoying, remove this rule if you want to enforce it)
+        args: [--max-line-length=131, --ignore=B008,F401]
+
+        types: [file, python]
+        additional_dependencies:
+          [flake8-comprehensions, flake8-bugbear]
+
+  # Frontend hooks
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v2.4.0"
+    hooks:
+      - id: prettier
+        files: frontend/
+        types_or: [javascript, jsx, ts, tsx]
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: "v7.20.0"
+    hooks:
+      - id: eslint
+        files: frontend/
+        types_or: [javascript, jsx, ts, tsx]

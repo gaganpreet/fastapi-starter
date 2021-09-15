@@ -5,7 +5,7 @@ import { useNotify } from "react-admin";
 import Auth from "../components/Auth";
 import { useHistory } from "react-router";
 import { authApi } from "../providers/env";
-import {AxiosError} from "axios";
+import { AxiosError } from "axios";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -25,13 +25,13 @@ const Register = () => {
         history.push("/login");
       }
     } catch (e) {
-        const exp = (e as AxiosError);
-        const errorMsg = exp.response?.data.detail[0].msg;
-        if (errorMsg) {
-            notify(errorMsg);
-        } else {
-            notify("Network error");
-        }
+      const exp = e as AxiosError;
+      const errorMsg = exp.response?.data.detail[0].msg;
+      if (errorMsg) {
+        notify(errorMsg);
+      } else {
+        notify("Network error");
+      }
     }
   };
 

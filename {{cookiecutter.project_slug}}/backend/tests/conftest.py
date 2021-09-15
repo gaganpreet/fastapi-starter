@@ -1,4 +1,3 @@
-from app.deps.db import get_db
 from typing import Generator
 
 import pytest
@@ -6,9 +5,10 @@ from sqlalchemy.engine import create_engine
 from sqlalchemy.orm.session import sessionmaker
 from starlette.testclient import TestClient
 
-from app.factory import create_app
 from app.core.config import settings
 from app.db import Base
+from app.deps.db import get_db
+from app.factory import create_app
 
 engine = create_engine(
     settings.TEST_DATABASE_URL,

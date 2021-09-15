@@ -1,6 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-
 const useStyles = makeStyles((theme) => ({
   main: {
     display: "flex",
@@ -14,9 +13,9 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 300,
     marginTop: "6em",
   },
-    header: {
-        textAlign: "center",
-    },
+  header: {
+    textAlign: "center",
+  },
   avatar: {
     margin: "1em",
     display: "flex",

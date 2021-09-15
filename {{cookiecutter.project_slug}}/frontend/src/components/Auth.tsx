@@ -80,7 +80,9 @@ const Auth: React.FC<AuthProps> = ({
                 {actionName}
               </Button>
             </CardActions>
-            <CardActions className={classes.actions}>{extraActions}</CardActions>
+            <CardActions className={classes.actions}>
+              {extraActions}
+            </CardActions>
           </Card>
           <Notification />
         </div>

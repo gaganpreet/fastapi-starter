@@ -48,7 +48,7 @@ repos:
         files: backend/
         # B008: Do not perform function calls in argument defaults. (FastAPI relies heavily on these)
         # F401: Unused imports (kinda annoying, remove this rule if you want to enforce it)
-        args: [--max-line-length=131, --ignore=B008,F401]
+        args: [--max-line-length=131, --ignore, "B008,F401"]
 
         types: [file, python]
         additional_dependencies:

@@ -16,17 +16,19 @@ import {
 } from "react-admin";
 import { userApi } from "../providers/env";
 
+const ProfileContext = createContext({
+  profileVersion: 0,
+  refreshProfile: () => {},
+});
 
-const ProfileContext = createContext({profileVersion: 0, refreshProfile: () => {}});
-
-export const ProfileProvider = ({ children }: {children: any}) => {
+export const ProfileProvider = ({ children }: { children: any }) => {
   const [profileVersion, setProfileVersion] = useState(0);
   const context = useMemo(
     () => ({
       profileVersion,
-      refreshProfile: () =>{
-        setProfileVersion((currentVersion) => currentVersion + 1)
-      }
+      refreshProfile: () => {
+        setProfileVersion((currentVersion) => currentVersion + 1);
+      },
     }),
     [profileVersion]
   );

@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:latest as build
 
 WORKDIR /app
 
@@ -8,4 +8,11 @@ RUN yarn
 
 COPY . /app/
 
-CMD yarn start
+RUN CI=1 yarn test
+
+RUN yarn build
+
+
+FROM nginx:latest
+
+COPY --from=build /app/build /usr/share/nginx/html

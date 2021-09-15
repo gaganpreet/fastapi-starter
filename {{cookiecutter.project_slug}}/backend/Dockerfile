@@ -15,4 +15,3 @@ RUN poetry install --no-root
 COPY ./ /app
 
 CMD uvicorn main:app
-

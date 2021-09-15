@@ -44,7 +44,7 @@ const App = () => {
       loginPage={LoginPage}
       customRoutes={customRoutes}
       history={createHistory()}
-      appLayout={MyLayout}
+      layout={MyLayout}
       dashboard={Dashboard}
     >
       <Resource name="users" list={UserList} edit={UserEdit} />

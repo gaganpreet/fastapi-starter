@@ -1,6 +1,6 @@
-from typing import Any, Dict, List, Optional
+from typing import List, Optional
 
-from pydantic import BaseSettings, HttpUrl, PostgresDsn, root_validator, validator
+from pydantic import BaseSettings, HttpUrl, PostgresDsn, root_validator
 from pydantic.networks import AnyHttpUrl
 
 

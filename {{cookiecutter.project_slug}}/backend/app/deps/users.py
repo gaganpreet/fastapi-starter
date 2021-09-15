@@ -1,5 +1,6 @@
 from fastapi_users import FastAPIUsers
 from fastapi_users.authentication import JWTAuthentication
+
 from app.core.config import settings
 from app.models.user import user_db
 from app.schemas.user import User, UserCreate, UserDB, UserUpdate

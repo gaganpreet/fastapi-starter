@@ -2,8 +2,7 @@ from typing import Any, List
 
 from fastapi.params import Depends
 from fastapi.routing import APIRouter
-from sqlalchemy import select
-from sqlalchemy import func
+from sqlalchemy import func, select
 from sqlalchemy.orm.session import Session
 from starlette.responses import Response
 
@@ -11,7 +10,6 @@ from app.deps.db import get_db
 from app.deps.users import current_user
 from app.models.user import User
 from app.schemas.user import User as UserSchema
-
 
 router = APIRouter()
 

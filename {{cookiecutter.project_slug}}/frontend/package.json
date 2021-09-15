@@ -26,6 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "format": "prettier src --write",
     "genapi": "openapi-generator generate -i <(curl -s 'http://localhost:5000/api/v1/openapi.json') -g typescript-axios -o src/generated -p withSeparateModelsAndApi=true,apiPackage=api,modelPackage=models,useSingleRequestParameter=true"
   },
   "eslintConfig": {
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.4.1",
-    "@types/react-router": "^5.1.16"
+    "@types/react-router": "^5.1.16",
+    "prettier": "^2.4.0"
   }
 }

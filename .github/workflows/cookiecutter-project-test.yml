@@ -5,7 +5,7 @@ on: [workflow_dispatch, push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: docker/compose
+    container: docker/compose:1.29.2
 
     env:
       COMPOSE_DOCKER_CLI_BUILD: 1

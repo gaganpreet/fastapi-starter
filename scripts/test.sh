@@ -11,7 +11,7 @@ cookiecutter --no-input -f ./ project_slug="test-project" project_name="Test pro
 
 cd ./test-project/
 
-docker-compose up -d
+docker-compose up -d --build
 
 docker-compose exec -T postgres createdb -U postgres apptest
 

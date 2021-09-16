@@ -16,4 +16,4 @@ jobs:
 
     - name: Run test script
       run: |
-        bash -x scripts/test.sh
+        sh -x scripts/test.sh

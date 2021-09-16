@@ -25,4 +25,5 @@ jobs:
     - name: Log docker status
       if: ${{ always() }}
       run: |
+        cd ./test-project
         docker-compose logs -t

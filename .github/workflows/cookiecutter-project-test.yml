@@ -1,0 +1,19 @@
+name: Cookie cutter test
+
+on: [workflow_dispatch, push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: docker/compose
+
+    env:
+      COMPOSE_DOCKER_CLI_BUILD: 1
+
+    steps:
+    - uses: actions/checkout@v2
+
+
+    - name: Run test script
+      run: |
+        bash -x scripts/test.sh

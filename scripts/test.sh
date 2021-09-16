@@ -7,7 +7,7 @@ set -eou pipefail
 # Run this from the root of the project
 rm -rf ./test-project
 
-cookiecutter --no-input -f ./ project_slug="test-project"
+cookiecutter --no-input -f ./ project_slug="test-project" project_name="Test project"
 
 cd ./test-project/
 
@@ -16,5 +16,3 @@ docker-compose up -d
 docker-compose exec postgres createdb -U postgres apptest
 
 docker-compose exec backend pytest -v
-
-docker-compose down --rmi local -v

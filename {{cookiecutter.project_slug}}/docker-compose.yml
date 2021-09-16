@@ -6,10 +6,6 @@ services:
     restart: always
     env_file:
       - .env
-    ports:
-      - "5433:5432"
-    volumes:
-      - app-db-data:/var/lib/postgresql/data:cached
     healthcheck:
       test: pg_isready -U postgres
       interval: 3s
@@ -19,10 +15,6 @@ services:
   backend:
     build:
       context: backend
-    volumes:
-      - ./backend:/app/:delegated
-      - root-home:/root/
-    command: python main.py
     env_file: .env
     depends_on:
       postgres:
@@ -34,7 +26,7 @@ services:
     volumes:
       - ./frontend:/app:delegated
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
 
 volumes:
   app-db-data:

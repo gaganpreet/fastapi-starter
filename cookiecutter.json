@@ -1,0 +1,5 @@
+{
+  "project_name": "Sample project",
+  "project_slug": "sample-project",
+  "_copy_without_render": ["node_modules", "build"]
+}

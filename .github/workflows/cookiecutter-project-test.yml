@@ -1,0 +1,29 @@
+name: Cookie cutter test
+
+on: [workflow_dispatch, push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: docker/compose:1.29.2
+
+    env:
+      COMPOSE_DOCKER_CLI_BUILD: 1
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        apk update && apk add py3-pip python3
+        pip3 install cookiecutter
+
+    - name: Run test script
+      run: |
+        sh -x scripts/test.sh
+
+    - name: Log docker status
+      if: ${{ always() }}
+      run: |
+        cd ./test-project
+        docker-compose logs -t

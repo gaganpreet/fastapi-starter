@@ -13,6 +13,6 @@ cd ./test-project/
 
 docker-compose up -d
 
-docker-compose exec postgres createdb -U postgres apptest
+docker-compose exec -T postgres createdb -U postgres apptest
 
-docker-compose exec backend pytest -v
+docker-compose exec -T backend pytest -v

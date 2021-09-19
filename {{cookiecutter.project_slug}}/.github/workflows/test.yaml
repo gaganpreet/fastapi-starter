@@ -1,0 +1,46 @@
+name: Build and test
+
+on: [workflow_dispatch, push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+       DOCKER_BUILDKIT: 1
+       COMPOSE_DOCKER_CLI_BUILD: 1
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build backend
+      id: docker_build_backend
+      uses: docker/build-push-action@v2
+      with:
+        push: false
+        tags: "{{ cookiecutter.project_slug }}-backend:latest"
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        context: backend
+        load: true
+
+    - name: Build frontend
+      id: docker_build_frontend
+      uses: docker/build-push-action@v2
+      with:
+        push: false
+        tags: "{{ cookiecutter.project_slug }}-frontend:latest"
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        context: frontend
+        load: true
+
+    - name: Start containers and run tests
+      run: |
+        mv env-template .env
+        docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d
+        docker-compose exec -T postgres createdb -U postgres apptest
+        docker-compose exec -T backend pytest -v

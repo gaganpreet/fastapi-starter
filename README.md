@@ -32,8 +32,8 @@ The following features were left out in favour of simplicity:
 ### Things to do
 
 - [x] Fix docker setup
-- [ ] Create Github action
-- [ ] Dependabot config
+- [x] Create Github action
+- [x] Dependabot config
 - [ ] Coverage report in tests
 - [x] Add pre-commit hooks: Black, isort, flake8, mypy, tslint
 - [ ] Setup FastAPI CRUD example

@@ -15,6 +15,7 @@ A FastAPI based starter that relies heavily on existing plugins to create an alm
 * Uses best practices: Factory pattern and environment variables for configuration
 * User registration, models, authentication using [FastAPI Users](https://github.com/fastapi-users/fastapi-users)
 * Modern admin interface using [React-Admin](https://marmelab.com/react-admin/)
+* Github Action for building docker images and testing and dependabot config to keep project dependencies up to date
 * Create Typescript bindings for front-end automatically from OpenAPI spec using [OpenAPI-Generator](https://github.com/OpenAPITools/openapi-generator/), no need to write/update code when backend changes
 * [FastAPI CRUD Router](https://github.com/awtkns/fastapi-crudrouter) - [WIP] No need to rewrite generic CRUD routes
 * SQLAlchemy 1.4 ORM (in future mode, with 2.0 style API) and Alembic for database migrations

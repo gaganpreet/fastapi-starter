@@ -1,8 +1,6 @@
 # FastAPI-Starter
 
-Note: This project is pre-alpha at the moment.
-
-A FastAPI based starter that relies heavily on existing plugins to create an almost no-code experience. The goal is to build a template that can be used as a starting point for any FastAPI based project and go from 0 to 100 within seconds. 🙂 🚀
+A FastAPI based starter that relies heavily on existing plugins/frameworks to create an almost no-code experience. The goal is to build a template that can be used as a starting point for any FastAPI based project.
 
 ## Objectives
 
@@ -26,7 +24,7 @@ A FastAPI based starter that relies heavily on existing plugins to create an alm
 
 The following features were left out in favour of simplicity:
 
-* Celery/Flower/Redis - Not needed for simple projects, Celery can be easily replaced with background tasks.
+* Celery/Flower/Redis - Not needed for simple projects, Celery can be easily replaced with [background tasks](https://fastapi.tiangolo.com/tutorial/background-tasks/).
 * Traefik configuration - I prefer [NGINX Proxy automation](https://github.com/evertramos/nginx-proxy-automation)
 
 

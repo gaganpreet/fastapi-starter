@@ -33,8 +33,8 @@ jobs:
       with:
         push: false
         tags: "{{ cookiecutter.project_slug }}-frontend:latest"
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
+        cache-from: type=gha,scope=ci-test
+        cache-to: type=gha,mode=max,scope=ci-test
         context: frontend
         load: true
 

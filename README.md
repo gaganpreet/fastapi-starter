@@ -2,6 +2,15 @@
 
 A FastAPI based starter that relies heavily on existing plugins/frameworks to create an almost no-code experience. The goal is to build a template that can be used as a starting point for any FastAPI based project.
 
+## How to use
+
+You need Python 3 and pip installed locally. Run the cookiecutter command and you'll be asked a few prompts.
+
+```bash
+pip3 install cookiecutter
+cookiecutter https://github.com/gaganpreet/fastapi-starter
+```
+
 ## Objectives
 
 * Sane defaults with few prompts

@@ -50,6 +50,6 @@
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.4.4",
     "@types/react-router": "^5.1.16",
-    "prettier": "^2.4.0"
+    "prettier": "^2.4.1"
   }
 }

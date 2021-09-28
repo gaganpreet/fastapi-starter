@@ -1,19 +1,14 @@
 import { createBrowserHistory as createHistory } from "history";
 import simpleRestProvider from "ra-data-simple-rest";
-import {
-  Admin,
-  EditGuesser,
-  fetchUtils,
-  Resource,
-  RouteWithoutLayout,
-} from "react-admin";
+import { Admin, fetchUtils, Resource, RouteWithoutLayout } from "react-admin";
 import { Route } from "react-router";
 import MyLayout from "./components/AdminLayout";
 import Dashboard from "./pages/Dashboard";
+import { ItemCreate, ItemEdit, ItemList } from "./pages/Items";
 import LoginPage from "./pages/Login";
 import { ProfileEdit } from "./pages/ProfileEdit";
 import Register from "./pages/Register";
-import { UserList, UserEdit } from "./pages/Users";
+import { UserEdit, UserList } from "./pages/Users";
 import authProvider from "./providers/authProvider";
 import { basePath } from "./providers/env";
 
@@ -22,8 +17,8 @@ const httpClient = (url: string, options: any = {}) => {
     authenticated: true,
     token: `Bearer ${localStorage.getItem("token")}`,
   };
-  if (options.method === "PUT") {
-    // We use PATCH for update on the backend, since PATCH is selective PUT, this change should be fine
+  if (url.includes("/users/") && options.method === "PUT") {
+    // We use PATCH for update on the backend for users, since PATCH is selective PUT, this change should be fine
     options.method = "PATCH";
   }
   return fetchUtils.fetchJson(url, options);
@@ -48,6 +43,12 @@ const App = () => {
       dashboard={Dashboard}
     >
       <Resource name="users" list={UserList} edit={UserEdit} />
+      <Resource
+        name="items"
+        list={ItemList}
+        edit={ItemEdit}
+        create={ItemCreate}
+      />
     </Admin>
   );
 };

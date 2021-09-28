@@ -7,7 +7,7 @@ from sqlalchemy.orm.session import Session
 from starlette.responses import Response
 
 from app.deps.db import get_db
-from app.deps.users import current_user
+from app.deps.users import current_superuser
 from app.models.user import User
 from app.schemas.user import User as UserSchema
 
@@ -18,7 +18,7 @@ router = APIRouter()
 def get_users(
     response: Response,
     db: Session = Depends(get_db),
-    user: User = Depends(current_user),
+    user: User = Depends(current_superuser),
     skip: int = 0,
     limit: int = 100,
 ) -> Any:

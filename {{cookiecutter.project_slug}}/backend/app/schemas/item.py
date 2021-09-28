@@ -1,5 +1,4 @@
-from pydantic.main import BaseModel
-from pydantic.types import UUID4
+from pydantic import BaseModel
 
 
 class ItemCreate(BaseModel):
@@ -7,7 +6,7 @@ class ItemCreate(BaseModel):
 
 
 class Item(ItemCreate):
-    id: UUID4
+    id: int
 
     class Config:
         orm_mode = True

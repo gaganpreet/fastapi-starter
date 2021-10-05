@@ -10,7 +10,7 @@ import {
 } from "react-admin";
 
 export const ItemList = (props: any) => (
-  <List {...props}>
+  <List {...props} filters={[]}>
     <Datagrid>
       <TextField source="value" />
       <TextField source="id" />

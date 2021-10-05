@@ -1,3 +1,4 @@
+import UserIcon from "@material-ui/icons/Group";
 import { createBrowserHistory as createHistory } from "history";
 import simpleRestProvider from "ra-data-simple-rest";
 import { Admin, fetchUtils, Resource, RouteWithoutLayout } from "react-admin";
@@ -11,6 +12,7 @@ import Register from "./pages/Register";
 import { UserEdit, UserList } from "./pages/Users";
 import authProvider from "./providers/authProvider";
 import { basePath } from "./providers/env";
+import PostIcon from "@material-ui/icons/Book";
 
 const httpClient = (url: string, options: any = {}) => {
   options.user = {
@@ -42,13 +44,23 @@ const App = () => {
       layout={MyLayout}
       dashboard={Dashboard}
     >
-      <Resource name="users" list={UserList} edit={UserEdit} />
-      <Resource
-        name="items"
-        list={ItemList}
-        edit={ItemEdit}
-        create={ItemCreate}
-      />
+      {(permissions) => [
+        permissions.is_superuser === true ? (
+          <Resource
+            name="users"
+            list={UserList}
+            edit={UserEdit}
+            icon={UserIcon}
+          />
+        ) : null,
+        <Resource
+          name="items"
+          list={ItemList}
+          edit={ItemEdit}
+          create={ItemCreate}
+          icon={PostIcon}
+        />,
+      ]}
     </Admin>
   );
 };

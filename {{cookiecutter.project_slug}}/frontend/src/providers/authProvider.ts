@@ -34,8 +34,7 @@ const authProvider = {
   },
   getIdentity: async (): Promise<UserIdentity> => {
     const resp = await userApi.me();
-    const permissions = { is_superuser: resp.data.is_superuser };
-    localStorage.setItem("permissions", JSON.stringify(permissions));
+    localStorage.setItem("permissions", JSON.stringify(resp.data));
     return resp.data as UserIdentity;
   },
 };

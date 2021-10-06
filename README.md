@@ -17,6 +17,14 @@ cookiecutter https://github.com/gaganpreet/fastapi-starter
 * Secure
 * KISS principle
 
+
+## Preview
+
+![Login page](assets/login.png)
+
+![Item page](assets/items.png)
+
+
 ## Features
 
 * Uses best practices: Factory pattern and environment variables for configuration

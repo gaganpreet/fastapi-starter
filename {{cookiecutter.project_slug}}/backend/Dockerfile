@@ -14,4 +14,4 @@ RUN poetry install --no-root
 
 COPY . /app
 
-CMD uvicorn main:app
+CMD uvicorn --host 0.0.0.0 --port {{ cookiecutter.backend_port }} main:app

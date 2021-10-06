@@ -13,6 +13,8 @@ import {
   SaveContextProvider,
   useGetIdentity,
   useSaveContext,
+  usePermissions,
+  useRedirect,
 } from "react-admin";
 import { userApi } from "../providers/env";
 
@@ -44,6 +46,11 @@ export const useProfile = () => useContext(ProfileContext);
 
 export const ProfileEdit = ({ ...props }) => {
   const notify = useNotify();
+  const { loaded: permissionsLoaded, permissions } = usePermissions();
+  const redirect = useRedirect();
+  if (permissionsLoaded && !permissions?.email) {
+    redirect("/login");
+  }
   const [saving, setSaving] = useState(false);
   const { refreshProfile, profileVersion } = useProfile();
   const { loaded, identity } = useGetIdentity();
@@ -57,6 +64,7 @@ export const ProfileEdit = ({ ...props }) => {
           setSaving(false);
           notify("Your profile has been updated", "info");
           refreshProfile();
+          return redirect("/");
         })
         .catch((e) => {
           setSaving(false);

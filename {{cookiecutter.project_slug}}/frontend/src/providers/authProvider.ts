@@ -11,6 +11,7 @@ const authProvider = {
     const formData = { username: email, password };
     const resp = await authApi.login(formData);
     localStorage.setItem("token", resp.data.access_token);
+    return Promise.resolve();
   },
   logout: () => {
     localStorage.removeItem("token");
@@ -24,14 +25,16 @@ const authProvider = {
     }
     return Promise.resolve();
   },
-  checkAuth: () =>
-    localStorage.getItem("token") ? Promise.resolve() : Promise.reject(),
+  checkAuth: (a: any) => {
+    return localStorage.getItem("token") ? Promise.resolve() : Promise.reject();
+  },
   getPermissions: () => {
-    const role = localStorage.getItem("permissions");
+    const role = JSON.parse(localStorage.getItem("permissions") || "{}");
     return role ? Promise.resolve(role) : Promise.reject();
   },
   getIdentity: async (): Promise<UserIdentity> => {
     const resp = await userApi.me();
+    localStorage.setItem("permissions", JSON.stringify(resp.data));
     return resp.data as UserIdentity;
   },
 };

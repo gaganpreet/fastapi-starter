@@ -8,8 +8,6 @@ RUN yarn
 
 COPY . /app/
 
-RUN CI=1 yarn test
-
 RUN yarn build
 
 

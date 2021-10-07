@@ -249,7 +249,7 @@ test = ["pytest (>=6.2.4,<7.0.0)", "pytest-cov (>=2.12.0,<4.0.0)", "pytest-async
 
 [[package]]
 name = "fastapi-crudrouter"
-version = "0.8.3"
+version = "0.8.4"
 description = "A dynamic FastAPI router that automatically creates CRUD routes for your models"
 category = "main"
 optional = false
@@ -848,7 +848,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "7553208b54dacf89017e64b80afe215d6683ac8ee63f0c38ea5a361d248a26cf"
+content-hash = "98867ea72ff8278953d7e40581688039174148f945149ffc66f0a791ee11ee44"
 
 [metadata.files]
 alembic = [
@@ -987,8 +987,8 @@ fastapi = [
     {file = "fastapi-0.68.2.tar.gz", hash = "sha256:38526fc46bda73f7ec92033952677323c16061e70a91d15c95f18b11895da494"},
 ]
 fastapi-crudrouter = [
-    {file = "fastapi-crudrouter-0.8.3.tar.gz", hash = "sha256:4005e619be0fe43fb66e6c0efdccc9a68c7b4f12441cd5dc4c27b7fd48c58e5f"},
-    {file = "fastapi_crudrouter-0.8.3-py3-none-any.whl", hash = "sha256:0e84bcb7234a5566c07a6779e1984ddd2000e28d2266873ad7ba21ff2638b825"},
+    {file = "fastapi-crudrouter-0.8.4.tar.gz", hash = "sha256:e0eaa09853952e7bb3883dc8ad781035bd6ad6c88834643d6ca764b255fbf262"},
+    {file = "fastapi_crudrouter-0.8.4-py3-none-any.whl", hash = "sha256:27245b4401830c2db43dcdd8660052de926c5470cc01feb3a471334fe262059e"},
 ]
 fastapi-users = [
     {file = "fastapi-users-8.1.0.tar.gz", hash = "sha256:4f656ac3621c2ad9999bc72283567f632928434a9459b6bca809be4392027f6e"},

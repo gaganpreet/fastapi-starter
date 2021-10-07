@@ -7,6 +7,8 @@
 * React Admin
 * SQLAlchemy and Alembic
 * Pre-commit hooks (black, autoflake, isort, flake8, prettier)
+* Github Action
+* Dependabot config
 * Docker images
 
 
@@ -62,6 +64,13 @@ If you add a dependency, you'll need to rebuild your containers like this:
 docker-compose up -d --build
 ```
 
+### Rengerate front-end API package
+
+Instead of writing frontend API client manually, OpenAPI Generator is used. Typescript bindings for the backend API can be recreated with this command:
+
+```bash
+yarn genapi
+```
 
 ### Database migrations
 
@@ -89,6 +98,12 @@ Then you can run tests with this command:
 ```bash
 docker-compose exec backend pytest
 ```
+
+## Recipes
+
+#### Build and upload docker images to a repository
+
+Configure the [**build-push-action**](https://github.com/marketplace/actions/build-and-push-docker-images) in `.github/workflows/test.yaml`.
 
 
 Created with [FastAPI Starter](https://github.com/gaganpreet/fastapi-starter)

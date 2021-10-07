@@ -1,6 +1,7 @@
 import { AuthApi, Configuration, UsersApi } from "../generated";
 
-export const basePath = process.env.API_BASE || "http://localhost:5000";
+export const basePath =
+  process.env.API_BASE || "http://localhost:{{ cookiecutter.backend_port }}";
 
 const readAccessToken = () => {
   return localStorage.getItem("token") || undefined;

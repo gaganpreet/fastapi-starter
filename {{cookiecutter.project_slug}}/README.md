@@ -106,4 +106,6 @@ docker-compose exec backend pytest
 Configure the [**build-push-action**](https://github.com/marketplace/actions/build-and-push-docker-images) in `.github/workflows/test.yaml`.
 
 
+## Credits
+
 Created with [FastAPI Starter](https://github.com/gaganpreet/fastapi-starter)

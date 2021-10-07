@@ -11,8 +11,6 @@ services:
 
   backend:
     command: uvicorn --port {{ cookiecutter.backend_port }} --host 0.0.0.0 --reload main:app
-    ports:
-      - "{{ cookiecutter.backend_port }}:{{ cookiecutter.backend_port }}"
     volumes:
       - ./backend:/app:delegated
       - root-home:/root:delegated

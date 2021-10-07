@@ -50,9 +50,9 @@ The following features were left out in favour of simplicity:
 - [x] Fix docker setup
 - [x] Create Github action
 - [x] Dependabot config
-- [ ] Coverage report in tests
 - [x] Add pre-commit hooks: Black, isort, flake8, mypy, tslint
-- [ ] Setup FastAPI CRUD example
+- [x] Setup FastAPI CRUD example
+- [ ] Coverage report in tests
 - [ ] Email templates
 - [ ] Deployment instructions: Possibly provide an option to create a single docker image (where FastAPI serves static assets) that can be easily deployed
 - [ ] Async SQLAlchemy

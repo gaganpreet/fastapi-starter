@@ -17,8 +17,7 @@
 The frontend of this project uses React Admin. Follow the quick tutorial to understand how [React Admin](https://marmelab.com/react-admin/Tutorial.html) works.
 
 
-## Development
-
+## Step 1: Getting started
 
 Start a local development instance with docker-compose
 
@@ -27,6 +26,9 @@ docker-compose up -d
 
 # Run database migration
 docker-compose exec backend alembic upgrade head
+
+# Create database used for testing
+docker-compose exec postgres createdb apptest -U postgres
 ```
 
 Now you can navigate to the following URLs:
@@ -35,14 +37,13 @@ Now you can navigate to the following URLs:
 - Frontend: http://localhost:{{ cookiecutter.frontend_port }}
 
 
-### Install pre-commit hooks
+### Step 2: Setup pre-commit hooks and database
 
 Keep your code clean by using the configured pre-commit hooks. Follow the [instructions here to install pre-commit](https://pre-commit.com/). Once pre-commit is installed, run this command to install the hooks into your git repository:
 
 ```bash
 pre-commit install
 ```
-
 
 ### Local development
 

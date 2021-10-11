@@ -32,7 +32,7 @@ cookiecutter https://github.com/gaganpreet/fastapi-starter
 * Modern admin interface using [React-Admin](https://marmelab.com/react-admin/)
 * Github Action for building docker images and testing and dependabot config to keep project dependencies up to date
 * Create Typescript bindings for front-end automatically from OpenAPI spec using [OpenAPI-Generator](https://github.com/OpenAPITools/openapi-generator/), no need to write/update code when backend changes
-* [FastAPI CRUD Router](https://github.com/awtkns/fastapi-crudrouter) - [WIP] No need to rewrite generic CRUD routes
+* [FastAPI CRUD Router](https://github.com/awtkns/fastapi-crudrouter) - No need to create generic CRUD routes
 * SQLAlchemy 1.4 ORM (in future mode, with 2.0 style API) and Alembic for database migrations
 * pytest with example tests included
 

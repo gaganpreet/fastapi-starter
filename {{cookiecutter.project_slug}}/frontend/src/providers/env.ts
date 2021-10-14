@@ -1,7 +1,7 @@
 import { AuthApi, Configuration, UsersApi } from "../generated";
 
 // prettier-ignore
-export const basePath = process.env.API_BASE || "http://localhost:{{ cookiecutter.backend_port }}";
+export const basePath = process.env.REACT_APP_API_BASE || "http://localhost:{{ cookiecutter.backend_port }}";
 
 const readAccessToken = () => {
   return localStorage.getItem("token") || undefined;

@@ -70,9 +70,7 @@ def use_route_names_as_operation_ids(app: FastAPI) -> None:
     for route in app.routes:
         if isinstance(route, APIRoute):
             if route.name in route_names:
-                continue
-                # TODO: Continue raising exception once https://github.com/awtkns/fastapi-crudrouter/pull/106 is merged
-                # raise Exception("Route function names should be unique")
+                raise Exception("Route function names should be unique")
             route.operation_id = route.name
             route_names.add(route.name)
 

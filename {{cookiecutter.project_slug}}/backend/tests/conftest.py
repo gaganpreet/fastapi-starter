@@ -1,24 +1,33 @@
-from typing import Generator
+import uuid
+from typing import Callable, Generator
 
 import pytest
+from fastapi_users.password import get_password_hash
 from sqlalchemy.engine import create_engine
-from sqlalchemy.orm.session import sessionmaker
+from sqlalchemy.orm.session import Session, sessionmaker
 from starlette.testclient import TestClient
 
 from app.core.config import settings
 from app.db import Base
 from app.deps.db import get_db
 from app.factory import create_app
+from app.models.item import Item
+from app.models.user import User
+from tests.utils import generate_random_string
 
 engine = create_engine(
-    settings.TEST_DATABASE_URL,
-    echo=True,
+    settings.DATABASE_URL,
 )
 TestingSessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
     bind=engine,
 )
+
+
+@pytest.fixture(scope="session")
+def default_password():
+    return generate_random_string(32)
 
 
 @pytest.fixture(scope="session")
@@ -32,7 +41,7 @@ def client(app) -> Generator:
         yield c
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def db() -> Generator:
     session = TestingSessionLocal()
 
@@ -57,5 +66,36 @@ def override_get_db(app):
 
 
 @pytest.fixture(scope="function", autouse=True)
-def auto_rollback(db):
+def auto_rollback(db: Session):
     db.rollback()
+
+
+@pytest.fixture(scope="session")
+def create_user(db: Session, default_password: str):
+    def inner():
+        user = User(
+            id=uuid.uuid4(),
+            email=f"{generate_random_string(20)}@{generate_random_string(10)}.com",
+            hashed_password=get_password_hash(default_password),
+        )
+        db.add(user)
+        db.commit()
+        return user
+
+    return inner
+
+
+@pytest.fixture(scope="session")
+def create_item(db: Session, create_user: Callable):
+    def inner(user=None):
+        if not user:
+            user = create_user()
+        item = Item(
+            user=user,
+            value="value",
+        )
+        db.add(item)
+        db.commit()
+        return item
+
+    return inner

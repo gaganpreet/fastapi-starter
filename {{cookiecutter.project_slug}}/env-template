@@ -3,3 +3,4 @@ POSTGRES_DB=app
 DATABASE_URL=postgresql://postgres:CHANGE_ME@postgres/app
 TEST_DATABASE_URL=postgresql://postgres:CHANGE_ME@postgres/apptest
 SECRET_KEY=CHANGE_ME
+BACKEND_CORS_ORIGINS='["http://localhost:{{ cookiecutter.frontend_port }}","http://127.0.0.1:{{ cookiecutter.frontend_port }}"]'

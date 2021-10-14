@@ -1,6 +1,7 @@
-from typing import List, Optional
+import sys
+from typing import Any, Dict, List, Optional
 
-from pydantic import BaseSettings, HttpUrl, PostgresDsn, root_validator
+from pydantic import BaseSettings, HttpUrl, PostgresDsn, validator
 from pydantic.networks import AnyHttpUrl
 
 
@@ -18,17 +19,21 @@ class Settings(BaseSettings):
 
     # The following variables need to be defined in environment
 
-    DATABASE_URL: PostgresDsn
     TEST_DATABASE_URL: Optional[PostgresDsn]
+    DATABASE_URL: PostgresDsn
+
+    @validator("DATABASE_URL", pre=True)
+    def build_test_database_url(cls, v: Optional[str], values: Dict[str, Any]):
+        if "pytest" in sys.modules:
+            if not values.get("TEST_DATABASE_URL"):
+                raise Exception(
+                    "pytest detected, but TEST_DATABASE_URL is not set in environment"
+                )
+            return values["TEST_DATABASE_URL"]
+        return v
 
     SECRET_KEY: str
     #  END: required environment variables
-
-    @root_validator
-    def validate_database_url(cls, values):
-        # Either one of the database urls need to be set
-        assert values.get("DATABASE_URL") or values.get("TEST_DATABASE_URL")
-        return values
 
 
 settings = Settings()

@@ -3,5 +3,5 @@
   "project_slug": "sample-project",
   "backend_port": 8000,
   "frontend_port": 3000,
-  "_copy_without_render": ["node_modules", "build"]
+  "_copy_without_render": ["*node_modules", "*src/App.tsx"]
 }

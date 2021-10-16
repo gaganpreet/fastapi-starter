@@ -11,7 +11,7 @@ from app.deps.users import current_user
 from app.models.item import Item
 from app.models.user import User
 from app.schemas.item import Item as ItemSchema
-from app.schemas.item import ItemCreate
+from app.schemas.item import ItemCreate, ItemUpdate
 from app.schemas.request_params import RequestParams
 
 router = APIRouter(prefix="/items")
@@ -42,7 +42,7 @@ def get_items(
     return items
 
 
-@router.post("/", response_model=ItemSchema)
+@router.post("/", response_model=ItemSchema, status_code=201)
 def create_item(
     item_in: ItemCreate,
     db: Session = Depends(get_db),
@@ -55,14 +55,32 @@ def create_item(
     return item
 
 
-@router.get("/{item_id}/", response_model=ItemSchema)
-def get_item(
+@router.put("/{item_id}/", response_model=ItemSchema)
+def update_item(
     item_id: int,
+    item_in: ItemUpdate,
     db: Session = Depends(get_db),
     user: User = Depends(current_user),
 ) -> Any:
     item: Optional[Item] = db.get(Item, item_id)
     if not item or item.user_id != user.id:
+        raise HTTPException(404)
+    update_data = item_in.dict(exclude_unset=True)
+    for field, value in update_data.items():
+        setattr(item, field, value)
+    db.add(item)
+    db.commit()
+    return item
+
+
+@router.get("/{item_id}/", response_model=ItemSchema)
+def get_item(
+    item_id: int,
+    db: Session = Depends(get_db),
+    # user: User = Depends(current_user),
+) -> Any:
+    item: Optional[Item] = db.get(Item, item_id)
+    if not item:  # or item.user_id != user.id:
         raise HTTPException(404)
     return item
 

@@ -47,14 +47,16 @@ const App = () => {
       {(permissions) => [
         permissions.is_superuser === true ? (
           <Resource
-            name="users"
+            options={{ label: "Users" }}
+            name="users/"
             list={UserList}
             edit={UserEdit}
             icon={UserIcon}
           />
         ) : null,
         <Resource
-          name="items"
+          name="items/"
+          options={{ label: "Items" }}
           list={ItemList}
           edit={ItemEdit}
           create={ItemCreate}

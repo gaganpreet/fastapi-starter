@@ -24,6 +24,5 @@ def get_users(
 ) -> Any:
     total = db.scalar(select(func.count(User.id)))
     users = db.execute(select(User).offset(skip).limit(limit)).scalars().all()
-    response.headers["Content-Range"] = f"users {skip}-{skip + len(users)}/{total}"
-    response.headers["Range"] = f"users {skip}-{skip + len(users)}/{total}"
+    response.headers["Content-Range"] = f"{skip}-{skip + len(users)}/{total}"
     return users

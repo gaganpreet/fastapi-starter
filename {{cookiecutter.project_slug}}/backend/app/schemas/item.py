@@ -5,6 +5,10 @@ class ItemCreate(BaseModel):
     value: str
 
 
+class ItemUpdate(ItemCreate):
+    pass
+
+
 class Item(ItemCreate):
     id: int
 

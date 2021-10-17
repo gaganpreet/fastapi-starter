@@ -77,10 +77,10 @@ def update_item(
 def get_item(
     item_id: int,
     db: Session = Depends(get_db),
-    # user: User = Depends(current_user),
+    user: User = Depends(current_user),
 ) -> Any:
     item: Optional[Item] = db.get(Item, item_id)
-    if not item:  # or item.user_id != user.id:
+    if not item or item.user_id != user.id:
         raise HTTPException(404)
     return item
 

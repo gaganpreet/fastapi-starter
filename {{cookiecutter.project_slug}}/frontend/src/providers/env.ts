@@ -3,13 +3,13 @@ import { AuthApi, Configuration, UsersApi } from "../generated";
 // prettier-ignore
 export const basePath = process.env.REACT_APP_API_BASE || "http://localhost:{{ cookiecutter.backend_port }}";
 
-const readAccessToken = () => {
-  return localStorage.getItem("token") || undefined;
+const readAccessToken = async (): Promise<string> => {
+  return localStorage.getItem("token") || "";
 };
 
 const apiConfig: Configuration = new Configuration({
   basePath,
-  accessToken: readAccessToken(),
+  accessToken: readAccessToken,
 });
 
 export const authApi: AuthApi = new AuthApi(apiConfig);

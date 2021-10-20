@@ -21,16 +21,16 @@ const Register = () => {
         userCreate: formData,
       });
       if (response.data.id) {
-        notify("Successfully registered, you can now log in");
+        notify("Successfully registered, you can now log in", "success");
         history.push("/login");
       }
     } catch (e) {
       const exp = e as AxiosError;
       const errorMsg = exp.response?.data.detail[0].msg;
       if (errorMsg) {
-        notify(errorMsg);
+        notify(errorMsg, "error");
       } else {
-        notify("Network error");
+        notify("Network error", "error");
       }
     }
   };

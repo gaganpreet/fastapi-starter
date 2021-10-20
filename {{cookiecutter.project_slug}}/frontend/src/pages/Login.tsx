@@ -17,9 +17,9 @@ const Login = () => {
     login({ email, password }).catch((e) => {
       const msg = e.response?.data?.detail;
       if (msg) {
-        notify(msg);
+        notify(msg, "error");
       } else {
-        notify("Network error");
+        notify("Network error", "error");
       }
     });
   };

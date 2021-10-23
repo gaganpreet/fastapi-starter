@@ -15,6 +15,8 @@ import {
   useSaveContext,
   usePermissions,
   useRedirect,
+  Toolbar,
+  SaveButton,
 } from "react-admin";
 import { userApi } from "../providers/env";
 
@@ -43,6 +45,12 @@ export const ProfileProvider = ({ children }: { children: any }) => {
 };
 
 export const useProfile = () => useContext(ProfileContext);
+
+const CustomToolbar = (props: any) => (
+  <Toolbar {...props}>
+    <SaveButton />
+  </Toolbar>
+);
 
 export const ProfileEdit = ({ ...props }) => {
   const notify = useNotify();
@@ -83,10 +91,13 @@ export const ProfileEdit = ({ ...props }) => {
     return null;
   }
 
-  // TODO: The save button is not disabled after save
   return (
     <SaveContextProvider value={saveContext} key={profileVersion}>
-      <SimpleForm save={handleSave} record={identity ? identity : {}}>
+      <SimpleForm
+        save={handleSave}
+        record={identity ? identity : {}}
+        toolbar={<CustomToolbar />}
+      >
         <TextInput source="id" disabled />
         <TextInput source="email" validate={required()} />
       </SimpleForm>

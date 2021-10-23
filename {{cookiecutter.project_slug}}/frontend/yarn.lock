@@ -1803,7 +1803,7 @@
     lodash "^4.17.15"
     redent "^3.0.0"
 
-"@testing-library/react@^11.1.0":
+"@testing-library/react@^11.1.0", "@testing-library/react@^11.2.3":
   version "11.2.7"
   resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-11.2.7.tgz#b29e2e95c6765c815786c0bc1d5aed9cb2bf7818"
   integrity sha512-tzRNp7pzd5QmbtXNG/mhdcl7Awfu/Iz1RaVHY75zTdOkmHCuzMhRL83gWHSgOAcjS3CCbyfwUHMZgRJb4kAfpA==
@@ -9835,6 +9835,15 @@ ra-language-english@^3.18.3:
   integrity sha512-w3020CLLmiammZOSKI4CsIWyD9ZFs/oNFWKSnPzvN6EqQI2dtSxxiycKjaxnwjKN7jmzNWe/5uzna0FIND4wgA==
   dependencies:
     ra-core "^3.18.3"
+
+ra-test@^3.19.0:
+  version "3.19.0"
+  resolved "https://registry.yarnpkg.com/ra-test/-/ra-test-3.19.0.tgz#dcf8056752ef617e86a65d2bc4172a0d2d7f7b8e"
+  integrity sha512-yJoanZZwU5rcsDUGL/PQhdm6wtAZI4WXQhg8tCX+ZCp77chwkMh8y00aWiAUbOy1YV8ry1HHK8UoW2rDoDZ8yg==
+  dependencies:
+    "@testing-library/react" "^11.2.3"
+    classnames "~2.2.5"
+    lodash "~4.17.5"
 
 ra-ui-materialui@^3.18.3:
   version "3.18.3"

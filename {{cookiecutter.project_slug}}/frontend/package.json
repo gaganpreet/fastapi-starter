@@ -25,14 +25,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "eject": "react-scripts eject",
     "format": "prettier src --write",
+    "run-e2e-tests": "cypress run",
+    "open-e2e-test": "cypress open",
     "genapi": "openapi-generator generate -i <(curl -s 'http://localhost:{{ cookiecutter.backend_port }}/api/v1/openapi.json') -g typescript-axios -o src/generated -p withSeparateModelsAndApi=true,apiPackage=api,modelPackage=models,useSingleRequestParameter=true"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:cypress/recommended"
     ]
   },
   "browserslist": {
@@ -50,6 +54,9 @@
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.4.11",
     "@types/react-router": "^5.1.16",
+    "cypress": "^8.6.0",
+    "cypress-localstorage-commands": "^1.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "prettier": "^2.4.1",
     "ra-test": "^3.19.0"
   }

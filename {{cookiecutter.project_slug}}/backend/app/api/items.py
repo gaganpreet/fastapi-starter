@@ -17,7 +17,7 @@ from app.schemas.request_params import RequestParams
 router = APIRouter(prefix="/items")
 
 
-@router.get("/", response_model=List[ItemSchema])
+@router.get("", response_model=List[ItemSchema])
 def get_items(
     response: Response,
     db: Session = Depends(get_db),
@@ -42,7 +42,7 @@ def get_items(
     return items
 
 
-@router.post("/", response_model=ItemSchema, status_code=201)
+@router.post("", response_model=ItemSchema, status_code=201)
 def create_item(
     item_in: ItemCreate,
     db: Session = Depends(get_db),
@@ -55,7 +55,7 @@ def create_item(
     return item
 
 
-@router.put("/{item_id}/", response_model=ItemSchema)
+@router.put("/{item_id}", response_model=ItemSchema)
 def update_item(
     item_id: int,
     item_in: ItemUpdate,
@@ -73,7 +73,7 @@ def update_item(
     return item
 
 
-@router.get("/{item_id}/", response_model=ItemSchema)
+@router.get("/{item_id}", response_model=ItemSchema)
 def get_item(
     item_id: int,
     db: Session = Depends(get_db),
@@ -85,7 +85,7 @@ def get_item(
     return item
 
 
-@router.delete("/{item_id}/")
+@router.delete("/{item_id}")
 def delete_item(
     item_id: int,
     db: Session = Depends(get_db),

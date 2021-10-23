@@ -14,7 +14,7 @@ from app.schemas.user import User as UserSchema
 router = APIRouter()
 
 
-@router.get("/users/", response_model=List[UserSchema])
+@router.get("/users", response_model=List[UserSchema])
 def get_users(
     response: Response,
     db: Session = Depends(get_db),

@@ -8,7 +8,7 @@ describe("Test register, login and item", () => {
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
     cy.restoreLocalStorage();
-    cy.visit("http://localhost:3000/");
+    cy.visit("http://localhost:{{ cookiecutter.frontend_port }}/");
   });
 
   it("Displays login page", () => {

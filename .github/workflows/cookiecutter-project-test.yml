@@ -22,6 +22,12 @@ jobs:
       run: |
         sh -x scripts/test.sh
 
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+        cache-dependency-path: "{{cookiecutter.project_slug}}/frontend/yarn.lock"
+        cache: 'yarn'
+
     - name: Cypress run
       uses: cypress-io/github-action@v2
       with:

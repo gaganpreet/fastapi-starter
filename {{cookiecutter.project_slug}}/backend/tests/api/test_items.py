@@ -9,7 +9,7 @@ from tests.utils import get_jwt_header
 
 class TestGetItems:
     def test_get_items_not_logged_in(self, client: TestClient):
-        resp = client.get(settings.API_PATH + "/items/")
+        resp = client.get(settings.API_PATH + "/items")
         assert resp.status_code == 401
 
     def test_get_items(self, db: Session, client: TestClient, create_user, create_item):
@@ -29,7 +29,7 @@ class TestGetSingleItem:
         user: User = create_user()
         item: Item = create_item(user=user)
         jwt_header = get_jwt_header(user)
-        resp = client.get(settings.API_PATH + f"/items/{item.id}/", headers=jwt_header)
+        resp = client.get(settings.API_PATH + f"/items/{item.id}", headers=jwt_header)
         assert resp.status_code == 200, resp.text
         data = resp.json()
         assert data["id"] == item.id
@@ -42,7 +42,7 @@ class TestCreateItem:
         jwt_header = get_jwt_header(user)
 
         resp = client.post(
-            settings.API_PATH + "/items/", headers=jwt_header, json={"value": "value"}
+            settings.API_PATH + "/items", headers=jwt_header, json={"value": "value"}
         )
         assert resp.status_code == 201, resp.text
         assert resp.json()["id"]
@@ -57,7 +57,7 @@ class TestDeleteItem:
         jwt_header = get_jwt_header(user)
 
         resp = client.delete(
-            settings.API_PATH + f"/items/{item.id}/", headers=jwt_header
+            settings.API_PATH + f"/items/{item.id}", headers=jwt_header
         )
         assert resp.status_code == 200
 
@@ -67,7 +67,7 @@ class TestDeleteItem:
         user: User = create_user()
         jwt_header = get_jwt_header(user)
 
-        resp = client.delete(settings.API_PATH + f"/items/{10**6}/", headers=jwt_header)
+        resp = client.delete(settings.API_PATH + f"/items/{10**6}", headers=jwt_header)
         assert resp.status_code == 404, resp.text
 
 
@@ -80,7 +80,7 @@ class TestUpdateItem:
         jwt_header = get_jwt_header(user)
 
         resp = client.put(
-            settings.API_PATH + f"/items/{item.id}/",
+            settings.API_PATH + f"/items/{item.id}",
             headers=jwt_header,
             json={"value": "new value"},
         )

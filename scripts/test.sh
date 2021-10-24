@@ -20,4 +20,4 @@ docker-compose exec -T backend pytest -v
 
 docker build --target build -t frontend-build:latest frontend
 
-docker run --network host -it frontend-build bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && yarn run-e2e-tests"
+docker run --network host frontend-build bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && yarn run-e2e-tests"

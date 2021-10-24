@@ -22,6 +22,7 @@ jobs:
       run: |
         sh -x scripts/test.sh
 
+
     - name: Cypress run
       uses: cypress-io/github-action@v2
       with:
@@ -29,6 +30,7 @@ jobs:
         install-command: yarn --frozen-lockfile --silent
         browser: chrome
         headless: true
+        cache-key: node-hash-${{ hashFiles('./test-project/frontend/yarn.lock') }}
 
     - name: Log docker status
       if: ${{ always() }}

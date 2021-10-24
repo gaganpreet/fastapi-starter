@@ -12,6 +12,7 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: '14'
+        cache-dependency-path: "{{cookiecutter.project_slug}}/frontend/yarn.lock"
         cache: 'yarn'
     - run: cd "{{cookiecutter.project_slug}}/frontend" && yarn install
     - uses: pre-commit/action@v2.0.3

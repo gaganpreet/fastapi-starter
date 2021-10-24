@@ -26,6 +26,7 @@ jobs:
       uses: cypress-io/github-action@v2
       with:
         project: "./test-project/frontend"
+        install-command: yarn --frozen-lockfile --silent
         browser: chrome
         headless: true
 

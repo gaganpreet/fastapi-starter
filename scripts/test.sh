@@ -12,11 +12,18 @@ cookiecutter --no-input -f ./ project_slug="test-project" project_name="Test pro
 
 cd ./test-project/
 
+# Start docker containers
 docker-compose -f docker-compose.yml up -d --build
 
+
+# Run backend tests
 docker-compose exec -T postgres createdb -U postgres apptest
 
 docker-compose exec -T backend pytest -v
+
+
+# Run cypress tests
+docker-compose exec -T backend alembic upgrade head
 
 docker build --target build -t frontend-build:latest frontend
 

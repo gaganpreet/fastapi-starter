@@ -22,11 +22,11 @@ jobs:
       run: |
         sh -x scripts/test.sh
 
-
     - name: Cypress run
       uses: cypress-io/github-action@v2
       with:
         project: "./test-project/frontend"
+        working-directory: "./test-project/frontend/"
         install-command: yarn --frozen-lockfile --silent
         browser: chrome
         headless: true

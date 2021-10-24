@@ -14,7 +14,18 @@
 
 
 
-export * from './api/auth-api';
-export * from './api/items-api';
-export * from './api/users-api';
+/**
+ * 
+ * @export
+ * @interface ItemUpdate
+ */
+export interface ItemUpdate {
+    /**
+     * 
+     * @type {string}
+     * @memberof ItemUpdate
+     */
+    value: string;
+}
+
 

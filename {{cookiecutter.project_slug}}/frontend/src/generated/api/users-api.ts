@@ -117,7 +117,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         getUsers: async (skip?: number, limit?: number, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/v1/users/`;
+            const localVarPath = `/api/v1/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;

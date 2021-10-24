@@ -1,7 +1,9 @@
 .gitignore
 .npmignore
+.openapi-generator-ignore
 api.ts
 api/auth-api.ts
+api/items-api.ts
 api/users-api.ts
 base.ts
 common.ts
@@ -10,6 +12,9 @@ git_push.sh
 index.ts
 models/httpvalidation-error.ts
 models/index.ts
+models/item-create.ts
+models/item-update.ts
+models/item.ts
 models/user-create.ts
 models/user-update.ts
 models/user.ts

@@ -22,22 +22,6 @@ jobs:
       run: |
         sh -x scripts/test.sh
 
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-        cache-dependency-path: "{{cookiecutter.project_slug}}/frontend/yarn.lock"
-        cache: 'yarn'
-
-    - name: Cypress run
-      uses: cypress-io/github-action@v2
-      with:
-        project: "./test-project/frontend"
-        working-directory: "./test-project/frontend/"
-        install-command: yarn --frozen-lockfile --silent
-        browser: chrome
-        headless: true
-        cache-key: node-hash-${{ hashFiles('./test-project/frontend/yarn.lock') }}
-
     - name: Log docker status
       if: ${{ always() }}
       run: |

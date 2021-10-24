@@ -35,6 +35,7 @@ describe("Test register, login and item", () => {
 
   it("Creates an item", () => {
     cy.contains("Items").click();
+    cy.contains("No Items yet", { timeout: 1000 });
     cy.contains("Create").click();
     cy.get("input").type("value");
     cy.contains("Save").click();

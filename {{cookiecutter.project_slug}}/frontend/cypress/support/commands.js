@@ -24,3 +24,10 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import "cypress-localstorage-commands";
+
+afterEach(function () {
+  // Stops cypress tests after first failure
+  if (this.currentTest.state === "failed") {
+    Cypress.runner.stop();
+  }
+});

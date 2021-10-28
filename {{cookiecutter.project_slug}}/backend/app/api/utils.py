@@ -8,7 +8,7 @@ router = APIRouter()
 
 
 @router.get(
-    "/hello-world/",
+    "/hello-world",
     response_model=Msg,
     status_code=200,
     include_in_schema=False,

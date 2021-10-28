@@ -43,4 +43,27 @@ jobs:
         mv env-template .env
         docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d
         docker-compose exec -T postgres createdb -U postgres apptest
+        docker-compose exec -T backend alembic upgrade head
         docker-compose exec -T backend pytest -v
+
+    - name: Cypress run
+      uses: cypress-io/github-action@v2
+      env:
+        # Add Cypress key to Github project settings if you want to
+        {%- raw %}
+        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        {%- endraw %}
+      with:
+        # Set to true to record
+        record: false
+        working-directory: frontend
+
+
+    - name: Log docker status
+      {%- raw %}
+      if: ${{ always() }}
+      {%- endraw %}
+      run: |
+        docker-compose ps
+        docker-compose logs -t

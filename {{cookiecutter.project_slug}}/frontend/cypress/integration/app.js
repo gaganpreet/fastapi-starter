@@ -29,6 +29,16 @@ describe("Test register, login and item", () => {
     cy.get("input").first().type(username);
     cy.get("input").last().type(defaultPassword);
     cy.get("button").first().click();
+    cy.get("button")
+      .first()
+      .click()
+      .should(
+        () => {
+          // eslint-disable-next-line no-unused-expressions
+          expect(localStorage.getItem("token")).to.be.not.null;
+        },
+        { timeout: 2000 }
+      );
     cy.contains("Welcome to admin");
     cy.saveLocalStorage();
   });

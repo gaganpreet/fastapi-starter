@@ -249,7 +249,7 @@ test = ["pytest (>=6.2.4,<7.0.0)", "pytest-cov (>=2.12.0,<4.0.0)", "pytest-async
 
 [[package]]
 name = "fastapi-users"
-version = "8.1.1"
+version = "9.1.0"
 description = "Ready-to-use and customizable users management for FastAPI."
 category = "main"
 optional = false
@@ -261,13 +261,14 @@ fastapi = ">=0.65.2,<0.71.0"
 fastapi-users-db-sqlalchemy = {version = ">=1.0.0", optional = true, markers = "extra == \"sqlalchemy\""}
 makefun = ">=1.9.2,<1.13"
 passlib = {version = "1.7.4", extras = ["bcrypt"]}
-pyjwt = "2.2.0"
+pyjwt = "2.3.0"
 python-multipart = "0.0.5"
 
 [package.extras]
 mongodb = ["fastapi-users-db-mongodb (>=1.0.0)"]
-oauth = ["httpx-oauth (>=0.3,<0.4)"]
+oauth = ["httpx-oauth (>=0.4,<0.5)"]
 ormar = ["fastapi-users-db-ormar (>=1.0.0)"]
+redis = ["aioredis (>=2.0.1,<2.1.0)", "hiredis (>=2.0.0,<2.1.0)"]
 sqlalchemy = ["fastapi-users-db-sqlalchemy (>=1.0.0)"]
 tortoise-orm = ["fastapi-users-db-tortoise (>=1.0.0)"]
 
@@ -610,7 +611,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "pyjwt"
-version = "2.2.0"
+version = "2.3.0"
 description = "JSON Web Token implementation in Python"
 category = "main"
 optional = false
@@ -837,7 +838,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "f4a70724300dd9335eaeeb81c63d1df22f4c765ba834133a4a2100dda1c68273"
+content-hash = "a9e6a00dfb08568dc0e9b6d19885a990e07f1ba51efcbb8345997e7422b7655e"
 
 [metadata.files]
 alembic = [
@@ -880,10 +881,13 @@ backcall = [
     {file = "backcall-0.2.0.tar.gz", hash = "sha256:5cbdbf27be5e7cfadb448baf0aa95508f91f2bbc6c6437cd9cd06e2a4c215e1e"},
 ]
 bcrypt = [
+    {file = "bcrypt-3.2.0-cp36-abi3-macosx_10_10_universal2.whl", hash = "sha256:b589229207630484aefe5899122fb938a5b017b0f4349f769b8c13e78d99a8fd"},
     {file = "bcrypt-3.2.0-cp36-abi3-macosx_10_9_x86_64.whl", hash = "sha256:c95d4cbebffafcdd28bd28bb4e25b31c50f6da605c81ffd9ad8a3d1b2ab7b1b6"},
     {file = "bcrypt-3.2.0-cp36-abi3-manylinux1_x86_64.whl", hash = "sha256:63d4e3ff96188e5898779b6057878fecf3f11cfe6ec3b313ea09955d587ec7a7"},
     {file = "bcrypt-3.2.0-cp36-abi3-manylinux2010_x86_64.whl", hash = "sha256:cd1ea2ff3038509ea95f687256c46b79f5fc382ad0aa3664d200047546d511d1"},
     {file = "bcrypt-3.2.0-cp36-abi3-manylinux2014_aarch64.whl", hash = "sha256:cdcdcb3972027f83fe24a48b1e90ea4b584d35f1cc279d76de6fc4b13376239d"},
+    {file = "bcrypt-3.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl", hash = "sha256:a0584a92329210fcd75eb8a3250c5a941633f8bfaf2a18f81009b097732839b7"},
+    {file = "bcrypt-3.2.0-cp36-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:56e5da069a76470679f312a7d3d23deb3ac4519991a0361abc11da837087b61d"},
     {file = "bcrypt-3.2.0-cp36-abi3-win32.whl", hash = "sha256:a67fb841b35c28a59cebed05fbd3e80eea26e6d75851f0574a9273c80f3e9b55"},
     {file = "bcrypt-3.2.0-cp36-abi3-win_amd64.whl", hash = "sha256:81fec756feff5b6818ea7ab031205e1d323d8943d237303baca2c5f9c7846f34"},
     {file = "bcrypt-3.2.0.tar.gz", hash = "sha256:5b93c1726e50a93a033c36e5ca7fdcd29a5c7395af50a6892f5d9e7c6cfbfb29"},
@@ -976,8 +980,8 @@ fastapi = [
     {file = "fastapi-0.68.2.tar.gz", hash = "sha256:38526fc46bda73f7ec92033952677323c16061e70a91d15c95f18b11895da494"},
 ]
 fastapi-users = [
-    {file = "fastapi-users-8.1.1.tar.gz", hash = "sha256:0d087957dacda804241a79492e3d33c0497efc2582748dbfd263dbc97968d1ee"},
-    {file = "fastapi_users-8.1.1-py3-none-any.whl", hash = "sha256:520b7ac419ca930d2d0436e3ce9a2f3816bfd4600e71c362d7edbf14e319a8b2"},
+    {file = "fastapi-users-9.1.0.tar.gz", hash = "sha256:d3426dd1cecc5c2013af919dc590b298b6304ac08b5411fab781fd2f41dbd07c"},
+    {file = "fastapi_users-9.1.0-py3-none-any.whl", hash = "sha256:d743d2dfd5219e90fb494cf7352bfb3fb7179750f09619c8dbc94ab766207594"},
 ]
 fastapi-users-db-sqlalchemy = [
     {file = "fastapi-users-db-sqlalchemy-1.0.0.tar.gz", hash = "sha256:e6105181af1855e21ba31dfb8ae31b90e506cd2ac29f5f37998de66cefed2440"},
@@ -1193,6 +1197,8 @@ psycopg2-binary = [
     {file = "psycopg2_binary-2.9.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:661509f51531ec125e52357a489ea3806640d0ca37d9dada461ffc69ee1e7b6e"},
     {file = "psycopg2_binary-2.9.1-cp310-cp310-manylinux_2_24_aarch64.whl", hash = "sha256:d92272c7c16e105788efe2cfa5d680f07e34e0c29b03c1908f8636f55d5f915a"},
     {file = "psycopg2_binary-2.9.1-cp310-cp310-manylinux_2_24_ppc64le.whl", hash = "sha256:736b8797b58febabb85494142c627bd182b50d2a7ec65322983e71065ad3034c"},
+    {file = "psycopg2_binary-2.9.1-cp310-cp310-win32.whl", hash = "sha256:ebccf1123e7ef66efc615a68295bf6fdba875a75d5bba10a05073202598085fc"},
+    {file = "psycopg2_binary-2.9.1-cp310-cp310-win_amd64.whl", hash = "sha256:1f6ca4a9068f5c5c57e744b4baa79f40e83e3746875cac3c45467b16326bab45"},
     {file = "psycopg2_binary-2.9.1-cp36-cp36m-macosx_10_14_x86_64.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:c250a7ec489b652c892e4f0a5d122cc14c3780f9f643e1a326754aedf82d9a76"},
     {file = "psycopg2_binary-2.9.1-cp36-cp36m-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:aef9aee84ec78af51107181d02fe8773b100b01c5dfde351184ad9223eab3698"},
     {file = "psycopg2_binary-2.9.1-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:123c3fb684e9abfc47218d3784c7b4c47c8587951ea4dd5bc38b6636ac57f616"},
@@ -1263,8 +1269,8 @@ pygments = [
     {file = "Pygments-2.10.0.tar.gz", hash = "sha256:f398865f7eb6874156579fdf36bc840a03cab64d1cde9e93d68f46a425ec52c6"},
 ]
 pyjwt = [
-    {file = "PyJWT-2.2.0-py3-none-any.whl", hash = "sha256:b0ed5824c8ecc5362e540c65dc6247567db130c4226670bf7699aec92fb4dae1"},
-    {file = "PyJWT-2.2.0.tar.gz", hash = "sha256:a0b9a3b4e5ca5517cac9f1a6e9cd30bf1aa80be74fcdf4e28eded582ecfcfbae"},
+    {file = "PyJWT-2.3.0-py3-none-any.whl", hash = "sha256:e0c4bb8d9f0af0c7f5b1ec4c5036309617d03d56932877f2f7a0beeb5318322f"},
+    {file = "PyJWT-2.3.0.tar.gz", hash = "sha256:b888b4d56f06f6dcd777210c334e69c737be74755d3e5e9ee3fe67dc18a0ee41"},
 ]
 pyparsing = [
     {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},

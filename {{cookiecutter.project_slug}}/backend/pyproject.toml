@@ -14,7 +14,7 @@ alembic = "^1.7.4"
 psycopg2-binary = "^2.9.3"
 fastapi-users = {extras = ["sqlalchemy"], version = "^8.1.0"}
 asyncpg = "^0.24.0"
-SQLAlchemy = "^1.4.25"
+SQLAlchemy = "^1.4.29"
 
 [tool.poetry.dev-dependencies]
 black = "^21.9b0"

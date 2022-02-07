@@ -1,6 +1,10 @@
 from fastapi import Depends
 from fastapi_users import FastAPIUsers
-from fastapi_users.authentication import JWTAuthentication
+from fastapi_users.authentication import (
+    AuthenticationBackend,
+    BearerTransport,
+    JWTStrategy,
+)
 from fastapi_users.manager import BaseUserManager
 from fastapi_users_db_sqlalchemy import SQLAlchemyUserDatabase
 
@@ -9,8 +13,17 @@ from app.db import database
 from app.models.user import User as UserModel
 from app.schemas.user import User, UserCreate, UserDB, UserUpdate
 
-jwt_authentication: JWTAuthentication = JWTAuthentication(
-    secret=settings.SECRET_KEY,
+bearer_transport = BearerTransport(tokenUrl="auth/jwt/login")
+
+
+def get_jwt_strategy() -> JWTStrategy:
+    return JWTStrategy(secret=settings.SECRET_KEY, lifetime_seconds=3600)
+
+
+jwt_authentication = AuthenticationBackend(
+    name="jwt",
+    transport=bearer_transport,
+    get_strategy=get_jwt_strategy,
     lifetime_seconds=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
 )
 

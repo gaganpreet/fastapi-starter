@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v3
       with:
         node-version: '14'
         cache-dependency-path: "{{cookiecutter.project_slug}}/frontend/yarn.lock"

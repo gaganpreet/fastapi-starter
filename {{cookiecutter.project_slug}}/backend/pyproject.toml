@@ -17,7 +17,7 @@ asyncpg = "^0.24.0"
 SQLAlchemy = "^1.4.25"
 
 [tool.poetry.dev-dependencies]
-black = "^22.1"
+black = "^22.3.0"
 pytest = "^6.2.4"
 ipython = "^7.29.0"
 

@@ -24,3 +24,13 @@ updates:
     directory: "{{cookiecutter.project_slug}}/backend/"
     schedule:
       interval: "daily"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "github-actions"
+    directory: "/{{cookiecutter.project_slug}}/"
+    schedule:
+      interval: "daily"

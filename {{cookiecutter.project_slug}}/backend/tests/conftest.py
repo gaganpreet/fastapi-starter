@@ -2,7 +2,7 @@ import uuid
 from typing import Callable, Generator
 
 import pytest
-from fastapi_users.password import get_password_hash
+from fastapi_users.password import PasswordHelper
 from sqlalchemy.engine import create_engine
 from sqlalchemy.orm.session import Session, sessionmaker
 from starlette.testclient import TestClient
@@ -72,11 +72,13 @@ def auto_rollback(db: Session):
 
 @pytest.fixture(scope="session")
 def create_user(db: Session, default_password: str):
+    password_helper = PasswordHelper()
+
     def inner():
         user = User(
             id=uuid.uuid4(),
             email=f"{generate_random_string(20)}@{generate_random_string(10)}.com",
-            hashed_password=get_password_hash(default_password),
+            hashed_password=password_helper.hash(default_password),
         )
         db.add(user)
         db.commit()

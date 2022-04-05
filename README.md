@@ -4,11 +4,24 @@ A FastAPI based starter that relies heavily on existing plugins/frameworks to cr
 
 ## How to use
 
-You need Python 3 and pip installed locally. Run the cookiecutter command and you'll be asked a few prompts.
+You need Python 3 and pip installed locally. Run the [cookiecutter](https://cookiecutter.readthedocs.io) command and you'll be asked a few prompts.
 
 ```bash
 pip3 install cookiecutter
 cookiecutter https://github.com/gaganpreet/fastapi-starter
+```
+
+If you want to keep up to date with upstream changes (i.e. changes in this template), then it's better to use [Cruft](https://cruft.github.io/cruft/), which is fully compatible with Cookiecutter.
+
+```bash
+pip3 install cruft
+cruft create https://github.com/gaganpreet/fastapi-starter
+```
+
+Using cruft will generate a metadata file named `.cruft.json` (don't delete it). Later on you can update to the current version of this cookiecutter and import the changes to your generated project by running this command:
+
+```bash
+cruft update
 ```
 
 ## Objectives

@@ -192,23 +192,6 @@ ssh = ["bcrypt (>=3.1.5)"]
 test = ["pytest (>=6.2.0)", "pytest-cov", "pytest-subtests", "pytest-xdist", "pretend", "iso8601", "pytz", "hypothesis (>=1.11.4,!=3.79.2)"]
 
 [[package]]
-name = "databases"
-version = "0.5.2"
-description = "Async database support for Python."
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[package.dependencies]
-sqlalchemy = ">=1.4,<1.5"
-
-[package.extras]
-mysql = ["aiomysql"]
-postgresql = ["asyncpg"]
-postgresql_aiopg = ["aiopg"]
-sqlite = ["aiosqlite"]
-
-[[package]]
 name = "decorator"
 version = "5.0.9"
 description = "Decorators for Humans"
@@ -272,7 +255,6 @@ python-versions = ">=3.7"
 [package.dependencies]
 email-validator = ">=1.1.0,<1.2"
 fastapi = ">=0.65.2,<0.76.0"
-fastapi-users-db-sqlalchemy = {version = ">=1.1.0,<2.0.0", optional = true, markers = "extra == \"sqlalchemy\""}
 makefun = ">=1.11.2,<1.14"
 passlib = {version = "1.7.4", extras = ["bcrypt"]}
 pyjwt = {version = "2.3.0", extras = ["crypto"]}
@@ -288,19 +270,6 @@ redis = ["aioredis (>=2.0.1,<2.1.0)", "hiredis (>=2.0.0,<2.1.0)"]
 sqlalchemy = ["fastapi-users-db-sqlalchemy (>=1.1.0,<2.0.0)"]
 sqlalchemy2 = ["fastapi-users-db-sqlalchemy (>=2.0.0)"]
 tortoise-orm = ["fastapi-users-db-tortoise (>=1.1.0)"]
-
-[[package]]
-name = "fastapi-users-db-sqlalchemy"
-version = "1.1.0"
-description = "FastAPI Users database adapter for SQLAlchemy + encode/databases."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-databases = ">=0.5"
-fastapi-users = ">=9.1.0"
-sqlalchemy = ">=1.4"
 
 [[package]]
 name = "greenlet"
@@ -850,7 +819,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "1475ea67aec2cebca18f47c924a250d112bd3fe5a164d3c707be25eb62c12e4d"
+content-hash = "bdf3629db8276e198dc5c12da38c0e8c0fcbd78b6d819eb71cc722460a19f92c"
 
 [metadata.files]
 alembic = [
@@ -1011,10 +980,6 @@ cryptography = [
     {file = "cryptography-36.0.2-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:e167b6b710c7f7bc54e67ef593f8731e1f45aa35f8a8a7b72d6e42ec76afd4b3"},
     {file = "cryptography-36.0.2.tar.gz", hash = "sha256:70f8f4f7bb2ac9f340655cbac89d68c527af5bb4387522a8413e841e3e6628c9"},
 ]
-databases = [
-    {file = "databases-0.5.2-py3-none-any.whl", hash = "sha256:c12473ce4a3eb9623bef0623ebd021012c6c4e27216689b501e701d012e84381"},
-    {file = "databases-0.5.2.tar.gz", hash = "sha256:4e93800c540a4dbef8b8ce73dfeee95551d5d27e872b07326b1e523c185645b4"},
-]
 decorator = [
     {file = "decorator-5.0.9-py3-none-any.whl", hash = "sha256:6e5c199c16f7a9f0e3a61a4a54b3d27e7dad0dbdde92b944426cb20914376323"},
     {file = "decorator-5.0.9.tar.gz", hash = "sha256:72ecfba4320a893c53f9706bebb2d55c270c1e51a28789361aa93e4a21319ed5"},
@@ -1034,10 +999,6 @@ fastapi = [
 fastapi-users = [
     {file = "fastapi-users-9.3.0.tar.gz", hash = "sha256:24d938ece7bd24d2c09680bb4e624dae4b325c4e6f98b502ed613df758415f7f"},
     {file = "fastapi_users-9.3.0-py3-none-any.whl", hash = "sha256:079e9966f0a0b5132255e05967cddfe82adad9252dec7a3db2d2ea55cf37b248"},
-]
-fastapi-users-db-sqlalchemy = [
-    {file = "fastapi-users-db-sqlalchemy-1.1.0.tar.gz", hash = "sha256:6cfc9f396ed51c5c660c9ac1168279bfb2af5fb5b814d0c4065849333c4fbd45"},
-    {file = "fastapi_users_db_sqlalchemy-1.1.0-py3-none-any.whl", hash = "sha256:838b8a85b0634505b5ca0c82485dd3d7c95df6b15ca2cc29afd5c4f4c1c77104"},
 ]
 greenlet = [
     {file = "greenlet-1.1.1-cp27-cp27m-macosx_10_14_x86_64.whl", hash = "sha256:476ba9435afaead4382fbab8f1882f75e3fb2285c35c9285abb3dd30237f9142"},

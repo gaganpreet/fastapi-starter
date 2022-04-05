@@ -255,6 +255,7 @@ python-versions = ">=3.7"
 [package.dependencies]
 email-validator = ">=1.1.0,<1.2"
 fastapi = ">=0.65.2,<0.76.0"
+fastapi-users-db-sqlalchemy = {version = ">=2.0.0", optional = true, markers = "extra == \"sqlalchemy2\""}
 makefun = ">=1.11.2,<1.14"
 passlib = {version = "1.7.4", extras = ["bcrypt"]}
 pyjwt = {version = "2.3.0", extras = ["crypto"]}
@@ -270,6 +271,18 @@ redis = ["aioredis (>=2.0.1,<2.1.0)", "hiredis (>=2.0.0,<2.1.0)"]
 sqlalchemy = ["fastapi-users-db-sqlalchemy (>=1.1.0,<2.0.0)"]
 sqlalchemy2 = ["fastapi-users-db-sqlalchemy (>=2.0.0)"]
 tortoise-orm = ["fastapi-users-db-tortoise (>=1.1.0)"]
+
+[[package]]
+name = "fastapi-users-db-sqlalchemy"
+version = "3.0.0"
+description = "FastAPI Users database adapter for SQLAlchemy."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+fastapi-users = ">=9.1.0"
+sqlalchemy = ">=1.4"
 
 [[package]]
 name = "greenlet"
@@ -819,7 +832,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "bdf3629db8276e198dc5c12da38c0e8c0fcbd78b6d819eb71cc722460a19f92c"
+content-hash = "8a1e6cbf94f9ac8547d98d49eea41512b87f6c743dcf8f25047bf9c437ada328"
 
 [metadata.files]
 alembic = [
@@ -999,6 +1012,10 @@ fastapi = [
 fastapi-users = [
     {file = "fastapi-users-9.3.0.tar.gz", hash = "sha256:24d938ece7bd24d2c09680bb4e624dae4b325c4e6f98b502ed613df758415f7f"},
     {file = "fastapi_users-9.3.0-py3-none-any.whl", hash = "sha256:079e9966f0a0b5132255e05967cddfe82adad9252dec7a3db2d2ea55cf37b248"},
+]
+fastapi-users-db-sqlalchemy = [
+    {file = "fastapi-users-db-sqlalchemy-3.0.0.tar.gz", hash = "sha256:29551c1babdfea3c964dc54aea5148431b066cdaea1dc44054a6e370368aee55"},
+    {file = "fastapi_users_db_sqlalchemy-3.0.0-py3-none-any.whl", hash = "sha256:f0e48d85a7ed9abd165f8acee5815171b26d5418986e7f72288045a6fd71cb33"},
 ]
 greenlet = [
     {file = "greenlet-1.1.1-cp27-cp27m-macosx_10_14_x86_64.whl", hash = "sha256:476ba9435afaead4382fbab8f1882f75e3fb2285c35c9285abb3dd30237f9142"},

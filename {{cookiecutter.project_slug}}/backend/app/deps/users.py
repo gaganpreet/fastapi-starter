@@ -7,9 +7,10 @@ from fastapi_users.authentication import (
 )
 from fastapi_users.manager import BaseUserManager
 from fastapi_users_db_sqlalchemy import SQLAlchemyUserDatabase
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
-from app.db import database
+from app.db import database, get_async_session
 from app.models.user import User as UserModel
 from app.schemas.user import User, UserCreate, UserDB, UserUpdate
 
@@ -36,8 +37,8 @@ class UserManager(BaseUserManager[UserCreate, UserDB]):
     verification_token_secret = settings.SECRET_KEY
 
 
-def get_user_db():
-    yield SQLAlchemyUserDatabase(UserDB, database, UserModel.__table__)
+def get_user_db(session: AsyncSession = Depends(get_async_session)):
+    yield SQLAlchemyUserDatabase(UserDB, session, UserModel)
 
 
 def get_user_manager(user_db=Depends(get_user_db)):

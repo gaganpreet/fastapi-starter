@@ -2,10 +2,10 @@ from typing import Any, List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import func, select
-from sqlalchemy.orm.session import Session
+from sqlalchemy.ext.asyncio.session import AsyncSession
 from starlette.responses import Response
 
-from app.deps.db import get_db
+from app.deps.db import get_async_session
 from app.deps.request_params import parse_react_admin_params
 from app.deps.users import current_user
 from app.models.item import Item
@@ -18,20 +18,24 @@ router = APIRouter(prefix="/items")
 
 
 @router.get("", response_model=List[ItemSchema])
-def get_items(
+async def get_items(
     response: Response,
-    db: Session = Depends(get_db),
+    session: AsyncSession = Depends(get_async_session),
     request_params: RequestParams = Depends(parse_react_admin_params(Item)),
     user: User = Depends(current_user),
 ) -> Any:
-    total = db.scalar(select(func.count(Item.id).filter(Item.user_id == user.id)))
+    total = await session.scalar(
+        select(func.count(Item.id).filter(Item.user_id == user.id))
+    )
     items = (
-        db.execute(
-            select(Item)
-            .offset(request_params.skip)
-            .limit(request_params.limit)
-            .order_by(request_params.order_by)
-            .filter(Item.user_id == user.id)
+        (
+            await session.execute(
+                select(Item)
+                .offset(request_params.skip)
+                .limit(request_params.limit)
+                .order_by(request_params.order_by)
+                .filter(Item.user_id == user.id)
+            )
         )
         .scalars()
         .all()
@@ -43,57 +47,57 @@ def get_items(
 
 
 @router.post("", response_model=ItemSchema, status_code=201)
-def create_item(
+async def create_item(
     item_in: ItemCreate,
-    db: Session = Depends(get_db),
+    session: AsyncSession = Depends(get_async_session),
     user: User = Depends(current_user),
 ) -> Any:
     item = Item(**item_in.dict())
     item.user_id = user.id
-    db.add(item)
-    db.commit()
+    session.add(item)
+    await session.commit()
     return item
 
 
 @router.put("/{item_id}", response_model=ItemSchema)
-def update_item(
+async def update_item(
     item_id: int,
     item_in: ItemUpdate,
-    db: Session = Depends(get_db),
+    session: AsyncSession = Depends(get_async_session),
     user: User = Depends(current_user),
 ) -> Any:
-    item: Optional[Item] = db.get(Item, item_id)
+    item: Optional[Item] = await session.get(Item, item_id)
     if not item or item.user_id != user.id:
         raise HTTPException(404)
     update_data = item_in.dict(exclude_unset=True)
     for field, value in update_data.items():
         setattr(item, field, value)
-    db.add(item)
-    db.commit()
+    session.add(item)
+    await session.commit()
     return item
 
 
 @router.get("/{item_id}", response_model=ItemSchema)
-def get_item(
+async def get_item(
     item_id: int,
-    db: Session = Depends(get_db),
+    session: AsyncSession = Depends(get_async_session),
     user: User = Depends(current_user),
 ) -> Any:
-    item: Optional[Item] = db.get(Item, item_id)
+    item: Optional[Item] = await session.get(Item, item_id)
     if not item or item.user_id != user.id:
         raise HTTPException(404)
     return item
 
 
 @router.delete("/{item_id}")
-def delete_item(
+async def delete_item(
     item_id: int,
-    db: Session = Depends(get_db),
+    session: AsyncSession = Depends(get_async_session),
     user: User = Depends(current_user),
 ) -> Any:
-    item: Optional[Item] = db.get(Item, item_id)
+    item: Optional[Item] = await session.get(Item, item_id)
     if not item or item.user_id != user.id:
         raise HTTPException(404)
-    db.delete(item)
-    db.commit()
+    await session.delete(item)
+    await session.commit()
     return {"success": True}

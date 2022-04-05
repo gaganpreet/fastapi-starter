@@ -10,7 +10,7 @@ from fastapi_users_db_sqlalchemy import SQLAlchemyUserDatabase
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
-from app.db import database, get_async_session
+from app.db import get_async_session
 from app.models.user import User as UserModel
 from app.schemas.user import User, UserCreate, UserDB, UserUpdate
 

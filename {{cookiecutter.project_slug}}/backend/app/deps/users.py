@@ -1,17 +1,33 @@
 from fastapi import Depends
 from fastapi_users import FastAPIUsers
-from fastapi_users.authentication import JWTAuthentication
+from fastapi_users.authentication import (
+    AuthenticationBackend,
+    BearerTransport,
+    JWTStrategy,
+)
 from fastapi_users.manager import BaseUserManager
 from fastapi_users_db_sqlalchemy import SQLAlchemyUserDatabase
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
-from app.db import database
+from app.deps.db import get_async_session
 from app.models.user import User as UserModel
 from app.schemas.user import User, UserCreate, UserDB, UserUpdate
 
-jwt_authentication: JWTAuthentication = JWTAuthentication(
-    secret=settings.SECRET_KEY,
-    lifetime_seconds=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
+bearer_transport = BearerTransport(tokenUrl="auth/jwt/login")
+
+
+def get_jwt_strategy() -> JWTStrategy:
+    return JWTStrategy(
+        secret=settings.SECRET_KEY,
+        lifetime_seconds=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
+    )
+
+
+jwt_authentication = AuthenticationBackend(
+    name="jwt",
+    transport=bearer_transport,
+    get_strategy=get_jwt_strategy,
 )
 
 
@@ -21,8 +37,8 @@ class UserManager(BaseUserManager[UserCreate, UserDB]):
     verification_token_secret = settings.SECRET_KEY
 
 
-def get_user_db():
-    yield SQLAlchemyUserDatabase(UserDB, database, UserModel.__table__)
+def get_user_db(session: AsyncSession = Depends(get_async_session)):
+    yield SQLAlchemyUserDatabase(UserDB, session, UserModel)
 
 
 def get_user_manager(user_db=Depends(get_user_db)):

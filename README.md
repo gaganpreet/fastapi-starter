@@ -4,11 +4,24 @@ A FastAPI based starter that relies heavily on existing plugins/frameworks to cr
 
 ## How to use
 
-You need Python 3 and pip installed locally. Run the cookiecutter command and you'll be asked a few prompts.
+You need Python 3 and pip installed locally. Run the [cookiecutter](https://cookiecutter.readthedocs.io) command and you'll be asked a few prompts.
 
 ```bash
 pip3 install cookiecutter
 cookiecutter https://github.com/gaganpreet/fastapi-starter
+```
+
+If you want to keep up to date with upstream changes (i.e. changes in this template), then it's better to use [Cruft](https://cruft.github.io/cruft/), which is fully compatible with Cookiecutter.
+
+```bash
+pip3 install cruft
+cruft create https://github.com/gaganpreet/fastapi-starter
+```
+
+Using cruft will generate a metadata file named `.cruft.json` (don't delete it). Later on you can update to the current version of this cookiecutter and import the changes to your generated project by running this command:
+
+```bash
+cruft update
 ```
 
 ## Objectives
@@ -32,7 +45,7 @@ cookiecutter https://github.com/gaganpreet/fastapi-starter
 * Modern admin interface using [React-Admin](https://marmelab.com/react-admin/)
 * Github Action for building docker images and testing and dependabot config to keep project dependencies up to date
 * Create Typescript bindings for front-end automatically from OpenAPI spec using [OpenAPI-Generator](https://github.com/OpenAPITools/openapi-generator/), no need to write/update code when backend changes
-* SQLAlchemy 1.4 ORM (in future mode, with 2.0 style API) and Alembic for database migrations
+* SQLAlchemy (async with 2.0 future API) and Alembic for database migrations
 * pytest with example tests included
 
 
@@ -51,6 +64,7 @@ The following features were left out in favour of simplicity:
 - [x] Dependabot config
 - [x] Add pre-commit hooks: Black, isort, flake8, mypy, tslint
 - [x] Setup FastAPI CRUD example
+- [ ] [Deploy with gunicorn as process manager](https://www.uvicorn.org/deployment/#gunicorn) (recommended for production)
 - [ ] Coverage report in tests
 - [ ] Email templates
 - [ ] Deployment instructions: Possibly provide an option to create a single docker image (where FastAPI serves static assets) that can be easily deployed

@@ -9,7 +9,7 @@ python = "^3.7"
 fastapi = "^0.75.1"
 uvicorn = "^0.15.0"
 pydantic = "^1.8.2"
-requests = "^2.26.0"
+requests = "^2.27.1"
 alembic = "^1.7.4"
 psycopg2-binary = "^2.9.3"
 fastapi-users = {extras = ["sqlalchemy2"], version = "^9.3.0"}

@@ -20,7 +20,7 @@ databases = "^0.5.5"
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"
 pytest = "^6.2.4"
-ipython = "^7.29.0"
+ipython = "^7.32.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

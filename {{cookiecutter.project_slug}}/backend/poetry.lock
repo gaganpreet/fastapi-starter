@@ -282,7 +282,7 @@ test = ["pytest (>=6.2.4,<7.0.0)", "pytest-cov (>=2.12.0,<4.0.0)", "mypy (==0.91
 
 [[package]]
 name = "fastapi-users"
-version = "9.3.0"
+version = "9.3.1"
 description = "Ready-to-use and customizable users management for FastAPI"
 category = "main"
 optional = false
@@ -301,7 +301,7 @@ typing-extensions = {version = ">=4.1.1", markers = "python_version < \"3.8\""}
 [package.extras]
 dev = ["flake8", "pytest", "requests", "isort", "pytest-asyncio", "flake8-docstrings", "mkdocs", "mkdocs-material", "mkdocs-mermaid2-plugin", "black", "mypy", "codecov", "pytest-cov", "pytest-mock", "flit", "markdown-include", "pygments", "pymdown-extensions", "bumpversion", "httpx-oauth", "httpx", "asgi-lifespan", "uvicorn"]
 mongodb = ["fastapi-users-db-mongodb (>=1.1.0)"]
-oauth = ["httpx-oauth (>=0.4,<0.5)"]
+oauth = ["httpx-oauth (>=0.4,<0.7)"]
 ormar = ["fastapi-users-db-ormar (>=1.0.0)"]
 redis = ["aioredis (>=2.0.1,<2.1.0)", "hiredis (>=2.0.0,<2.1.0)"]
 sqlalchemy = ["fastapi-users-db-sqlalchemy (>=1.1.0,<2.0.0)"]
@@ -872,7 +872,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "d8c4ae630d4b65607fd3c75ad0c4b63e64e8735abd663f4fd6909689fcb3edc3"
+content-hash = "2be8142ba130f947a43ab1755f2cf97ad4d3086b3f3199b521221d7904f326c7"
 
 [metadata.files]
 alembic = [
@@ -1074,8 +1074,8 @@ fastapi = [
     {file = "fastapi-0.75.2.tar.gz", hash = "sha256:b5dac161ee19d33346040d3f44d8b7a9ac09b37df9efff95891f5e7641fa482f"},
 ]
 fastapi-users = [
-    {file = "fastapi-users-9.3.0.tar.gz", hash = "sha256:24d938ece7bd24d2c09680bb4e624dae4b325c4e6f98b502ed613df758415f7f"},
-    {file = "fastapi_users-9.3.0-py3-none-any.whl", hash = "sha256:079e9966f0a0b5132255e05967cddfe82adad9252dec7a3db2d2ea55cf37b248"},
+    {file = "fastapi-users-9.3.1.tar.gz", hash = "sha256:f2b31bcbb3e8a45ecc71a0f5ed844d04c1cabbc52c9fa00c8539a886bee5f77e"},
+    {file = "fastapi_users-9.3.1-py3-none-any.whl", hash = "sha256:1b98051e641c8cbc16049d181df90a1d8591915c76bf543fef1e10ed32f6176f"},
 ]
 fastapi-users-db-sqlalchemy = [
     {file = "fastapi-users-db-sqlalchemy-3.0.0.tar.gz", hash = "sha256:29551c1babdfea3c964dc54aea5148431b066cdaea1dc44054a6e370368aee55"},

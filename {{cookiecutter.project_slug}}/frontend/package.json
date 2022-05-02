@@ -12,7 +12,7 @@
     "@types/react-dom": "^17.0.0",
     "axios": "^0.21.4",
     "history": "4.10.1",
-    "ra-data-json-server": "^3.18.0",
+    "ra-data-json-server": "^4.0.2",
     "ra-data-simple-rest": "^3.18.0",
     "react": "^17.0.2",
     "react-admin": "^3.18.3",

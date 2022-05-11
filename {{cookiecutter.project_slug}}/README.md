@@ -100,6 +100,10 @@ Then you can run tests with this command:
 docker-compose exec backend pytest
 ```
 
+### Single docker image
+
+There's a monolith/single docker image that uses FastAPI to serve static assets. You can use this image to deploy direct to Heroku, Fly.io or anywhere where you can run a Dockerfile without having to build a complicated setup out of separate frontend and backend images.
+
 ## Recipes
 
 #### Build and upload docker images to a repository

@@ -264,7 +264,7 @@ test = ["pytest (>=6.2.4,<7.0.0)", "pytest-cov (>=2.12.0,<4.0.0)", "pytest-async
 
 [[package]]
 name = "fastapi-users"
-version = "9.3.0"
+version = "9.3.2"
 description = "Ready-to-use and customizable users management for FastAPI"
 category = "main"
 optional = false
@@ -273,7 +273,7 @@ python-versions = ">=3.7"
 [package.dependencies]
 email-validator = ">=1.1.0,<1.2"
 fastapi = ">=0.65.2,<0.76.0"
-fastapi-users-db-sqlalchemy = {version = ">=2.0.0", optional = true, markers = "extra == \"sqlalchemy2\""}
+fastapi-users-db-sqlalchemy = {version = ">=2.0.0,<4.0.0", optional = true, markers = "extra == \"sqlalchemy2\""}
 makefun = ">=1.11.2,<1.14"
 passlib = {version = "1.7.4", extras = ["bcrypt"]}
 pyjwt = {version = "2.3.0", extras = ["crypto"]}
@@ -281,14 +281,14 @@ python-multipart = "0.0.5"
 typing-extensions = {version = ">=4.1.1", markers = "python_version < \"3.8\""}
 
 [package.extras]
-dev = ["flake8", "pytest", "requests", "isort", "pytest-asyncio", "flake8-docstrings", "mkdocs", "mkdocs-material", "mkdocs-mermaid2-plugin", "black", "mypy", "codecov", "pytest-cov", "pytest-mock", "flit", "markdown-include", "pygments", "pymdown-extensions", "bumpversion", "httpx-oauth", "httpx", "asgi-lifespan", "uvicorn"]
-mongodb = ["fastapi-users-db-mongodb (>=1.1.0)"]
-oauth = ["httpx-oauth (>=0.4,<0.5)"]
-ormar = ["fastapi-users-db-ormar (>=1.0.0)"]
+dev = ["flake8", "pytest", "requests", "isort", "pytest-asyncio", "flake8-docstrings", "mike", "mkdocs", "mkdocs-material", "mkdocs-mermaid2-plugin", "black", "mypy", "codecov", "pytest-cov", "pytest-mock", "flit", "markdown-include", "pygments", "pymdown-extensions", "bumpversion", "httpx-oauth", "httpx", "asgi-lifespan", "uvicorn"]
+mongodb = ["fastapi-users-db-mongodb (>=1.1.0,<2.0.0)"]
+oauth = ["httpx-oauth (>=0.4,<0.7)"]
+ormar = ["fastapi-users-db-ormar (>=1.0.0,<2.0.0)"]
 redis = ["aioredis (>=2.0.1,<2.1.0)", "hiredis (>=2.0.0,<2.1.0)"]
 sqlalchemy = ["fastapi-users-db-sqlalchemy (>=1.1.0,<2.0.0)"]
-sqlalchemy2 = ["fastapi-users-db-sqlalchemy (>=2.0.0)"]
-tortoise-orm = ["fastapi-users-db-tortoise (>=1.1.0)"]
+sqlalchemy2 = ["fastapi-users-db-sqlalchemy (>=2.0.0,<4.0.0)"]
+tortoise-orm = ["fastapi-users-db-tortoise (>=1.1.0,<2.0.0)"]
 
 [[package]]
 name = "fastapi-users-db-sqlalchemy"
@@ -312,6 +312,20 @@ python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*"
 
 [package.extras]
 docs = ["sphinx"]
+
+[[package]]
+name = "gunicorn"
+version = "20.1.0"
+description = "WSGI HTTP Server for UNIX"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.extras]
+eventlet = ["eventlet (>=0.24.1)"]
+gevent = ["gevent (>=1.4.0)"]
+setproctitle = ["setproctitle"]
+tornado = ["tornado (>=0.2)"]
 
 [[package]]
 name = "h11"
@@ -850,7 +864,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "3fbe040417d1b3ffc97a8d99ce48cb93130af3631c3f59fe47b95429f331f0c5"
+content-hash = "f44b5654e450b5f6f67112f3395c50cff2c9f5dc3671fe6e268b9b4dd31524d5"
 
 [metadata.files]
 alembic = [
@@ -1032,8 +1046,8 @@ fastapi = [
     {file = "fastapi-0.68.2.tar.gz", hash = "sha256:38526fc46bda73f7ec92033952677323c16061e70a91d15c95f18b11895da494"},
 ]
 fastapi-users = [
-    {file = "fastapi-users-9.3.0.tar.gz", hash = "sha256:24d938ece7bd24d2c09680bb4e624dae4b325c4e6f98b502ed613df758415f7f"},
-    {file = "fastapi_users-9.3.0-py3-none-any.whl", hash = "sha256:079e9966f0a0b5132255e05967cddfe82adad9252dec7a3db2d2ea55cf37b248"},
+    {file = "fastapi-users-9.3.2.tar.gz", hash = "sha256:57b4bb1abc43d710c375f3e2bac3a13b69a266300f3bb9623a336f758b4c0931"},
+    {file = "fastapi_users-9.3.2-py3-none-any.whl", hash = "sha256:00394b1e7d869750c6105c9962d9765f91a151be952e375498fbea38601ccec7"},
 ]
 fastapi-users-db-sqlalchemy = [
     {file = "fastapi-users-db-sqlalchemy-3.0.0.tar.gz", hash = "sha256:29551c1babdfea3c964dc54aea5148431b066cdaea1dc44054a6e370368aee55"},
@@ -1090,6 +1104,10 @@ greenlet = [
     {file = "greenlet-1.1.1-cp39-cp39-win32.whl", hash = "sha256:1796f2c283faab2b71c67e9b9aefb3f201fdfbee5cb55001f5ffce9125f63a45"},
     {file = "greenlet-1.1.1-cp39-cp39-win_amd64.whl", hash = "sha256:4adaf53ace289ced90797d92d767d37e7cdc29f13bd3830c3f0a561277a4ae83"},
     {file = "greenlet-1.1.1.tar.gz", hash = "sha256:c0f22774cd8294078bdf7392ac73cf00bfa1e5e0ed644bd064fdabc5f2a2f481"},
+]
+gunicorn = [
+    {file = "gunicorn-20.1.0-py3-none-any.whl", hash = "sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e"},
+    {file = "gunicorn-20.1.0.tar.gz", hash = "sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8"},
 ]
 h11 = [
     {file = "h11-0.12.0-py3-none-any.whl", hash = "sha256:36a3cb8c0a032f56e2da7084577878a035d3b61d104230d4bd49c0c6b555a9c6"},

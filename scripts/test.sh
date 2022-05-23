@@ -33,6 +33,8 @@ cd ./frontend/
 
 # Bind mount src/generated directory and fail if it changed
 # This is to ensure that the generated files are always in sync with FastAPI code
+cp -ruv ./frontend/src/generated /tmp/src-generated
+
 docker run --network host frontend-build -v $(pwd)/frontend/src/generated:/app/src/generated bash -c "apt-get update && apt-get install -qq default-jre && yarn config set script-shell /bin/bash && yarn genapi"
 
-git diff --quiet HEAD
+diff -R /tmp/src-generated ./frontend/src/generated || (echo "Generated files changed. Please make sure they are in sync" && exit 1)

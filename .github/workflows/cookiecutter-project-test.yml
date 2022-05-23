@@ -15,7 +15,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        apk update && apk add py3-pip python3 git
+        apk update && apk add py3-pip python3
         pip3 install cookiecutter
 
     - name: Run test script

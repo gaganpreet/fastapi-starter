@@ -31,4 +31,4 @@ docker run --network host frontend-build bash -c "apt-get update && apt-get inst
 
 cd ./frontend/
 
-yarn genapi
+docker run --rm -i -t --net=host frontend yarn genapi

@@ -13,19 +13,18 @@
  */
 
 
-import { ValidationError } from './validation-error';
 
 /**
  * 
  * @export
- * @interface HTTPValidationError
+ * @interface ErrorModel
  */
-export interface HTTPValidationError {
+export interface ErrorModel {
     /**
      * 
-     * @type {Array<ValidationError>}
-     * @memberof HTTPValidationError
+     * @type {string | any}
+     * @memberof ErrorModel
      */
-    'detail'?: Array<ValidationError>;
+    'detail': string | any;
 }
 

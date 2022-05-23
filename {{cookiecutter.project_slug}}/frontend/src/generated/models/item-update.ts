@@ -25,7 +25,6 @@ export interface ItemUpdate {
      * @type {string}
      * @memberof ItemUpdate
      */
-    value: string;
+    'value': string;
 }
-
 

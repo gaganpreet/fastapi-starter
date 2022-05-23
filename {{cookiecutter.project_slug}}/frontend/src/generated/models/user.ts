@@ -25,31 +25,30 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    id?: string;
+    'id'?: string;
     /**
      * 
      * @type {string}
      * @memberof User
      */
-    email: string;
+    'email': string;
     /**
      * 
      * @type {boolean}
      * @memberof User
      */
-    is_active?: boolean;
+    'is_active'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof User
      */
-    is_superuser?: boolean;
+    'is_superuser'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof User
      */
-    is_verified?: boolean;
+    'is_verified'?: boolean;
 }
-
 

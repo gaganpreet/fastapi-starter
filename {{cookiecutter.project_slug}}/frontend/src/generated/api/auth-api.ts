@@ -13,13 +13,17 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+// @ts-ignore
+import { BearerResponse } from '../models';
+// @ts-ignore
+import { ErrorModel } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
@@ -34,7 +38,7 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
     return {
         /**
          * 
-         * @summary Login
+         * @summary Auth:Jwt.Login
          * @param {string} username 
          * @param {string} password 
          * @param {string} [grantType] 
@@ -44,11 +48,11 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        login: async (username: string, password: string, grantType?: string, scope?: string, clientId?: string, clientSecret?: string, options: any = {}): Promise<RequestArgs> => {
+        authJwtLogin: async (username: string, password: string, grantType?: string, scope?: string, clientId?: string, clientSecret?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'username' is not null or undefined
-            assertParamExists('login', 'username', username)
+            assertParamExists('authJwtLogin', 'username', username)
             // verify required parameter 'password' is not null or undefined
-            assertParamExists('login', 'password', password)
+            assertParamExists('authJwtLogin', 'password', password)
             const localVarPath = `/api/v1/auth/jwt/login`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -90,7 +94,7 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
     
             localVarHeaderParameter['Content-Type'] = 'application/x-www-form-urlencoded';
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = localVarFormParams.toString();
@@ -102,14 +106,48 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @summary Register
+         * @summary Auth:Jwt.Logout
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authJwtLogout: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/auth/jwt/logout`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2PasswordBearer required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2PasswordBearer", [], configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Register:Register
          * @param {UserCreate} userCreate 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        register: async (userCreate: UserCreate, options: any = {}): Promise<RequestArgs> => {
+        registerRegister: async (userCreate: UserCreate, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userCreate' is not null or undefined
-            assertParamExists('register', 'userCreate', userCreate)
+            assertParamExists('registerRegister', 'userCreate', userCreate)
             const localVarPath = `/api/v1/auth/register`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -126,7 +164,7 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(userCreate, localVarRequestOptions, configuration)
@@ -148,7 +186,7 @@ export const AuthApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Login
+         * @summary Auth:Jwt.Login
          * @param {string} username 
          * @param {string} password 
          * @param {string} [grantType] 
@@ -158,19 +196,29 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async login(username: string, password: string, grantType?: string, scope?: string, clientId?: string, clientSecret?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.login(username, password, grantType, scope, clientId, clientSecret, options);
+        async authJwtLogin(username: string, password: string, grantType?: string, scope?: string, clientId?: string, clientSecret?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BearerResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authJwtLogin(username, password, grantType, scope, clientId, clientSecret, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @summary Register
+         * @summary Auth:Jwt.Logout
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async authJwtLogout(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authJwtLogout(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Register:Register
          * @param {UserCreate} userCreate 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async register(userCreate: UserCreate, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.register(userCreate, options);
+        async registerRegister(userCreate: UserCreate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.registerRegister(userCreate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -185,7 +233,7 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
     return {
         /**
          * 
-         * @summary Login
+         * @summary Auth:Jwt.Login
          * @param {string} username 
          * @param {string} password 
          * @param {string} [grantType] 
@@ -195,81 +243,90 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        login(username: string, password: string, grantType?: string, scope?: string, clientId?: string, clientSecret?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.login(username, password, grantType, scope, clientId, clientSecret, options).then((request) => request(axios, basePath));
+        authJwtLogin(username: string, password: string, grantType?: string, scope?: string, clientId?: string, clientSecret?: string, options?: any): AxiosPromise<BearerResponse> {
+            return localVarFp.authJwtLogin(username, password, grantType, scope, clientId, clientSecret, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Register
+         * @summary Auth:Jwt.Logout
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authJwtLogout(options?: any): AxiosPromise<any> {
+            return localVarFp.authJwtLogout(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Register:Register
          * @param {UserCreate} userCreate 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        register(userCreate: UserCreate, options?: any): AxiosPromise<User> {
-            return localVarFp.register(userCreate, options).then((request) => request(axios, basePath));
+        registerRegister(userCreate: UserCreate, options?: any): AxiosPromise<User> {
+            return localVarFp.registerRegister(userCreate, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for login operation in AuthApi.
+ * Request parameters for authJwtLogin operation in AuthApi.
  * @export
- * @interface AuthApiLoginRequest
+ * @interface AuthApiAuthJwtLoginRequest
  */
-export interface AuthApiLoginRequest {
+export interface AuthApiAuthJwtLoginRequest {
     /**
      * 
      * @type {string}
-     * @memberof AuthApiLogin
+     * @memberof AuthApiAuthJwtLogin
      */
     readonly username: string
 
     /**
      * 
      * @type {string}
-     * @memberof AuthApiLogin
+     * @memberof AuthApiAuthJwtLogin
      */
     readonly password: string
 
     /**
      * 
      * @type {string}
-     * @memberof AuthApiLogin
+     * @memberof AuthApiAuthJwtLogin
      */
     readonly grantType?: string
 
     /**
      * 
      * @type {string}
-     * @memberof AuthApiLogin
+     * @memberof AuthApiAuthJwtLogin
      */
     readonly scope?: string
 
     /**
      * 
      * @type {string}
-     * @memberof AuthApiLogin
+     * @memberof AuthApiAuthJwtLogin
      */
     readonly clientId?: string
 
     /**
      * 
      * @type {string}
-     * @memberof AuthApiLogin
+     * @memberof AuthApiAuthJwtLogin
      */
     readonly clientSecret?: string
 }
 
 /**
- * Request parameters for register operation in AuthApi.
+ * Request parameters for registerRegister operation in AuthApi.
  * @export
- * @interface AuthApiRegisterRequest
+ * @interface AuthApiRegisterRegisterRequest
  */
-export interface AuthApiRegisterRequest {
+export interface AuthApiRegisterRegisterRequest {
     /**
      * 
      * @type {UserCreate}
-     * @memberof AuthApiRegister
+     * @memberof AuthApiRegisterRegister
      */
     readonly userCreate: UserCreate
 }
@@ -283,25 +340,36 @@ export interface AuthApiRegisterRequest {
 export class AuthApi extends BaseAPI {
     /**
      * 
-     * @summary Login
-     * @param {AuthApiLoginRequest} requestParameters Request parameters.
+     * @summary Auth:Jwt.Login
+     * @param {AuthApiAuthJwtLoginRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    public login(requestParameters: AuthApiLoginRequest, options?: any) {
-        return AuthApiFp(this.configuration).login(requestParameters.username, requestParameters.password, requestParameters.grantType, requestParameters.scope, requestParameters.clientId, requestParameters.clientSecret, options).then((request) => request(this.axios, this.basePath));
+    public authJwtLogin(requestParameters: AuthApiAuthJwtLoginRequest, options?: AxiosRequestConfig) {
+        return AuthApiFp(this.configuration).authJwtLogin(requestParameters.username, requestParameters.password, requestParameters.grantType, requestParameters.scope, requestParameters.clientId, requestParameters.clientSecret, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @summary Register
-     * @param {AuthApiRegisterRequest} requestParameters Request parameters.
+     * @summary Auth:Jwt.Logout
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    public register(requestParameters: AuthApiRegisterRequest, options?: any) {
-        return AuthApiFp(this.configuration).register(requestParameters.userCreate, options).then((request) => request(this.axios, this.basePath));
+    public authJwtLogout(options?: AxiosRequestConfig) {
+        return AuthApiFp(this.configuration).authJwtLogout(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Register:Register
+     * @param {AuthApiRegisterRegisterRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public registerRegister(requestParameters: AuthApiRegisterRegisterRequest, options?: AxiosRequestConfig) {
+        return AuthApiFp(this.configuration).registerRegister(requestParameters.userCreate, options).then((request) => request(this.axios, this.basePath));
     }
 }

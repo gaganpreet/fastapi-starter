@@ -1,3 +1,5 @@
+export * from './bearer-response';
+export * from './error-model';
 export * from './httpvalidation-error';
 export * from './item';
 export * from './item-create';

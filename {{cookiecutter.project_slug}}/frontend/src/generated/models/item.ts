@@ -25,13 +25,12 @@ export interface Item {
      * @type {string}
      * @memberof Item
      */
-    value: string;
+    'value': string;
     /**
      * 
      * @type {number}
      * @memberof Item
      */
-    id: number;
+    'id': number;
 }
-
 

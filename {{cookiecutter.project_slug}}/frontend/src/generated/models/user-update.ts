@@ -25,37 +25,36 @@ export interface UserUpdate {
      * @type {string}
      * @memberof UserUpdate
      */
-    password?: string;
+    'password'?: string;
     /**
      * 
      * @type {string}
      * @memberof UserUpdate
      */
-    email: string;
+    'email': string;
     /**
      * 
      * @type {boolean}
      * @memberof UserUpdate
      */
-    is_active?: boolean;
+    'is_active'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserUpdate
      */
-    is_superuser?: boolean;
+    'is_superuser'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserUpdate
      */
-    is_verified?: boolean;
+    'is_verified'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof UserUpdate
      */
-    id?: string;
+    'id'?: string;
 }
-
 

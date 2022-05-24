@@ -13,19 +13,24 @@
  */
 
 
-import { ValidationError } from './validation-error';
 
 /**
  * 
  * @export
- * @interface HTTPValidationError
+ * @interface BearerResponse
  */
-export interface HTTPValidationError {
+export interface BearerResponse {
     /**
      * 
-     * @type {Array<ValidationError>}
-     * @memberof HTTPValidationError
+     * @type {string}
+     * @memberof BearerResponse
      */
-    'detail'?: Array<ValidationError>;
+    'access_token': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BearerResponse
+     */
+    'token_type': string;
 }
 

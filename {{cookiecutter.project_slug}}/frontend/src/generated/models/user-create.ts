@@ -25,31 +25,30 @@ export interface UserCreate {
      * @type {string}
      * @memberof UserCreate
      */
-    email: string;
+    'email': string;
     /**
      * 
      * @type {string}
      * @memberof UserCreate
      */
-    password: string;
+    'password': string;
     /**
      * 
      * @type {boolean}
      * @memberof UserCreate
      */
-    is_active?: boolean;
+    'is_active'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserCreate
      */
-    is_superuser?: boolean;
+    'is_superuser'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserCreate
      */
-    is_verified?: boolean;
+    'is_verified'?: boolean;
 }
-
 

@@ -9,7 +9,7 @@ type loginFormType = {
 const authProvider = {
   login: async ({ email, password }: loginFormType) => {
     const formData = { username: email, password };
-    const resp = await authApi.login(formData);
+    const resp = await authApi.authJwtLogin(formData);
     localStorage.setItem("token", resp.data.access_token);
     return Promise.resolve();
   },
@@ -33,7 +33,7 @@ const authProvider = {
     return role ? Promise.resolve(role) : Promise.reject();
   },
   getIdentity: async (): Promise<UserIdentity> => {
-    const resp = await userApi.me();
+    const resp = await userApi.usersCurrentUser();
     localStorage.setItem("permissions", JSON.stringify(resp.data));
     return resp.data as UserIdentity;
   },

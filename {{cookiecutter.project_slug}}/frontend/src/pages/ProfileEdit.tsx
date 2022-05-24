@@ -67,7 +67,7 @@ export const ProfileEdit = ({ ...props }) => {
     (values) => {
       setSaving(true);
       userApi
-        .updateMe({ userUpdate: values })
+        .usersPatchCurrentUser({ userUpdate: values })
         .then(() => {
           setSaving(false);
           notify("Your profile has been updated", "info");

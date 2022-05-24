@@ -25,7 +25,6 @@ export interface ItemCreate {
      * @type {string}
      * @memberof ItemCreate
      */
-    value: string;
+    'value': string;
 }
-
 

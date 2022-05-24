@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -41,7 +41,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createItem: async (itemCreate: ItemCreate, options: any = {}): Promise<RequestArgs> => {
+        createItem: async (itemCreate: ItemCreate, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemCreate' is not null or undefined
             assertParamExists('createItem', 'itemCreate', itemCreate)
             const localVarPath = `/api/v1/items`;
@@ -64,7 +64,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(itemCreate, localVarRequestOptions, configuration)
@@ -81,7 +81,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteItem: async (itemId: number, options: any = {}): Promise<RequestArgs> => {
+        deleteItem: async (itemId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('deleteItem', 'itemId', itemId)
             const localVarPath = `/api/v1/items/{item_id}`
@@ -103,7 +103,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -119,7 +119,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItem: async (itemId: number, options: any = {}): Promise<RequestArgs> => {
+        getItem: async (itemId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('getItem', 'itemId', itemId)
             const localVarPath = `/api/v1/items/{item_id}`
@@ -141,7 +141,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -158,7 +158,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItems: async (sort?: string, range?: string, options: any = {}): Promise<RequestArgs> => {
+        getItems: async (sort?: string, range?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/v1/items`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -185,7 +185,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -202,7 +202,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateItem: async (itemId: number, itemUpdate: ItemUpdate, options: any = {}): Promise<RequestArgs> => {
+        updateItem: async (itemId: number, itemUpdate: ItemUpdate, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('updateItem', 'itemId', itemId)
             // verify required parameter 'itemUpdate' is not null or undefined
@@ -228,7 +228,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(itemUpdate, localVarRequestOptions, configuration)
@@ -255,7 +255,7 @@ export const ItemsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createItem(itemCreate: ItemCreate, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
+        async createItem(itemCreate: ItemCreate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createItem(itemCreate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -266,7 +266,7 @@ export const ItemsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteItem(itemId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async deleteItem(itemId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteItem(itemId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -277,7 +277,7 @@ export const ItemsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getItem(itemId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
+        async getItem(itemId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getItem(itemId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -289,7 +289,7 @@ export const ItemsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getItems(sort?: string, range?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>> {
+        async getItems(sort?: string, range?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getItems(sort, range, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -301,7 +301,7 @@ export const ItemsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateItem(itemId: number, itemUpdate: ItemUpdate, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
+        async updateItem(itemId: number, itemUpdate: ItemUpdate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateItem(itemId, itemUpdate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -469,7 +469,7 @@ export class ItemsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public createItem(requestParameters: ItemsApiCreateItemRequest, options?: any) {
+    public createItem(requestParameters: ItemsApiCreateItemRequest, options?: AxiosRequestConfig) {
         return ItemsApiFp(this.configuration).createItem(requestParameters.itemCreate, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -481,7 +481,7 @@ export class ItemsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public deleteItem(requestParameters: ItemsApiDeleteItemRequest, options?: any) {
+    public deleteItem(requestParameters: ItemsApiDeleteItemRequest, options?: AxiosRequestConfig) {
         return ItemsApiFp(this.configuration).deleteItem(requestParameters.itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -493,7 +493,7 @@ export class ItemsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public getItem(requestParameters: ItemsApiGetItemRequest, options?: any) {
+    public getItem(requestParameters: ItemsApiGetItemRequest, options?: AxiosRequestConfig) {
         return ItemsApiFp(this.configuration).getItem(requestParameters.itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -505,7 +505,7 @@ export class ItemsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public getItems(requestParameters: ItemsApiGetItemsRequest = {}, options?: any) {
+    public getItems(requestParameters: ItemsApiGetItemsRequest = {}, options?: AxiosRequestConfig) {
         return ItemsApiFp(this.configuration).getItems(requestParameters.sort, requestParameters.range, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -517,7 +517,7 @@ export class ItemsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public updateItem(requestParameters: ItemsApiUpdateItemRequest, options?: any) {
+    public updateItem(requestParameters: ItemsApiUpdateItemRequest, options?: AxiosRequestConfig) {
         return ItemsApiFp(this.configuration).updateItem(requestParameters.itemId, requestParameters.itemUpdate, options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -35,4 +35,4 @@ cp -ruv ./frontend/src/generated /tmp/src-generated
 
 docker run --network host frontend-build -v $(pwd)/frontend/src/generated:/app/src/generated bash -c "apt-get update && apt-get install -qq default-jre && yarn config set script-shell /bin/bash && yarn genapi"
 
-diff -R /tmp/src-generated ./frontend/src/generated || (echo "Generated files changed. Please make sure they are in sync" && exit 1)
+diff -r /tmp/src-generated ./frontend/src/generated || (echo "Generated files changed. Please make sure they are in sync" && exit 1)

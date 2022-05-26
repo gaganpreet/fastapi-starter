@@ -40,13 +40,15 @@ cruft update
 
 ## Features
 
-* Uses best practices: Factory pattern and environment variables for configuration
-* User registration, models, authentication using [FastAPI Users](https://github.com/fastapi-users/fastapi-users)
-* Modern admin interface using [React-Admin](https://marmelab.com/react-admin/)
-* Github Action for building docker images and testing and dependabot config to keep project dependencies up to date
-* Create Typescript bindings for front-end automatically from OpenAPI spec using [OpenAPI-Generator](https://github.com/OpenAPITools/openapi-generator/), no need to write/update code when backend changes
-* SQLAlchemy (async with 2.0 future API) and Alembic for database migrations
-* pytest with example tests included
+* Uses **best practices**: Factory pattern and environment variables for configuration
+* User registration, models, authentication using [**FastAPI Users**](https://github.com/fastapi-users/fastapi-users)
+* Modern admin interface using [**React-Admin**](https://marmelab.com/react-admin/)
+* **Github Action** for building docker images and running automated tests
+* **Dependabot** config to keep project dependencies up to date
+* Create Typescript bindings for front-end automatically from OpenAPI spec using [**OpenAPI-Generator**](https://github.com/OpenAPITools/openapi-generator/), no need to write/update code when backend changes
+* **SQLAlchemy** (async with 2.0 future API) and Alembic for database migrations
+* **pytest** with example tests included
+* Integration tests with **Cypress**
 
 
 ## Features not included
@@ -64,8 +66,8 @@ The following features were left out in favour of simplicity:
 - [x] Dependabot config
 - [x] Add pre-commit hooks: Black, isort, flake8, mypy, tslint
 - [x] Setup FastAPI CRUD example
-- [ ] [Deploy with gunicorn as process manager](https://www.uvicorn.org/deployment/#gunicorn) (recommended for production)
+- [x] [Deploy with gunicorn as process manager](https://www.uvicorn.org/deployment/#gunicorn) (recommended for production)
 - [ ] Coverage report in tests
 - [ ] Email templates
-- [ ] Deployment instructions: Possibly provide an option to create a single docker image (where FastAPI serves static assets) that can be easily deployed
+- [x] Deployment instructions: Possibly provide an option to create a single docker image (where FastAPI serves static assets) that can be easily deployed
 - [ ] Async SQLAlchemy

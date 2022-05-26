@@ -33,6 +33,8 @@ cruft update
 
 ## Preview
 
+View [live demo](https://demo-project-fastapi-starter.fly.dev) here.
+
 ![Login page](assets/login.png)
 
 ![Item page](assets/items.png)
@@ -49,6 +51,9 @@ cruft update
 * **SQLAlchemy** (async with 2.0 future API) and Alembic for database migrations
 * **pytest** with example tests included
 * Integration tests with **Cypress**
+* Docker images for frontend and backend
+* Includes extra Dockerfile (backend serves frontend) for straightforward deployment
+* Pre-commit hooks with [Black](https://github.com/psf/black), [autoflake](https://github.com/PyCQA/autoflake), [isort](https://github.com/pycqa/isort), [flake8](https://github.com/PyCQA/flake8), [prettier](https://github.com/prettier/prettier), [eslint](https://github.com/eslint/eslint) for consistent code standards
 
 
 ## Features not included
@@ -70,4 +75,4 @@ The following features were left out in favour of simplicity:
 - [ ] Coverage report in tests
 - [ ] Email templates
 - [x] Deployment instructions: Possibly provide an option to create a single docker image (where FastAPI serves static assets) that can be easily deployed
-- [ ] Async SQLAlchemy
+- [x] Async SQLAlchemy

@@ -1,7 +1,7 @@
 name: Deploy demo to Fly
 on:
   workflow_run:
-    workflows: ["Build and test"]
+    workflows: ["Cookie cutter test"]
     branches:
       - 'main'
       - 'monolith-dockerfile'

@@ -13,4 +13,8 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - uses: superfly/flyctl-actions/setup-flyctl@master
+        - name: Install dependencies
+          run: |
+            apk update && apk add py3-pip python3
+            pip3 install cookiecutter
         - run: bash scripts/deploy-demo-project-to-fly.sh

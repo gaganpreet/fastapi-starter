@@ -282,16 +282,15 @@ test = ["pytest (>=6.2.4,<7.0.0)", "pytest-cov (>=2.12.0,<4.0.0)", "mypy (==0.91
 
 [[package]]
 name = "fastapi-users"
-version = "9.3.2"
+version = "10.0.5"
 description = "Ready-to-use and customizable users management for FastAPI"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
-email-validator = ">=1.1.0,<1.2"
-fastapi = ">=0.65.2,<0.76.0"
-fastapi-users-db-sqlalchemy = {version = ">=2.0.0,<4.0.0", optional = true, markers = "extra == \"sqlalchemy2\""}
+email-validator = ">=1.1.0,<1.3"
+fastapi = ">=0.65.2,<0.79.0"
 makefun = ">=1.11.2,<1.14"
 passlib = {version = "1.7.4", extras = ["bcrypt"]}
 pyjwt = {version = "2.3.0", extras = ["crypto"]}
@@ -299,26 +298,11 @@ python-multipart = "0.0.5"
 typing-extensions = {version = ">=4.1.1", markers = "python_version < \"3.8\""}
 
 [package.extras]
+beanie = ["fastapi-users-db-beanie (>=1.0.0)"]
 dev = ["flake8", "pytest", "requests", "isort", "pytest-asyncio", "flake8-docstrings", "mike", "mkdocs", "mkdocs-material", "mkdocs-mermaid2-plugin", "black", "mypy", "codecov", "pytest-cov", "pytest-mock", "flit", "markdown-include", "pygments", "pymdown-extensions", "bumpversion", "httpx-oauth", "httpx", "asgi-lifespan", "uvicorn"]
-mongodb = ["fastapi-users-db-mongodb (>=1.1.0,<2.0.0)"]
 oauth = ["httpx-oauth (>=0.4,<0.7)"]
-ormar = ["fastapi-users-db-ormar (>=1.0.0,<2.0.0)"]
 redis = ["aioredis (>=2.0.1,<2.1.0)", "hiredis (>=2.0.0,<2.1.0)"]
-sqlalchemy = ["fastapi-users-db-sqlalchemy (>=1.1.0,<2.0.0)"]
-sqlalchemy2 = ["fastapi-users-db-sqlalchemy (>=2.0.0,<4.0.0)"]
-tortoise-orm = ["fastapi-users-db-tortoise (>=1.1.0,<2.0.0)"]
-
-[[package]]
-name = "fastapi-users-db-sqlalchemy"
-version = "3.0.0"
-description = "FastAPI Users database adapter for SQLAlchemy."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-fastapi-users = ">=9.1.0"
-sqlalchemy = ">=1.4"
+sqlalchemy = ["fastapi-users-db-sqlalchemy (>=4.0.0)"]
 
 [[package]]
 name = "greenlet"
@@ -886,7 +870,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "a65e1eac870bc71661f8887130f652be57590d6151eb50fed69acac2c84a3931"
+content-hash = "18340bf7448c2c86803ea6955edadd484d12781916e382d7dea763bdd162cbbe"
 
 [metadata.files]
 alembic = [
@@ -1088,12 +1072,8 @@ fastapi = [
     {file = "fastapi-0.75.2.tar.gz", hash = "sha256:b5dac161ee19d33346040d3f44d8b7a9ac09b37df9efff95891f5e7641fa482f"},
 ]
 fastapi-users = [
-    {file = "fastapi-users-9.3.2.tar.gz", hash = "sha256:57b4bb1abc43d710c375f3e2bac3a13b69a266300f3bb9623a336f758b4c0931"},
-    {file = "fastapi_users-9.3.2-py3-none-any.whl", hash = "sha256:00394b1e7d869750c6105c9962d9765f91a151be952e375498fbea38601ccec7"},
-]
-fastapi-users-db-sqlalchemy = [
-    {file = "fastapi-users-db-sqlalchemy-3.0.0.tar.gz", hash = "sha256:29551c1babdfea3c964dc54aea5148431b066cdaea1dc44054a6e370368aee55"},
-    {file = "fastapi_users_db_sqlalchemy-3.0.0-py3-none-any.whl", hash = "sha256:f0e48d85a7ed9abd165f8acee5815171b26d5418986e7f72288045a6fd71cb33"},
+    {file = "fastapi-users-10.0.5.tar.gz", hash = "sha256:0c7d9137ea0c609d84d0abd2cd964e5a0704f029be81e7757cb9463aa661b8d5"},
+    {file = "fastapi_users-10.0.5-py3-none-any.whl", hash = "sha256:0635771214e9c77617607ed94edb70f8b15a08a09751d8e3b2f9ef3966783b34"},
 ]
 greenlet = [
     {file = "greenlet-1.1.1-cp27-cp27m-macosx_10_14_x86_64.whl", hash = "sha256:476ba9435afaead4382fbab8f1882f75e3fb2285c35c9285abb3dd30237f9142"},

@@ -4,6 +4,7 @@ on:
     workflows: ["Build and test"]
     branches:
       - 'main'
+      - 'monolith-dockerfile'
     types:
       - completed
 env:

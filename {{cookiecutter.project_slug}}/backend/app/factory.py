@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from fastapi.routing import APIRoute
+from fastapi.staticfiles import StaticFiles
 from fastapi_users import FastAPIUsers
 from starlette.middleware.cors import CORSMiddleware
+from starlette.requests import Request
+from starlette.responses import FileResponse
 
 from app.api import api_router
 from app.core.config import settings
@@ -20,6 +23,7 @@ def create_app():
     setup_routers(app, fastapi_users)
     init_db_hooks(app)
     setup_cors_middleware(app)
+    serve_static_app(app)
     return app
 
 
@@ -45,6 +49,19 @@ def setup_routers(app: FastAPI, fastapi_users: FastAPIUsers) -> None:
     )
     # The following operation needs to be at the end of this function
     use_route_names_as_operation_ids(app)
+
+
+def serve_static_app(app):
+    app.mount("/", StaticFiles(directory="static"), name="static")
+
+    @app.middleware("http")
+    async def _add_404_middleware(request: Request, call_next):
+        response = await call_next(request)
+        if request["path"].startswith(settings.API_PATH):
+            return response
+        if response.status_code == 404:
+            return FileResponse("static/index.html")
+        return response
 
 
 def setup_cors_middleware(app):

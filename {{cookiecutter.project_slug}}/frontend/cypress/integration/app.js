@@ -17,7 +17,7 @@ describe("Test register, login and item", () => {
   });
 
   it("Creates a new account", () => {
-    cy.get("button").last().contains("Register").click();
+    cy.get("div").last().contains("Register").click();
 
     cy.get("input").first().type(username);
     cy.get("input").last().type(defaultPassword);
@@ -61,11 +61,13 @@ describe("Test register, login and item", () => {
   });
 
   it("Edits profile", () => {
-    cy.get('button[title^="Profile"]').click();
+    cy.get('button[aria-label^="Profile"]').click();
     cy.contains("My Profile").click();
     const newUsername = `abc${new Date().getTime()}@example.com`;
-    cy.get(`input[value='${username}']`).clear().type(newUsername);
-    cy.contains("Save").click();
+    cy.get(`input[value='${username}']`)
+      .clear({ force: true })
+      .type(newUsername, { force: true });
+    cy.contains("Save").click({ force: true });
     cy.contains("Your profile has been updated");
   });
 });

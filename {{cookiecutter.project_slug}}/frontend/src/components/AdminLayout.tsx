@@ -1,6 +1,6 @@
 import { UserMenu, MenuItemLink, AppBar, Layout } from "react-admin";
 import { ProfileProvider } from "../pages/ProfileEdit";
-import SettingsIcon from "@material-ui/icons/Settings";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 const MyUserMenu = (props: any) => {
   // Forcing MenuItemLink to any because of some weird type mismatch, not sure what's going on

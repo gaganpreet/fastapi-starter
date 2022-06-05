@@ -1,17 +1,18 @@
 import { FormEvent, useState } from "react";
 
-import { Button } from "@material-ui/core";
 import { useNotify } from "react-admin";
+import Button from "@mui/material/Button";
 import Auth from "../components/Auth";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { authApi } from "../providers/env";
 import { AxiosError } from "axios";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const notify = useNotify();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
@@ -21,16 +22,18 @@ const Register = () => {
         userCreate: formData,
       });
       if (response.data.id) {
-        notify("Successfully registered, you can now log in", "success");
-        history.push("/login");
+        notify("Successfully registered, you can now log in", {
+          type: "success",
+        });
+        navigate("/login");
       }
     } catch (e) {
       const exp = e as AxiosError;
       const errorMsg = exp.response?.data.detail[0].msg;
       if (errorMsg) {
-        notify(errorMsg, "error");
+        notify(errorMsg, { type: "error" });
       } else {
-        notify("Network error", "error");
+        notify("Network error", { type: "error" });
       }
     }
   };
@@ -42,7 +45,7 @@ const Register = () => {
       actionName="Register"
       submit={submit}
       extraActions={
-        <Button color="secondary" onClick={() => history.push("/login")}>
+        <Button color="secondary" to={"/login"} component={Link}>
           Sign in
         </Button>
       }

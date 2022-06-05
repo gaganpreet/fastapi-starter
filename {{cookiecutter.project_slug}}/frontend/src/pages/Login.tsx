@@ -3,23 +3,23 @@ import { FormEvent, useState } from "react";
 import { useLogin, useNotify } from "react-admin";
 import Auth from "../components/Auth";
 
-import { Button } from "@material-ui/core";
-import { useHistory } from "react-router";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const login = useLogin();
   const notify = useNotify();
-  const history = useHistory();
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
     login({ email, password }).catch((e) => {
       const msg = e.response?.data?.detail;
       if (msg) {
-        notify(msg, "error");
+        notify(msg, { type: "error" });
       } else {
-        notify("Network error", "error");
+        notify("Network error", { type: "error" });
       }
     });
   };
@@ -31,7 +31,7 @@ const Login = () => {
       actionName="Sign in"
       submit={submit}
       extraActions={
-        <Button color="secondary" onClick={() => history.push("/register")}>
+        <Button color="secondary" to={"/register"} component={Link}>
           Register
         </Button>
       }

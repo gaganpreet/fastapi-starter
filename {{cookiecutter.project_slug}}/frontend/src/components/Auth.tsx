@@ -1,20 +1,14 @@
 import { FormEvent, ReactElement } from "react";
 
-import {
-  Avatar,
-  Button,
-  Card,
-  CardHeader,
-  CardActions,
-  TextField,
-} from "@material-ui/core";
-import { createTheme } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/styles";
-import LockIcon from "@material-ui/icons/Lock";
-import { defaultTheme, Notification } from "react-admin";
-import useStyles from "./authStyles";
-
-const theme = createTheme(defaultTheme);
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardActions from "@mui/material/CardActions";
+import TextField from "@mui/material/TextField";
+import { Notification } from "react-admin";
+import authStyles from "./authStyles";
+import LockIcon from "@mui/icons-material/Lock";
 
 interface AuthProps {
   submit(event: FormEvent): void;
@@ -31,63 +25,52 @@ const Auth: React.FC<AuthProps> = ({
   actionName,
   extraActions,
 }) => {
-  const classes = useStyles();
-
   return (
-    <ThemeProvider theme={createTheme(theme)}>
-      <form noValidate onSubmit={submit}>
-        <div className={classes.main}>
-          <Card className={classes.card}>
-            <div className={classes.avatar}>
-              <Avatar className={classes.icon}>
-                <LockIcon />
-              </Avatar>
+    <form noValidate onSubmit={submit}>
+      <div style={authStyles.main}>
+        <Card sx={authStyles.card}>
+          <div style={authStyles.avatar}>
+            <Avatar>
+              <LockIcon />
+            </Avatar>
+          </div>
+          <CardHeader
+            title={`{{ cookiecutter.project_name }} - ${actionName}`}
+            sx={authStyles.header}
+          />
+          <div style={authStyles.form}>
+            <div>
+              <TextField
+                id="email"
+                label="Email"
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+                fullWidth
+              />
             </div>
-            <CardHeader
-              title={`{{ cookiecutter.project_name }} - ${actionName}`}
-              className={classes.header}
-            />
-            <div className={classes.form}>
+
+            {setPassword && (
               <div>
                 <TextField
-                  id="email"
-                  label="Email"
-                  type="email"
-                  onChange={(e) => setEmail(e.target.value)}
+                  id="password"
+                  label="Password"
+                  type="password"
                   fullWidth
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-
-              {setPassword && (
-                <div>
-                  <TextField
-                    id="password"
-                    label="Password"
-                    type="password"
-                    fullWidth
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-              )}
-            </div>
-            <CardActions className={classes.actions}>
-              <Button
-                variant="contained"
-                type="submit"
-                color="primary"
-                fullWidth
-              >
-                {actionName}
-              </Button>
-            </CardActions>
-            <CardActions className={classes.actions}>
-              {extraActions}
-            </CardActions>
-          </Card>
-          <Notification />
-        </div>
-      </form>
-    </ThemeProvider>
+            )}
+          </div>
+          <CardActions sx={authStyles.actions}>
+            <Button variant="contained" type="submit" color="primary" fullWidth>
+              {actionName}
+            </Button>
+          </CardActions>
+          <CardActions sx={authStyles.actions}>{extraActions}</CardActions>
+        </Card>
+        <Notification />
+      </div>
+    </form>
   );
 };
 

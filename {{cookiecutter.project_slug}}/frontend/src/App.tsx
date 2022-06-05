@@ -1,7 +1,6 @@
-import UserIcon from "@material-ui/icons/Group";
 import { createBrowserHistory as createHistory } from "history";
 import simpleRestProvider from "ra-data-simple-rest";
-import { Admin, fetchUtils, Resource, RouteWithoutLayout } from "react-admin";
+import { Admin, fetchUtils, Resource, CustomRoutes } from "react-admin";
 import { Route } from "react-router";
 import MyLayout from "./components/AdminLayout";
 import Dashboard from "./pages/Dashboard";
@@ -12,7 +11,8 @@ import Register from "./pages/Register";
 import { UserEdit, UserList } from "./pages/Users";
 import authProvider from "./providers/authProvider";
 import { basePath } from "./providers/env";
-import PostIcon from "@material-ui/icons/Book";
+import PostIcon from "@mui/icons-material/PostAdd";
+import PersonIcon from "@mui/icons-material/Person";
 
 const httpClient = (url: string, options: any = {}) => {
   options.user = {
@@ -28,22 +28,22 @@ const httpClient = (url: string, options: any = {}) => {
 
 const dataProvider = simpleRestProvider(`${basePath}/api/v1`, httpClient);
 
-const customRoutes = [
-  <RouteWithoutLayout exact path="/register" component={Register} noLayout />,
-  <Route key="my-profile" path="/my-profile" render={() => <ProfileEdit />} />,
-];
-
 const App = () => {
   return (
     <Admin
       dataProvider={dataProvider}
       authProvider={authProvider}
       loginPage={LoginPage}
-      customRoutes={customRoutes}
       history={createHistory()}
       layout={MyLayout}
       dashboard={Dashboard}
     >
+      <CustomRoutes>
+        <Route path="/my-profile" element={<ProfileEdit />} />
+      </CustomRoutes>
+      <CustomRoutes noLayout>
+        <Route path="/register" element={<Register />} />
+      </CustomRoutes>
       {(permissions) => [
         permissions.is_superuser === true ? (
           <Resource
@@ -51,7 +51,7 @@ const App = () => {
             name="users"
             list={UserList}
             edit={UserEdit}
-            icon={UserIcon}
+            icon={PersonIcon}
           />
         ) : null,
         <Resource

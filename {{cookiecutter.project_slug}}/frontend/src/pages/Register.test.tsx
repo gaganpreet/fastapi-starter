@@ -1,13 +1,12 @@
-import React from "react";
-import { TestContext } from "ra-test";
+import { AdminContext } from "react-admin";
 import { render, screen } from "@testing-library/react";
 import Register from "./Register";
 
 test("renders register", () => {
   render(
-    <TestContext>
+    <AdminContext>
       <Register />
-    </TestContext>
+    </AdminContext>
   );
   const registerElements = screen.getAllByText(/Register/i);
   expect(registerElements).toHaveLength(2);

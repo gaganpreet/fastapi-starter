@@ -4,13 +4,13 @@ import { useLogin, useNotify } from "react-admin";
 import Auth from "../components/Auth";
 
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const login = useLogin();
   const notify = useNotify();
-  const navigate = useNavigate();
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ const Login = () => {
       actionName="Sign in"
       submit={submit}
       extraActions={
-        <Button color="secondary" onClick={() => navigate("/register")}>
+        <Button color="secondary" to={"/register"} component={Link}>
           Register
         </Button>
       }

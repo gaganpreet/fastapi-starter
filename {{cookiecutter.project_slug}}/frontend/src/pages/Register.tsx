@@ -6,6 +6,7 @@ import Auth from "../components/Auth";
 import { useNavigate } from "react-router";
 import { authApi } from "../providers/env";
 import { AxiosError } from "axios";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -44,7 +45,7 @@ const Register = () => {
       actionName="Register"
       submit={submit}
       extraActions={
-        <Button color="secondary" onClick={() => navigate("/login")}>
+        <Button color="secondary" to={"/login"} component={Link}>
           Sign in
         </Button>
       }

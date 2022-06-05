@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 
-import { Button } from "@material-ui/core";
 import { useNotify } from "react-admin";
+import Button from "@mui/material/Button";
 import Auth from "../components/Auth";
 import { useNavigate } from "react-router";
 import { authApi } from "../providers/env";

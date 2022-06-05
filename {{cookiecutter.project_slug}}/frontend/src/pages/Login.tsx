@@ -3,7 +3,7 @@ import { FormEvent, useState } from "react";
 import { useLogin, useNotify } from "react-admin";
 import Auth from "../components/Auth";
 
-import { Button } from "@material-ui/core";
+import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
 const Login = () => {
   const [email, setEmail] = useState("");

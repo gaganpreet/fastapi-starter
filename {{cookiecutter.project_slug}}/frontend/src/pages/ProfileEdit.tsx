@@ -70,7 +70,7 @@ export const ProfileEdit = ({ ...props }) => {
         .usersPatchCurrentUser({ userUpdate: values })
         .then(() => {
           setSaving(false);
-          notify("Your profile has been updated", "info");
+          notify("Your profile has been updated", { type: "info" });
           refreshProfile();
           return redirect("/");
         })
@@ -78,7 +78,7 @@ export const ProfileEdit = ({ ...props }) => {
           setSaving(false);
           notify(
             e.response?.data?.detail || "Unknown error, please try again later",
-            "error"
+            { type: "error" }
           );
         });
     },

@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Card, CardHeader } from "@material-ui/core";
+import CardHeader from "@mui/material/CardHeader";
+import Card from "@mui/material/Card";
 
 export default () => (
   <Card>

@@ -3,7 +3,7 @@ import { FormEvent, useState } from "react";
 import { Button } from "@material-ui/core";
 import { useNotify } from "react-admin";
 import Auth from "../components/Auth";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { authApi } from "../providers/env";
 import { AxiosError } from "axios";
 
@@ -11,7 +11,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const notify = useNotify();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const Register = () => {
       });
       if (response.data.id) {
         notify("Successfully registered, you can now log in", "success");
-        history.push("/login");
+        navigate("/login");
       }
     } catch (e) {
       const exp = e as AxiosError;
@@ -42,7 +42,7 @@ const Register = () => {
       actionName="Register"
       submit={submit}
       extraActions={
-        <Button color="secondary" onClick={() => history.push("/login")}>
+        <Button color="secondary" onClick={() => navigate("/login")}>
           Sign in
         </Button>
       }

@@ -39,7 +39,7 @@ const App = () => {
       dashboard={Dashboard}
     >
       <CustomRoutes>
-        <Route path="/register" element={<ProfileEdit />} />
+        <Route path="/my-profile" element={<ProfileEdit />} />
       </CustomRoutes>
       <CustomRoutes noLayout>
         <Route path="/register" element={<Register />} />

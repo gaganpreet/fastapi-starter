@@ -61,7 +61,7 @@ describe("Test register, login and item", () => {
   });
 
   it("Edits profile", () => {
-    cy.get('button[title^="Profile"]').click();
+    cy.get('button[aria-label^="Profile"]').click();
     cy.contains("My Profile").click();
     const newUsername = `abc${new Date().getTime()}@example.com`;
     cy.get(`input[value='${username}']`).clear().type(newUsername);

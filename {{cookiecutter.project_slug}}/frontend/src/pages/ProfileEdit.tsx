@@ -54,14 +54,14 @@ const CustomToolbar = (props: any) => (
 
 export const ProfileEdit = ({ ...props }) => {
   const notify = useNotify();
-  const { loaded: permissionsLoaded, permissions } = usePermissions();
+  const { isLoading: isPermissionsLoading, permissions } = usePermissions();
   const redirect = useRedirect();
-  if (permissionsLoaded && !permissions?.email) {
+  if (!isPermissionsLoading && !permissions?.email) {
     redirect("/login");
   }
   const [saving, setSaving] = useState(false);
   const { refreshProfile, profileVersion } = useProfile();
-  const { loaded, identity } = useGetIdentity();
+  const { isLoading: isUserIdentityLoading, identity } = useGetIdentity();
 
   const handleSave = useCallback(
     (values) => {
@@ -87,7 +87,7 @@ export const ProfileEdit = ({ ...props }) => {
 
   const saveContext = useSaveContext({ save: handleSave, saving });
 
-  if (!loaded) {
+  if (isUserIdentityLoading) {
     return null;
   }
 

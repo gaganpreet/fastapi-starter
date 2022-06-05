@@ -1,13 +1,12 @@
-import React from "react";
-import { TestContext } from "ra-test";
 import { render, screen } from "@testing-library/react";
+import { AdminContext } from "react-admin";
 import LoginPage from "./Login";
 
 test("renders login", () => {
   render(
-    <TestContext>
+    <AdminContext>
       <LoginPage />
-    </TestContext>
+    </AdminContext>
   );
   const loginElements = screen.getAllByText(/Sign in/);
   expect(loginElements).toHaveLength(2);

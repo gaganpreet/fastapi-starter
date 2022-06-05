@@ -4225,10 +4225,10 @@ cjs-module-lexer@^1.0.0:
   resolved "https://registry.yarnpkg.com/cjs-module-lexer/-/cjs-module-lexer-1.2.2.tgz#9f84ba3244a512f3a54e5277e8eef4c489864e40"
   integrity sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA==
 
-classnames@~2.2.5:
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
-  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
+classnames@~2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
 
 clean-css@^5.2.2:
   version "5.3.0"
@@ -4876,11 +4876,6 @@ data-urls@^2.0.0:
     abab "^2.0.3"
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
-
-date-fns@^1.29.0:
-  version "1.30.1"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
-  integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
 
 date-fns@^2.16.1:
   version "2.23.0"
@@ -5723,11 +5718,6 @@ eventemitter2@^6.4.3:
   version "6.4.5"
   resolved "https://registry.yarnpkg.com/eventemitter2/-/eventemitter2-6.4.5.tgz#97380f758ae24ac15df8353e0cc27f8b95644655"
   integrity sha512-bXE7Dyc1i6oQElDG0jMRZJrRAn9QR2xyyFGmBdZleNmyQX0FqGYmhZIrIrpPfm/w//LTo4tVQGOGQcGCb5q9uw==
-
-eventemitter3@^3.0.0:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.2.tgz#2d3d48f9c346698fce83a85d7d664e98535df6e7"
-  integrity sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==
 
 eventemitter3@^4.0.0, eventemitter3@^4.0.7:
   version "4.0.7"
@@ -9303,15 +9293,6 @@ qs@~6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
-query-string@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/query-string/-/query-string-5.1.1.tgz#a78c012b71c17e05f2e3fa2319dd330682efb3cb"
-  integrity sha512-gjWOsm2SoGlgLEdAGt7a6slVOk9mGiXmPFMqrEhLQ68rhQuBnpfs3+EmlvqKyxnCo9/PPlF+9MtY02S1aFg+Jw==
-  dependencies:
-    decode-uri-component "^0.2.0"
-    object-assign "^4.1.0"
-    strict-uri-encode "^1.0.0"
-
 query-string@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-7.1.1.tgz#754620669db978625a90f635f12617c271a088e1"
@@ -9337,20 +9318,6 @@ quick-lru@^5.1.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
-ra-core@^3.18.0:
-  version "3.18.3"
-  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.18.3.tgz#9a581de5d564895f06718d4d94f3a6a216c58abb"
-  integrity sha512-DRIsbf1G7Zvvzs55TiMJvZ56psDk5Syj/PxPBhmMmhVoSavZ/i23J+ObKrGUKWNk4cwNg3IZR8IxZCGyMEe1Qg==
-  dependencies:
-    classnames "~2.2.5"
-    date-fns "^1.29.0"
-    eventemitter3 "^3.0.0"
-    inflection "~1.12.0"
-    lodash "~4.17.5"
-    prop-types "^15.6.1"
-    query-string "^5.1.1"
-    reselect "~3.0.0"
-
 ra-core@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-4.1.2.tgz#38db469b233e8edbeb879b011e5340b6759cf26c"
@@ -9367,20 +9334,20 @@ ra-core@^4.1.2:
     react-is "^17.0.2"
     react-query "^3.32.1"
 
-ra-data-json-server@^3.18.0:
-  version "3.18.0"
-  resolved "https://registry.yarnpkg.com/ra-data-json-server/-/ra-data-json-server-3.18.0.tgz#ee3956892af63d5337853072ea8e9e753141099d"
-  integrity sha512-fD6yiG0tcAJAj+HUVby9GIMCRSovdMhCi9FkLtsFfDUvSix48mje+8zVguVDAfD7ChM1mtUWwdbKwmOlLKSQNQ==
+ra-data-json-server@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/ra-data-json-server/-/ra-data-json-server-4.1.2.tgz#543613d8f5f3846541e3422b4a73a6a03e3d236e"
+  integrity sha512-YQ9QfT/G0BkwOboOh8mD9PM/kjKYb/XlbZwdYpWIGt9hehG1AFdtjSDNrWFbWNX0pv9NhJm7MumlJhlb5xDs5A==
   dependencies:
-    query-string "^5.1.1"
-    ra-core "^3.18.0"
+    query-string "^7.1.1"
+    ra-core "^4.1.2"
 
-ra-data-simple-rest@^3.18.0:
-  version "3.18.0"
-  resolved "https://registry.yarnpkg.com/ra-data-simple-rest/-/ra-data-simple-rest-3.18.0.tgz#ef0c5b8b051e0d1d97eb2629a3f713377064c96f"
-  integrity sha512-ofYP2jFL/GfxAcXah8OC+3gv7FsjNcfBwBPmcQO7b98NgH547EmDDc1dlrfkAv072a0zUubbA+xHf1NlvJFSPA==
+ra-data-simple-rest@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/ra-data-simple-rest/-/ra-data-simple-rest-4.1.2.tgz#21639af6baa01c332b87f4cde889cf2c7452e6f7"
+  integrity sha512-ulHT3EoXqSiBjivc1mp4cQPfQS+fX/mWmGs0+Ii/57pbivzWlpxHcazUqBASLiuxxoV1gdwbOcn7BH8UqeDsww==
   dependencies:
-    query-string "^5.1.1"
+    query-string "^7.1.1"
 
 ra-i18n-polyglot@^4.1.2:
   version "4.1.2"
@@ -9397,13 +9364,13 @@ ra-language-english@^4.1.2:
   dependencies:
     ra-core "^4.1.2"
 
-ra-test@^3.19.0:
-  version "3.19.0"
-  resolved "https://registry.yarnpkg.com/ra-test/-/ra-test-3.19.0.tgz#dcf8056752ef617e86a65d2bc4172a0d2d7f7b8e"
-  integrity sha512-yJoanZZwU5rcsDUGL/PQhdm6wtAZI4WXQhg8tCX+ZCp77chwkMh8y00aWiAUbOy1YV8ry1HHK8UoW2rDoDZ8yg==
+ra-test@^3.19.11:
+  version "3.19.11"
+  resolved "https://registry.yarnpkg.com/ra-test/-/ra-test-3.19.11.tgz#1a12f47126db1d5c21339c9f4b2c4a66e151c8d8"
+  integrity sha512-Uo5+KlUa4Pk8tIiHUI+91QjMhN1HYN4azajPNWp5Q9NhOFQu9zp5nIq2UShfxHZ1mVsRq6XeKUmRujUFXamFwg==
   dependencies:
     "@testing-library/react" "^11.2.3"
-    classnames "~2.2.5"
+    classnames "~2.3.1"
     lodash "~4.17.5"
 
 ra-ui-materialui@^4.1.2:
@@ -9869,11 +9836,6 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
-
-reselect@~3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
-  integrity sha1-79qpjqdFEyTQkrKyFjpqHXqaIUc=
 
 resolve-cwd@^3.0.0:
   version "3.0.0"
@@ -10414,11 +10376,6 @@ stackframe@^1.1.1:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
-
-strict-uri-encode@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
-  integrity sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=
 
 strict-uri-encode@^2.0.0:
   version "2.0.0"

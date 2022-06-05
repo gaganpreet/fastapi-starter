@@ -1,4 +1,3 @@
-import UserIcon from "@material-ui/icons/Group";
 import { createBrowserHistory as createHistory } from "history";
 import simpleRestProvider from "ra-data-simple-rest";
 import { Admin, fetchUtils, Resource, CustomRoutes } from "react-admin";
@@ -12,7 +11,8 @@ import Register from "./pages/Register";
 import { UserEdit, UserList } from "./pages/Users";
 import authProvider from "./providers/authProvider";
 import { basePath } from "./providers/env";
-import PostIcon from "@material-ui/icons/Book";
+import PostIcon from "@mui/icons-material/PostAdd";
+import PersonIcon from "@mui/icons-material/Person";
 
 const httpClient = (url: string, options: any = {}) => {
   options.user = {
@@ -51,7 +51,7 @@ const App = () => {
             name="users"
             list={UserList}
             edit={UserEdit}
-            icon={UserIcon}
+            icon={PersonIcon}
           />
         ) : null,
         <Resource

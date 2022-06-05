@@ -64,8 +64,10 @@ describe("Test register, login and item", () => {
     cy.get('button[aria-label^="Profile"]').click();
     cy.contains("My Profile").click();
     const newUsername = `abc${new Date().getTime()}@example.com`;
-    cy.get(`input[value='${username}']`).clear().type(newUsername);
-    cy.contains("Save").click();
+    cy.get(`input[value='${username}']`)
+      .clear({ force: true })
+      .type(newUsername, { force: true });
+    cy.contains("Save").click({ force: true });
     cy.contains("Your profile has been updated");
   });
 });

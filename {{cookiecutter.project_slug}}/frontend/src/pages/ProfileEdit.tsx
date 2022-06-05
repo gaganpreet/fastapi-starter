@@ -12,7 +12,6 @@ import {
   useNotify,
   SaveContextProvider,
   useGetIdentity,
-  useSaveContext,
   usePermissions,
   useRedirect,
   Toolbar,
@@ -85,19 +84,16 @@ export const ProfileEdit = ({ ...props }) => {
     [notify, refreshProfile]
   );
 
-  const saveContext = useSaveContext({ save: handleSave, saving });
-
   if (isUserIdentityLoading) {
     return null;
   }
 
   return (
-    <SaveContextProvider value={saveContext} key={profileVersion}>
-      <SimpleForm
-        save={handleSave}
-        record={identity ? identity : {}}
-        toolbar={<CustomToolbar />}
-      >
+    <SaveContextProvider
+      value={{ save: handleSave, saving }}
+      key={profileVersion}
+    >
+      <SimpleForm record={identity ? identity : {}} toolbar={<CustomToolbar />}>
         <TextInput source="id" disabled />
         <TextInput source="email" validate={required()} />
       </SimpleForm>

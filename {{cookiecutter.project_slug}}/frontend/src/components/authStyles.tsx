@@ -1,9 +1,8 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
+const authStyles = {
   main: {
     display: "flex",
-    flexDirection: "column",
+    // Following "string" as "string" is ugly, but it's a Typescript thing
+    flexDirection: "column" as "column",
     minHeight: "100vh",
     alignItems: "center",
     justifyContent: "flex-start",
@@ -21,15 +20,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
   },
-  icon: {
-    backgroundColor: theme.palette.secondary.main,
-  },
   form: {
     padding: "0 1em 1em 1em",
   },
   actions: {
     padding: "0 1em 1em 1em",
   },
-}));
+};
 
-export default useStyles;
+export default authStyles;

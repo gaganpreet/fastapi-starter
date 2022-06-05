@@ -1,8 +1,10 @@
 import CardHeader from "@mui/material/CardHeader";
 import Card from "@mui/material/Card";
 
-export default () => (
+const Component = () => (
   <Card>
     <CardHeader title="Welcome to admin" />
   </Card>
 );
+
+export default Component;

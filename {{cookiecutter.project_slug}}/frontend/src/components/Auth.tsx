@@ -7,7 +7,7 @@ import CardHeader from "@mui/material/CardHeader";
 import CardActions from "@mui/material/CardActions";
 import TextField from "@mui/material/TextField";
 import { Notification } from "react-admin";
-import useStyles from "./authStyles";
+import authStyles from "./authStyles";
 import LockIcon from "@mui/icons-material/Lock";
 
 interface AuthProps {
@@ -25,22 +25,20 @@ const Auth: React.FC<AuthProps> = ({
   actionName,
   extraActions,
 }) => {
-  const classes = useStyles();
-
   return (
     <form noValidate onSubmit={submit}>
-      <div className={classes.main}>
-        <Card className={classes.card}>
-          <div className={classes.avatar}>
-            <Avatar className={classes.icon}>
+      <div style={authStyles.main}>
+        <Card sx={authStyles.card}>
+          <div style={authStyles.avatar}>
+            <Avatar>
               <LockIcon />
             </Avatar>
           </div>
           <CardHeader
             title={`{{ cookiecutter.project_name }} - ${actionName}`}
-            className={classes.header}
+            sx={authStyles.header}
           />
-          <div className={classes.form}>
+          <div style={authStyles.form}>
             <div>
               <TextField
                 id="email"
@@ -63,12 +61,12 @@ const Auth: React.FC<AuthProps> = ({
               </div>
             )}
           </div>
-          <CardActions className={classes.actions}>
+          <CardActions sx={authStyles.actions}>
             <Button variant="contained" type="submit" color="primary" fullWidth>
               {actionName}
             </Button>
           </CardActions>
-          <CardActions className={classes.actions}>{extraActions}</CardActions>
+          <CardActions sx={authStyles.actions}>{extraActions}</CardActions>
         </Card>
         <Notification />
       </div>

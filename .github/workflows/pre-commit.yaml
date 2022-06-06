@@ -15,4 +15,4 @@ jobs:
         cache-dependency-path: "{{cookiecutter.project_slug}}/frontend/yarn.lock"
         cache: 'yarn'
     - run: cd "{{cookiecutter.project_slug}}/frontend" && yarn install
-    - uses: pre-commit/action@v2.0.3
+    - uses: pre-commit/action@v3.0.0

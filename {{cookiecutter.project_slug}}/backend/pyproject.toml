@@ -12,7 +12,7 @@ pydantic = "^1.9.1"
 requests = "^2.27.1"
 alembic = "^1.8.0"
 psycopg2-binary = "^2.9.3"
-fastapi-users = {extras = ["sqlalchemy2"], version = "^9.3.1"}
+fastapi-users = {extras = ["sqlalchemy2"], version = "^10.0.7"}
 asyncpg = "^0.25.0"
 SQLAlchemy = "^1.4.37"
 databases = "^0.5.5"

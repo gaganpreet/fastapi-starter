@@ -282,43 +282,27 @@ test = ["pytest (>=6.2.4,<7.0.0)", "pytest-cov (>=2.12.0,<4.0.0)", "mypy (==0.91
 
 [[package]]
 name = "fastapi-users"
-version = "9.3.2"
+version = "10.0.7"
 description = "Ready-to-use and customizable users management for FastAPI"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
-email-validator = ">=1.1.0,<1.2"
-fastapi = ">=0.65.2,<0.76.0"
-fastapi-users-db-sqlalchemy = {version = ">=2.0.0,<4.0.0", optional = true, markers = "extra == \"sqlalchemy2\""}
+email-validator = ">=1.1.0,<1.3"
+fastapi = ">=0.65.2"
 makefun = ">=1.11.2,<1.14"
 passlib = {version = "1.7.4", extras = ["bcrypt"]}
-pyjwt = {version = "2.3.0", extras = ["crypto"]}
+pyjwt = {version = "2.4.0", extras = ["crypto"]}
 python-multipart = "0.0.5"
 typing-extensions = {version = ">=4.1.1", markers = "python_version < \"3.8\""}
 
 [package.extras]
-dev = ["flake8", "pytest", "requests", "isort", "pytest-asyncio", "flake8-docstrings", "mike", "mkdocs", "mkdocs-material", "mkdocs-mermaid2-plugin", "black", "mypy", "codecov", "pytest-cov", "pytest-mock", "flit", "markdown-include", "pygments", "pymdown-extensions", "bumpversion", "httpx-oauth", "httpx", "asgi-lifespan", "uvicorn"]
-mongodb = ["fastapi-users-db-mongodb (>=1.1.0,<2.0.0)"]
+beanie = ["fastapi-users-db-beanie (>=1.0.0)"]
+dev = ["flake8", "pytest", "requests", "isort", "pytest-asyncio", "flake8-docstrings", "mike", "mkdocs", "mkdocs-material", "mkdocs-mermaid2-plugin", "black", "mypy", "codecov", "pytest-cov", "pytest-mock", "flit", "markdown-include", "pygments", "pymdown-extensions", "bumpversion", "httpx-oauth", "httpx", "asgi-lifespan", "uvicorn", "types-redis"]
 oauth = ["httpx-oauth (>=0.4,<0.7)"]
-ormar = ["fastapi-users-db-ormar (>=1.0.0,<2.0.0)"]
-redis = ["aioredis (>=2.0.1,<2.1.0)", "hiredis (>=2.0.0,<2.1.0)"]
-sqlalchemy = ["fastapi-users-db-sqlalchemy (>=1.1.0,<2.0.0)"]
-sqlalchemy2 = ["fastapi-users-db-sqlalchemy (>=2.0.0,<4.0.0)"]
-tortoise-orm = ["fastapi-users-db-tortoise (>=1.1.0,<2.0.0)"]
-
-[[package]]
-name = "fastapi-users-db-sqlalchemy"
-version = "3.0.0"
-description = "FastAPI Users database adapter for SQLAlchemy."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-fastapi-users = ">=9.1.0"
-sqlalchemy = ">=1.4"
+redis = ["redis (>=4.3.3,<5.0.0)"]
+sqlalchemy = ["fastapi-users-db-sqlalchemy (>=4.0.0)"]
 
 [[package]]
 name = "greenlet"
@@ -660,7 +644,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "pyjwt"
-version = "2.3.0"
+version = "2.4.0"
 description = "JSON Web Token implementation in Python"
 category = "main"
 optional = false
@@ -886,7 +870,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "db7c8cdb73ff82f3350d256979957ecfb9dcf82284ca8fb6a186009dcaf62acc"
+content-hash = "049e98e682d4f36a05f917aeb6070a853806c3960149d290cdd1e2d87918103e"
 
 [metadata.files]
 alembic = [
@@ -1088,12 +1072,8 @@ fastapi = [
     {file = "fastapi-0.75.2.tar.gz", hash = "sha256:b5dac161ee19d33346040d3f44d8b7a9ac09b37df9efff95891f5e7641fa482f"},
 ]
 fastapi-users = [
-    {file = "fastapi-users-9.3.2.tar.gz", hash = "sha256:57b4bb1abc43d710c375f3e2bac3a13b69a266300f3bb9623a336f758b4c0931"},
-    {file = "fastapi_users-9.3.2-py3-none-any.whl", hash = "sha256:00394b1e7d869750c6105c9962d9765f91a151be952e375498fbea38601ccec7"},
-]
-fastapi-users-db-sqlalchemy = [
-    {file = "fastapi-users-db-sqlalchemy-3.0.0.tar.gz", hash = "sha256:29551c1babdfea3c964dc54aea5148431b066cdaea1dc44054a6e370368aee55"},
-    {file = "fastapi_users_db_sqlalchemy-3.0.0-py3-none-any.whl", hash = "sha256:f0e48d85a7ed9abd165f8acee5815171b26d5418986e7f72288045a6fd71cb33"},
+    {file = "fastapi-users-10.0.7.tar.gz", hash = "sha256:f56dc687d99ea3574462d2e67596da5200695ed3a3eded2acd9f043b80feb534"},
+    {file = "fastapi_users-10.0.7-py3-none-any.whl", hash = "sha256:0d1160ee3bfe344b1503f10f5d2d997a335f4575b59d2af173c3b97f24a0d87b"},
 ]
 greenlet = [
     {file = "greenlet-1.1.1-cp27-cp27m-macosx_10_14_x86_64.whl", hash = "sha256:476ba9435afaead4382fbab8f1882f75e3fb2285c35c9285abb3dd30237f9142"},
@@ -1414,8 +1394,8 @@ pygments = [
     {file = "Pygments-2.10.0.tar.gz", hash = "sha256:f398865f7eb6874156579fdf36bc840a03cab64d1cde9e93d68f46a425ec52c6"},
 ]
 pyjwt = [
-    {file = "PyJWT-2.3.0-py3-none-any.whl", hash = "sha256:e0c4bb8d9f0af0c7f5b1ec4c5036309617d03d56932877f2f7a0beeb5318322f"},
-    {file = "PyJWT-2.3.0.tar.gz", hash = "sha256:b888b4d56f06f6dcd777210c334e69c737be74755d3e5e9ee3fe67dc18a0ee41"},
+    {file = "PyJWT-2.4.0-py3-none-any.whl", hash = "sha256:72d1d253f32dbd4f5c88eaf1fdc62f3a19f676ccbadb9dbc5d07e951b2b26daf"},
+    {file = "PyJWT-2.4.0.tar.gz", hash = "sha256:d42908208c699b3b973cbeb01a969ba6a96c821eefb1c5bfe4c390c01d67abba"},
 ]
 pyparsing = [
     {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},

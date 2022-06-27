@@ -4,7 +4,7 @@ A FastAPI based starter that relies heavily on existing plugins/frameworks to cr
 
 ## How to use
 
-You need Python 3 and pip installed locally. Run the [cookiecutter](https://cookiecutter.readthedocs.io) command and you'll be asked a few prompts.
+You need Python 3 and pip installed locally. Run the [cookiecutter](https://cookiecutter.readthedocs.io) command (at least 1.7) and you'll be asked a few prompts.
 
 ```bash
 pip3 install cookiecutter

@@ -10,6 +10,7 @@ env:
 jobs:
   deploy:
       if: ${{ github.event.workflow_run.conclusion == 'success' }}
+      timeout-minutes: 6
       name: Deploy app
       runs-on: ubuntu-latest
       steps:

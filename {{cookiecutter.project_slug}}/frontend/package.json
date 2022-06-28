@@ -12,7 +12,7 @@
     "@types/react-dom": "^17.0.0",
     "axios": "^0.21.4",
     "ra-data-json-server": "^4.1.2",
-    "ra-data-simple-rest": "^4.1.2",
+    "ra-data-simple-rest": "^4.2.0",
     "react": "^17.0.2",
     "react-admin": "^4.1.2",
     "react-dom": "^17.0.2",
@@ -56,6 +56,6 @@
     "cypress": "^8.6.0",
     "cypress-localstorage-commands": "^2.1.0",
     "eslint-plugin-cypress": "^2.12.1",
-    "prettier": "^2.6.2"
+    "prettier": "^2.7.1"
   }
 }

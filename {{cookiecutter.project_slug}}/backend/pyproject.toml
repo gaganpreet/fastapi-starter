@@ -7,7 +7,7 @@ authors = []
 [tool.poetry.dependencies]
 python = "^3.7"
 fastapi = "^0.75.2"
-uvicorn = "^0.18.1"
+uvicorn = "^0.18.2"
 pydantic = "^1.9.1"
 requests = "^2.27.1"
 alembic = "^1.8.0"

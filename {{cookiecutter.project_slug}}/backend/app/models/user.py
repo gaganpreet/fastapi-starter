@@ -1,4 +1,4 @@
-from fastapi_users.db import SQLAlchemyBaseUserTable
+from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTableUUID
 from sqlalchemy import Column, DateTime
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.functions import func
@@ -6,7 +6,7 @@ from sqlalchemy.sql.functions import func
 from app.db import Base
 
 
-class User(Base, SQLAlchemyBaseUserTable):
+class User(SQLAlchemyBaseUserTableUUID, Base):
     __tablename__ = "users"
 
     created = Column(DateTime(timezone=True), server_default=func.now())

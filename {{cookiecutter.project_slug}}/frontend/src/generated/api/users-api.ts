@@ -25,7 +25,7 @@ import { ErrorModel } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
-import { User } from '../models';
+import { UserRead } from '../models';
 // @ts-ignore
 import { UserUpdate } from '../models';
 /**
@@ -115,11 +115,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Users:Delete User
-         * @param {string} id 
+         * @param {any} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersDeleteUser: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        usersDeleteUser: async (id: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('usersDeleteUser', 'id', id)
             const localVarPath = `/api/v1/users/{id}`
@@ -193,12 +193,12 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Users:Patch User
-         * @param {string} id 
+         * @param {any} id 
          * @param {UserUpdate} userUpdate 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersPatchUser: async (id: string, userUpdate: UserUpdate, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        usersPatchUser: async (id: any, userUpdate: UserUpdate, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('usersPatchUser', 'id', id)
             // verify required parameter 'userUpdate' is not null or undefined
@@ -237,11 +237,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Users:User
-         * @param {string} id 
+         * @param {any} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUser: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        usersUser: async (id: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('usersUser', 'id', id)
             const localVarPath = `/api/v1/users/{id}`
@@ -290,7 +290,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsers(skip?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<User>>> {
+        async getUsers(skip?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserRead>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUsers(skip, limit, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -300,18 +300,18 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async usersCurrentUser(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async usersCurrentUser(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRead>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.usersCurrentUser(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Users:Delete User
-         * @param {string} id 
+         * @param {any} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async usersDeleteUser(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async usersDeleteUser(id: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.usersDeleteUser(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -322,30 +322,30 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async usersPatchCurrentUser(userUpdate: UserUpdate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async usersPatchCurrentUser(userUpdate: UserUpdate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRead>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.usersPatchCurrentUser(userUpdate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Users:Patch User
-         * @param {string} id 
+         * @param {any} id 
          * @param {UserUpdate} userUpdate 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async usersPatchUser(id: string, userUpdate: UserUpdate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async usersPatchUser(id: any, userUpdate: UserUpdate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRead>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.usersPatchUser(id, userUpdate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Users:User
-         * @param {string} id 
+         * @param {any} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async usersUser(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async usersUser(id: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRead>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.usersUser(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -367,7 +367,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsers(skip?: number, limit?: number, options?: any): AxiosPromise<Array<User>> {
+        getUsers(skip?: number, limit?: number, options?: any): AxiosPromise<Array<UserRead>> {
             return localVarFp.getUsers(skip, limit, options).then((request) => request(axios, basePath));
         },
         /**
@@ -376,17 +376,17 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersCurrentUser(options?: any): AxiosPromise<User> {
+        usersCurrentUser(options?: any): AxiosPromise<UserRead> {
             return localVarFp.usersCurrentUser(options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Users:Delete User
-         * @param {string} id 
+         * @param {any} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersDeleteUser(id: string, options?: any): AxiosPromise<void> {
+        usersDeleteUser(id: any, options?: any): AxiosPromise<void> {
             return localVarFp.usersDeleteUser(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -396,28 +396,28 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersPatchCurrentUser(userUpdate: UserUpdate, options?: any): AxiosPromise<User> {
+        usersPatchCurrentUser(userUpdate: UserUpdate, options?: any): AxiosPromise<UserRead> {
             return localVarFp.usersPatchCurrentUser(userUpdate, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Users:Patch User
-         * @param {string} id 
+         * @param {any} id 
          * @param {UserUpdate} userUpdate 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersPatchUser(id: string, userUpdate: UserUpdate, options?: any): AxiosPromise<User> {
+        usersPatchUser(id: any, userUpdate: UserUpdate, options?: any): AxiosPromise<UserRead> {
             return localVarFp.usersPatchUser(id, userUpdate, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Users:User
-         * @param {string} id 
+         * @param {any} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUser(id: string, options?: any): AxiosPromise<User> {
+        usersUser(id: any, options?: any): AxiosPromise<UserRead> {
             return localVarFp.usersUser(id, options).then((request) => request(axios, basePath));
         },
     };
@@ -452,10 +452,10 @@ export interface UsersApiGetUsersRequest {
 export interface UsersApiUsersDeleteUserRequest {
     /**
      * 
-     * @type {string}
+     * @type {any}
      * @memberof UsersApiUsersDeleteUser
      */
-    readonly id: string
+    readonly id: any
 }
 
 /**
@@ -480,10 +480,10 @@ export interface UsersApiUsersPatchCurrentUserRequest {
 export interface UsersApiUsersPatchUserRequest {
     /**
      * 
-     * @type {string}
+     * @type {any}
      * @memberof UsersApiUsersPatchUser
      */
-    readonly id: string
+    readonly id: any
 
     /**
      * 
@@ -501,10 +501,10 @@ export interface UsersApiUsersPatchUserRequest {
 export interface UsersApiUsersUserRequest {
     /**
      * 
-     * @type {string}
+     * @type {any}
      * @memberof UsersApiUsersUser
      */
-    readonly id: string
+    readonly id: any
 }
 
 /**

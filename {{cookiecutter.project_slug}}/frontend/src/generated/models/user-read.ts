@@ -15,39 +15,39 @@
 
 
 /**
- * 
+ * Base User model.
  * @export
- * @interface UserUpdate
+ * @interface UserRead
  */
-export interface UserUpdate {
+export interface UserRead {
+    /**
+     * 
+     * @type {any}
+     * @memberof UserRead
+     */
+    'id'?: any;
     /**
      * 
      * @type {string}
-     * @memberof UserUpdate
+     * @memberof UserRead
      */
-    'password'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserUpdate
-     */
-    'email'?: string;
+    'email': string;
     /**
      * 
      * @type {boolean}
-     * @memberof UserUpdate
+     * @memberof UserRead
      */
     'is_active'?: boolean;
     /**
      * 
      * @type {boolean}
-     * @memberof UserUpdate
+     * @memberof UserRead
      */
     'is_superuser'?: boolean;
     /**
      * 
      * @type {boolean}
-     * @memberof UserUpdate
+     * @memberof UserRead
      */
     'is_verified'?: boolean;
 }

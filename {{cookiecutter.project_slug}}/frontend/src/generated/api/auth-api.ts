@@ -27,9 +27,9 @@ import { ErrorModel } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
-import { User } from '../models';
-// @ts-ignore
 import { UserCreate } from '../models';
+// @ts-ignore
+import { UserRead } from '../models';
 /**
  * AuthApi - axios parameter creator
  * @export
@@ -217,7 +217,7 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async registerRegister(userCreate: UserCreate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async registerRegister(userCreate: UserCreate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRead>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.registerRegister(userCreate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -262,7 +262,7 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        registerRegister(userCreate: UserCreate, options?: any): AxiosPromise<User> {
+        registerRegister(userCreate: UserCreate, options?: any): AxiosPromise<UserRead> {
             return localVarFp.registerRegister(userCreate, options).then((request) => request(axios, basePath));
         },
     };

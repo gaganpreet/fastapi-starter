@@ -17,6 +17,6 @@ models/item-create.ts
 models/item-update.ts
 models/item.ts
 models/user-create.ts
+models/user-read.ts
 models/user-update.ts
-models/user.ts
 models/validation-error.ts

@@ -14,7 +14,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.config import settings
 from app.deps.db import get_async_session
 from app.models.user import User as UserModel
-from app.schemas.user import User, UserCreate, UserDB, UserUpdate
 
 bearer_transport = BearerTransport(tokenUrl="auth/jwt/login")
 

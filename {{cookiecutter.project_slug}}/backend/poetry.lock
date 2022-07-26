@@ -271,7 +271,7 @@ test = ["pytest (>=6.2.4,<7.0.0)", "pytest-cov (>=2.12.0,<4.0.0)", "mypy (==0.91
 
 [[package]]
 name = "fastapi-users"
-version = "10.1.3"
+version = "10.1.4"
 description = "Ready-to-use and customizable users management for FastAPI"
 category = "main"
 optional = false
@@ -871,7 +871,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "1b5820dc9ed291bbd6c1bc7ad7aef97223f1c91e49f78026a45fa4e6b02ba5e2"
+content-hash = "68c638805d7b7cf93245a5a4c12e2b3a7e5828fa8d2f018887d6693661a76e50"
 
 [metadata.files]
 alembic = [
@@ -1091,8 +1091,8 @@ fastapi = [
     {file = "fastapi-0.79.0.tar.gz", hash = "sha256:cf0ff6db25b91d321050c4112baab0908c90f19b40bf257f9591d2f9780d1f22"},
 ]
 fastapi-users = [
-    {file = "fastapi-users-10.1.3.tar.gz", hash = "sha256:54919c505f77565073cb127afe6cae9d660956dd0802285b62b0ed651467dfcf"},
-    {file = "fastapi_users-10.1.3-py3-none-any.whl", hash = "sha256:6552895214f1c0710594be84bfd123af2ce9582dc18b1f3d7b818e7707ac88ce"},
+    {file = "fastapi-users-10.1.4.tar.gz", hash = "sha256:b91b3c8da52c0e5a72254bd1875171ecd3e4be2f2c248df7418ee95c1fe68f94"},
+    {file = "fastapi_users-10.1.4-py3-none-any.whl", hash = "sha256:c4110413369ab7a6ed6d279adbefbe8f86ba9f3adc8048b0f1f2033fea9191a5"},
 ]
 fastapi-users-db-sqlalchemy = [
     {file = "fastapi-users-db-sqlalchemy-4.0.3.tar.gz", hash = "sha256:7d223742e687cf386bea4e990d6ca8571185c50f365301a34e8eb14ebbda18b2"},

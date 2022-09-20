@@ -56,6 +56,15 @@ yarn
 yarn start
 ```
 
+If you want to develop against something other than the default host, localhost:8000, you can set the `REACT_APP_API_BASE` environment variable:
+
+```bash
+export REACT_APP_API_BASE=http://mydomain.name:8000
+yarn start
+```
+
+Don't forget to edit the `.env` file and update the `BACKEND_CORS_ORIGINS` value (add `http://mydomain:3000` to the allowed origins).
+
 
 ### Rebuilding containers
 

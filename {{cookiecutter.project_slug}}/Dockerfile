@@ -15,7 +15,7 @@ COPY frontend /app/
 RUN yarn build
 
 
-FROM python:3.8
+FROM python:3.10
 
 WORKDIR /app
 

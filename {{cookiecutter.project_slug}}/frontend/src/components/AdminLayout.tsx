@@ -1,4 +1,4 @@
-import { UserMenu, MenuItemLink, AppBar, Layout } from "react-admin";
+import { UserMenu, MenuItemLink, AppBar, Layout, Logout } from "react-admin";
 import { ProfileProvider } from "../pages/ProfileEdit";
 import SettingsIcon from "@mui/icons-material/Settings";
 
@@ -12,6 +12,7 @@ const MyUserMenu = (props: any) => {
         primaryText="My Profile"
         leftIcon={<SettingsIcon />}
       />
+      <Logout key="logout" />
     </UserMenu>
   );
 };

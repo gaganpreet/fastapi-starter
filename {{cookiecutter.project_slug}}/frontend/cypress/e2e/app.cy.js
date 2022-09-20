@@ -70,4 +70,11 @@ describe("Test register, login and item", () => {
     cy.contains("Save").click({ force: true });
     cy.contains("Your profile has been updated");
   });
+
+  it("Sucessfully logs out", () => {
+    cy.get('button[aria-label^="Profile"]').click();
+    cy.contains("Logout").click();
+    cy.contains("Sign in");
+    cy.contains("Register");
+  });
 });

@@ -11,7 +11,7 @@
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.0",
     "axios": "^0.21.4",
-    "ra-data-json-server": "^4.1.2",
+    "ra-data-json-server": "^4.4.3",
     "ra-data-simple-rest": "^4.2.0",
     "react": "^17.0.2",
     "react-admin": "^4.2.2",

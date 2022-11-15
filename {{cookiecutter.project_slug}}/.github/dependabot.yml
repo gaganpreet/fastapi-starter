@@ -24,3 +24,6 @@ updates:
     directory: "/backend/"
     schedule:
       interval: "daily"
+    # Limited to 1 open PR at a time
+    # This avoids the cycle of 4 open PRs, merge 1, Dependabot rebases the rest
+    open-pull-requests-limit: 1

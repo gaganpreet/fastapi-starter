@@ -69,7 +69,7 @@ If you add a dependency, you'll need to rebuild your containers like this:
 docker-compose up -d --build
 ```
 
-### Rengerate front-end API package
+### Regenerate front-end API package
 
 Instead of writing frontend API client manually, OpenAPI Generator is used. Typescript bindings for the backend API can be recreated with this command:
 

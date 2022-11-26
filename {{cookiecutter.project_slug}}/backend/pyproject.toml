@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "sample-project-backend"
+name = "{{ cookiecutter.project_slug }}-backend"
 version = "0.1.0"
 description = ""
 authors = []

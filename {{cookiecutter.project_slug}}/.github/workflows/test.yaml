@@ -47,7 +47,7 @@ jobs:
         docker-compose exec -T backend pytest -v
 
     - name: Cypress run
-      uses: cypress-io/github-action@v2
+      uses: cypress-io/github-action@v5
       env:
         # Add Cypress key to Github project settings if you want to
         {%- raw %}

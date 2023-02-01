@@ -29,7 +29,7 @@ const Register = () => {
       }
     } catch (e) {
       const exp = e as AxiosError;
-      const errorMsg = exp.response?.data.detail[0].msg;
+      const errorMsg = exp.response?.data?.detail;
       if (errorMsg) {
         notify(errorMsg, { type: "error" });
       } else {

@@ -456,18 +456,18 @@ test = ["hypothesis (>=1.11.4,!=3.79.2)", "iso8601", "pretend", "pytest (>=6.2.0
 
 [[package]]
 name = "databases"
-version = "0.6.1"
+version = "0.7.0"
 description = "Async database support for Python."
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "databases-0.6.1-py3-none-any.whl", hash = "sha256:47fae85d82d8227049f08b154019913c3ad2f6057ceb0b5ebb36703be6f5666b"},
-    {file = "databases-0.6.1.tar.gz", hash = "sha256:0a69c6983a27e10a5b75ffa094486f1febadd9d5a8db016e69b8c2f6a354dc30"},
+    {file = "databases-0.7.0-py3-none-any.whl", hash = "sha256:cf5da4b8a3e3cd038c459529725ebb64931cbbb7a091102664f20ef8f6cefd0d"},
+    {file = "databases-0.7.0.tar.gz", hash = "sha256:ea2d419d3d2eb80595b7ceb8f282056f080af62efe2fb9bcd83562f93ec4b674"},
 ]
 
 [package.dependencies]
-sqlalchemy = ">=1.4,<1.5"
+sqlalchemy = ">=1.4.42,<1.5"
 
 [package.extras]
 aiomysql = ["aiomysql"]
@@ -1593,4 +1593,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "a11100f3fc6e509f010bdaa53b5316c10957426a9113df6c70e585426ea24865"
+content-hash = "9de0a939d4204cb9a573fae71e9ccbdd9e8aac447d4d09d3db09eb394c964a49"

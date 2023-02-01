@@ -578,14 +578,14 @@ test = ["anyio[trio] (>=3.2.1,<4.0.0)", "black (==22.8.0)", "databases[sqlite] (
 
 [[package]]
 name = "fastapi-users"
-version = "10.2.1"
+version = "10.3.0"
 description = "Ready-to-use and customizable users management for FastAPI"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "fastapi_users-10.2.1-py3-none-any.whl", hash = "sha256:4805f352a74e038ad2bb6bdff516975cc67f860b15b82625b91375691de8494a"},
-    {file = "fastapi_users-10.2.1.tar.gz", hash = "sha256:b26a8ce043b6588c38c77266cc9faa623a3235740d22f4bc66488fc2709ab465"},
+    {file = "fastapi_users-10.3.0-py3-none-any.whl", hash = "sha256:54596acad3df21bc3a06b7e67584d0e087186d726b99c7629e82f66da94aea91"},
+    {file = "fastapi_users-10.3.0.tar.gz", hash = "sha256:ab9dd218db088bc2d04474ec5fd0040971cea027186041d6d33979f990917d9a"},
 ]
 
 [package.dependencies]
@@ -1593,4 +1593,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "af83fc6442124f8d2e08554a8c0f438fb21dd111c6d12f47fb33ffb5007ed71f"
+content-hash = "a11100f3fc6e509f010bdaa53b5316c10957426a9113df6c70e585426ea24865"

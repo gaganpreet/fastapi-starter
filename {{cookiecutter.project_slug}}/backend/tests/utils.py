@@ -14,6 +14,6 @@ def generate_random_string(length: int) -> str:
 
 def get_jwt_header(user: User) -> Any:
     jwt_strategy = get_jwt_strategy()
-    data = {"user_id": str(user.id), "aud": jwt_strategy.token_audience}
+    data = {"sub": str(user.id), "aud": jwt_strategy.token_audience}
     token = generate_jwt(data, jwt_strategy.secret, jwt_strategy.lifetime_seconds)
     return {"Authorization": f"Bearer {token}"}

@@ -6,7 +6,6 @@ from pydantic.networks import AnyHttpUrl
 
 
 class Settings(BaseSettings):
-
     PROJECT_NAME: str = "{{cookiecutter.project_name}}"
 
     SENTRY_DSN: Optional[HttpUrl] = None
@@ -26,13 +25,16 @@ class Settings(BaseSettings):
     @validator("DATABASE_URL", pre=True)
     def build_test_database_url(cls, v: Optional[str], values: Dict[str, Any]):
         """Overrides DATABASE_URL with TEST_DATABASE_URL in test environment."""
+        url = v
         if "pytest" in sys.modules:
             if not values.get("TEST_DATABASE_URL"):
                 raise Exception(
                     "pytest detected, but TEST_DATABASE_URL is not set in environment"
                 )
-            return values["TEST_DATABASE_URL"]
-        return v
+            url = values["TEST_DATABASE_URL"]
+        if url:
+            return url.replace("postgres://", "postgresql://")
+        return url
 
     @validator("ASYNC_DATABASE_URL")
     def build_async_database_url(cls, v: Optional[str], values: Dict[str, Any]):

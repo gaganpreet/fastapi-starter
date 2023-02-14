@@ -22,7 +22,6 @@ def create_app():
         redoc_url=None,
     )
     setup_routers(app, fastapi_users)
-    init_db_hooks(app)
     setup_cors_middleware(app)
     serve_static_app(app)
     return app
@@ -95,15 +94,3 @@ def use_route_names_as_operation_ids(app: FastAPI) -> None:
                 raise Exception("Route function names should be unique")
             route.operation_id = route.name
             route_names.add(route.name)
-
-
-def init_db_hooks(app: FastAPI) -> None:
-    from app.db import database
-
-    @app.on_event("startup")
-    async def startup():
-        await database.connect()
-
-    @app.on_event("shutdown")
-    async def shutdown():
-        await database.disconnect()

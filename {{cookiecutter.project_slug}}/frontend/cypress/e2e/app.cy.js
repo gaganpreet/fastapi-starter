@@ -17,7 +17,7 @@ describe("Test register, login and item", () => {
   });
 
   it("Creates a new account", () => {
-    cy.get("div").last().contains("Register").click();
+    cy.get("a").last().contains("Register").click();
 
     cy.get("input").first().type(username);
     cy.get("input").last().type(defaultPassword);

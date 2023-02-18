@@ -567,14 +567,14 @@ test = ["anyio[trio] (>=3.2.1,<4.0.0)", "black (==22.10.0)", "coverage[toml] (>=
 
 [[package]]
 name = "fastapi-users"
-version = "10.3.0"
+version = "10.4.0"
 description = "Ready-to-use and customizable users management for FastAPI"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "fastapi_users-10.3.0-py3-none-any.whl", hash = "sha256:54596acad3df21bc3a06b7e67584d0e087186d726b99c7629e82f66da94aea91"},
-    {file = "fastapi_users-10.3.0.tar.gz", hash = "sha256:ab9dd218db088bc2d04474ec5fd0040971cea027186041d6d33979f990917d9a"},
+    {file = "fastapi_users-10.4.0-py3-none-any.whl", hash = "sha256:c8edc0c16b3bca41c4b4cea479b85b8f37f6682414e8649e01a05c0b135dbe7d"},
+    {file = "fastapi_users-10.4.0.tar.gz", hash = "sha256:7f77a2a74be8833daaba5d60f8e8c5b445bc26f26aecc445eea9d80e877d5629"},
 ]
 
 [package.dependencies]
@@ -588,7 +588,7 @@ python-multipart = "0.0.5"
 
 [package.extras]
 beanie = ["fastapi-users-db-beanie (>=1.0.0)"]
-oauth = ["httpx-oauth (>=0.4,<0.11)"]
+oauth = ["httpx-oauth (>=0.4,<0.12)"]
 redis = ["redis (>=4.3.3,<5.0.0)"]
 sqlalchemy = ["fastapi-users-db-sqlalchemy (>=4.0.0)"]
 
@@ -1628,4 +1628,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "e02649c136b750b9af604fed2998d048719d805e34f4996e4ac51d69f80fc19c"
+content-hash = "dd94bf114eadb8e349fbabd74f235e252c69a7801cf681b083734ac0e7741e45"

@@ -33,4 +33,4 @@ jobs:
       with:
         name: cypress-screenshots
         path: |
-          /app/cypress/screenshots/
+          frontend/cypress/

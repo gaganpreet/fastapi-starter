@@ -9278,10 +9278,10 @@ ra-data-json-server@^4.8.1:
     query-string "^7.1.1"
     ra-core "^4.8.1"
 
-ra-data-simple-rest@^4.8.0:
-  version "4.8.0"
-  resolved "https://registry.yarnpkg.com/ra-data-simple-rest/-/ra-data-simple-rest-4.8.0.tgz#3ecbd240a050ab072058a0803db69f662091c5ca"
-  integrity sha512-09YCmOuFJPJsLM6TjhMFWfR8bLDAwLED0Yrt3qLywoDtF1HE2KNOWFqZv4UUjI+piw4kZ+Dj+fBfobi0TG1tYQ==
+ra-data-simple-rest@^4.8.1:
+  version "4.8.1"
+  resolved "https://registry.yarnpkg.com/ra-data-simple-rest/-/ra-data-simple-rest-4.8.1.tgz#1e8a2c1af1e3cd6987a662ce7fed1aa3b4339359"
+  integrity sha512-PK8MoPhHMTzUMa7LROU+fKM5cUX/W5iGHh+UHfn4/UHM+KJyyfGaJjbKTwDtovS9k6t0FA0ZH8iniFU5pH6gnw==
   dependencies:
     query-string "^7.1.1"
 

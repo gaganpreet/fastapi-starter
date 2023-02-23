@@ -30,3 +30,6 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.cruft]
 skip = [".env"]
+
+[tool.pytest.ini_options]
+asyncio_mode = 'auto'

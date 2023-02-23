@@ -1,18 +1,8 @@
-from typing import AsyncGenerator, Generator
+from typing import AsyncGenerator
 
 from sqlalchemy.ext.asyncio.session import AsyncSession
 
-from app.db import SessionLocal, async_session_maker
-
-
-def get_db() -> Generator:
-    db = None
-    try:
-        db = SessionLocal(future=True)
-        yield db
-    finally:
-        if db is not None:
-            db.close()
+from app.db import async_session_maker
 
 
 async def get_async_session() -> AsyncGenerator[AsyncSession, None]:

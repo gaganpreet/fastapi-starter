@@ -27,3 +27,9 @@ jobs:
       run: |
         cd ./test-project
         docker-compose logs -t
+    - name: Archive cypress screenshots
+      uses: actions/upload-artifact@v3
+      with:
+        name: cypress-screenshots
+        path: |
+          /app/cypress/screenshots/

@@ -27,6 +27,7 @@ jobs:
       run: |
         cd ./test-project
         docker-compose logs -t
+        find . | grep cypress | grep -v node_modules
 
     - name: Archive cypress screenshots
       if: always()

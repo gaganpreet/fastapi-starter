@@ -27,12 +27,6 @@ docker-compose exec -T backend alembic upgrade head
 
 docker build --target build -t frontend-build:latest frontend
 
-if [ -z "$GITHUB_REPOSITORY" ]
-    # Exit early
-    echo "Not running in GitHub Actions, skipping Cypress tests"
-    then exit 0
-fi
-
 # If GITHUB_REPOSITORY is not set, then use pwd
 if [ -z "$GITHUB_REPOSITORY" ]
 then
@@ -43,7 +37,7 @@ else
     WORKSPACE="${RUNNER_WORKSPACE}/${PROJECT_NAME}"
 fi
 
-docker run --network host frontend-build -v $WORKSPACE/frontend/cypress:/app/cypress bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && find /app/ && yarn run-e2e-tests"
+docker run --network host frontend-build -v $WORKSPACE/frontend/cypress:/app/cypress bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && yarn run-e2e-tests"
 
 # This is to ensure that th generated files are always in sync with FastAPI code
 mv ./frontend/src/generated /tmp/src-generated

@@ -27,16 +27,16 @@ docker-compose exec -T backend alembic upgrade head
 
 docker build --target build -t frontend-build:latest frontend
 
-echo "PWD", $(pwd)
-find $(pwd)/frontend/
-find $(pwd)/frontend/cypress | grep -v node_modules
+echo "PWD", ${GITHUB_WORKSPACE}
+find ${GITHUB_WORKSPACE}/frontend/
+find ${GITHUB_WORKSPACE}/frontend/cypress | grep -v node_modules
 
-docker run --network host frontend-build -v $(pwd)/frontend/cypress/:/app/cypress bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && find /app/ && yarn run-e2e-tests"
+docker run --network host frontend-build -v ${GITHUB_WORKSPACE}/frontend/cypress/:/app/cypress bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && find /app/ && yarn run-e2e-tests"
 
 # Bind mount src/generated directory and fail if it changed
 # This is to ensure that the generated files are always in sync with FastAPI code
 mv ./frontend/src/generated /tmp/src-generated
 
-docker run --network host frontend-build -v $(pwd)/frontend/src/generated/:/app/src/generated bash -c "apt-get update && apt-get install -qq default-jre && yarn config set script-shell /bin/bash && yarn genapi"
+docker run --network host frontend-build -v ${GITHUB_WORKSPACE}/frontend/src/generated/:/app/src/generated bash -c "apt-get update && apt-get install -qq default-jre && yarn config set script-shell /bin/bash && yarn genapi"
 
 diff -r /tmp/src-generated ./frontend/src/generated || (echo "Generated files changed. Please make sure they are in sync" && exit 1)

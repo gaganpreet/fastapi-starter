@@ -28,7 +28,7 @@ docker-compose exec -T backend alembic upgrade head
 docker build --target build -t frontend-build:latest frontend
 
 # If GITHUB_REPOSITORY is not set, then use pwd
-if [ -z "$GITHUB_REPOSITORY" ]
+if [ -z "${GITHUB_REPOSITORY-}" ]
 then
     WORKSPACE=$(pwd)
 else

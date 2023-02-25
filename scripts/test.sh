@@ -46,7 +46,7 @@ then
         yarn genapi"
 else
     cd frontend
-    sudo apt-get update -qq && sudo apt-get install -qq "$PACKAGE_LIST"
+    sudo apt-get update -qq && sudo apt-get install -qq $PACKAGE_LIST
     yarn install --frozen-lockfile
     yarn run-e2e-tests
     yarn genapi

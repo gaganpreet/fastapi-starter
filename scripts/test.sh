@@ -29,7 +29,7 @@ docker build --target build -t frontend-build:latest frontend
 
 echo "PWD", $(pwd)
 find $(pwd)/frontend/
-find $(pwd)/frontend/cypresss | grep -v node_modules
+find $(pwd)/frontend/cypress | grep -v node_modules
 
 docker run --network host frontend-build -v $(pwd)/frontend/cypress/:/app/cypress bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && find /app/ && yarn run-e2e-tests"
 

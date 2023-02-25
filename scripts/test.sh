@@ -27,7 +27,14 @@ docker-compose exec -T backend alembic upgrade head
 
 docker build --target build -t frontend-build:latest frontend
 
-echo "PWD", ${GITHUB_WORKSPACE}
+echo "GITHUB_WORKSPACE_BEFORE", ${GITHUB_WORKSPACE}
+# Use GITHUB_WORKSPACE if set, otherwise use current directory
+# This is needed for running the tests in GitHub Actions
+if [ -z "${GITHUB_WORKSPACE:-}" ]; then
+    GITHUB_WORKSPACE=$(pwd)
+fi
+
+echo "GITHUB_WORKSPACE_AFTER", ${GITHUB_WORKSPACE}
 find ${GITHUB_WORKSPACE}/frontend/
 find ${GITHUB_WORKSPACE}/frontend/cypress | grep -v node_modules
 

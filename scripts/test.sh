@@ -27,24 +27,29 @@ docker-compose exec -T backend alembic upgrade head
 
 docker build --target build -t frontend-build:latest frontend
 
-# If GITHUB_REPOSITORY is not set, then use pwd
-if [ -z "${GITHUB_REPOSITORY-}" ]
-then
-    WORKSPACE=$(pwd)
-else
-    # https://stackoverflow.com/questions/69609618/github-action-i-wrote-doesnt-have-access-to-repos-files-that-is-calling-the-ac
-    PROJECT_NAME="$(basename ${GITHUB_REPOSITORY})"
-    WORKSPACE="${RUNNER_WORKSPACE}/${PROJECT_NAME}"
-fi
-
-echo $(pwd), $WORKSPACE
-ls $WORKSPACE
-
-docker run -v $WORKSPACE/frontend/cypress:/app/cypress -i --network host frontend-build bash -c "find /app | grep -v node_modules && apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && yarn run-e2e-tests"
-
-# This is to ensure that th generated files are always in sync with FastAPI code
 mv ./frontend/src/generated /tmp/src-generated
 
-docker run -v $WORKSPACE/frontend/src/generated/:/app/src/generated -i --network host frontend-build bash -c "apt-get update && apt-get install -qq default-jre && yarn config set script-shell /bin/bash && yarn genapi"
-
+PACKAGE_LIST="xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 default-jre"
+# If GITHUB_REPOSITORY is not set, then we can just run it in docker
+# We need to have two paths here because Github CI works weirdly with bind mounts that we can use to run the tests locally in Docker
+if [ -z "${GITHUB_REPOSITORY-}" ]
+then
+    docker run \
+    -v $(pwd)/frontend/src/generated/:/app/src/generated \
+    -v $(pwd)/frontend/cypress:/app/cypress \
+    --network="host" \
+    frontend-build \
+    bash -xc "apt-get update -qq &&
+        apt-get install -qq $PACKAGE_LIST &&
+        yarn run-e2e-tests &&
+        yarn config set script-shell /bin/bash &&
+        yarn genapi"
+else
+    cd frontend
+    apt-get update -qq && apt-get install -qq "$PACKAGE_LIST"
+    yarn run-e2e-tests
+    yarn genapi
+fi
+#
+# This is to ensure that the generated API client is always in sync with FastAPI code
 diff -r /tmp/src-generated ./frontend/src/generated || (echo "Generated files changed. Please make sure they are in sync" && exit 1)

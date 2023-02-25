@@ -33,7 +33,7 @@ jobs:
 
     - name: Run test script
       run: |
-        sh -x scripts/test.sh
+        bash -x scripts/test.sh
 
     - name: Log docker status
       if: ${{ always() }}

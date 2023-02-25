@@ -27,23 +27,27 @@ docker-compose exec -T backend alembic upgrade head
 
 docker build --target build -t frontend-build:latest frontend
 
-echo "GITHUB_WORKSPACE_BEFORE", ${GITHUB_WORKSPACE}
-# Use GITHUB_WORKSPACE if set, otherwise use current directory
-# This is needed for running the tests in GitHub Actions
-if [ -z "${GITHUB_WORKSPACE:-}" ]; then
-    GITHUB_WORKSPACE=$(pwd)
+if [ -z "$GITHUB_REPOSITORY" ]
+    # Exit early
+    echo "Not running in GitHub Actions, skipping Cypress tests"
+    then exit 0
 fi
 
-echo "GITHUB_WORKSPACE_AFTER", ${GITHUB_WORKSPACE}
-find ${GITHUB_WORKSPACE}/frontend/
-find ${GITHUB_WORKSPACE}/frontend/cypress | grep -v node_modules
+# If GITHUB_REPOSITORY is not set, then use pwd
+if [ -z "$GITHUB_REPOSITORY" ]
+then
+    WORKSPACE=$(pwd)
+else
+    # https://stackoverflow.com/questions/69609618/github-action-i-wrote-doesnt-have-access-to-repos-files-that-is-calling-the-ac
+    PROJECT_NAME="$(basename ${GITHUB_REPOSITORY})"
+    WORKSPACE="${RUNNER_WORKSPACE}/${PROJECT_NAME}"
+fi
 
-docker run --network host frontend-build -v ${GITHUB_WORKSPACE}/frontend/cypress/:/app/cypress bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && find /app/ && yarn run-e2e-tests"
+docker run --network host frontend-build -v $WORKSPACE/frontend/cypress:/app/cypress bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && find /app/ && yarn run-e2e-tests"
 
-# Bind mount src/generated directory and fail if it changed
-# This is to ensure that the generated files are always in sync with FastAPI code
+# This is to ensure that th generated files are always in sync with FastAPI code
 mv ./frontend/src/generated /tmp/src-generated
 
-docker run --network host frontend-build -v ${GITHUB_WORKSPACE}/frontend/src/generated/:/app/src/generated bash -c "apt-get update && apt-get install -qq default-jre && yarn config set script-shell /bin/bash && yarn genapi"
+docker run --network host frontend-build -v $WORKSPACE/frontend/src/generated/:/app/src/generated bash -c "apt-get update && apt-get install -qq default-jre && yarn config set script-shell /bin/bash && yarn genapi"
 
 diff -r /tmp/src-generated ./frontend/src/generated || (echo "Generated files changed. Please make sure they are in sync" && exit 1)

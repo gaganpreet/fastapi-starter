@@ -29,11 +29,11 @@ docker build --target build -t frontend-build:latest frontend
 
 find $(pwd)/frontend/
 
-docker run --network host -v $(pwd)/frontend/cypress:/app/cypress frontend-build bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && find /app/ && yarn run-e2e-tests"
+docker run --network host frontend-build -v $(pwd)/frontend/cypress:/app/cypress bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && find /app/ && yarn run-e2e-tests"
 
 # Bind mount src/generated directory and fail if it changed
 # This is to ensure that the generated files are always in sync with FastAPI code
-cp -ruv ./frontend/src/generated /tmp/src-generated
+mv ./frontend/src/generated /tmp/src-generated
 
 docker run --network host frontend-build -v $(pwd)/frontend/src/generated:/app/src/generated bash -c "apt-get update && apt-get install -qq default-jre && yarn config set script-shell /bin/bash && yarn genapi"
 

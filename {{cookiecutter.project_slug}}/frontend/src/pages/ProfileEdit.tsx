@@ -55,6 +55,7 @@ export const ProfileEdit = ({ ...props }) => {
   const notify = useNotify();
   const { isLoading: isPermissionsLoading, permissions } = usePermissions();
   const redirect = useRedirect();
+  console.log(isPermissionsLoading, permissions);
   if (!isPermissionsLoading && !permissions?.email) {
     redirect("/login");
   }
@@ -81,7 +82,7 @@ export const ProfileEdit = ({ ...props }) => {
           );
         });
     },
-    [notify, refreshProfile]
+    [notify, refreshProfile, redirect]
   );
 
   if (isUserIdentityLoading) {

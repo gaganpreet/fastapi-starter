@@ -5,7 +5,6 @@ on: [workflow_dispatch, push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: docker/compose:1.29.2
 
     env:
       COMPOSE_DOCKER_CLI_BUILD: 1
@@ -19,10 +18,18 @@ jobs:
         node-version: '16'
         cache: 'yarn'
 
-    - name: Install dependencies
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        cache: 'poetry'
+
+    - name: Install cookiecutter
       run: |
-        apk update && apk add py3-pip python3
         pip3 install cookiecutter
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
 
     - name: Run test script
       run: |

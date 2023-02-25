@@ -27,22 +27,21 @@ docker-compose exec -T backend alembic upgrade head
 
 docker build --target build -t frontend-build:latest frontend
 
+# If GITHUB_REPOSITORY is not set, then use pwd
+if [ -z "$GITHUB_REPOSITORY" ]
+then
+    WORKSPACE=$(pwd)
+else
+    # https://stackoverflow.com/questions/69609618/github-action-i-wrote-doesnt-have-access-to-repos-files-that-is-calling-the-ac
+    PROJECT_NAME="$(basename ${GITHUB_REPOSITORY})"
+    WORKSPACE="${RUNNER_WORKSPACE}/${PROJECT_NAME}"
+fi
 
-apt-get update -qq
-# Packages needed by cypress
-apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2
-# Packkages needed by openapi generator
-apt-get install -qq default-jre
+docker run --network host frontend-build -v $WORKSPACE/frontend/cypress:/app/cypress bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && yarn run-e2e-tests"
 
-###################
-# Run e2e tests
-cd frontend
+# This is to ensure that th generated files are always in sync with FastAPI code
+mv ./frontend/src/generated /tmp/src-generated
 
-yarn run-e2e-tests
+docker run --network host frontend-build -v $WORKSPACE/frontend/src/generated/:/app/src/generated bash -c "apt-get update && apt-get install -qq default-jre && yarn config set script-shell /bin/bash && yarn genapi"
 
-
-###################
-# Compare generated openapi client with the one in the repo
-mv src/generated src/generated-backup
-yarn genapi
-diff -r src/generated-backup src/generated || (echo "Generated files changed. Please make sure they are in sync" && exit 1)
+diff -r /tmp/src-generated ./frontend/src/generated || (echo "Generated files changed. Please make sure they are in sync" && exit 1)

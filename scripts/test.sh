@@ -37,11 +37,11 @@ else
     WORKSPACE="${RUNNER_WORKSPACE}/${PROJECT_NAME}"
 fi
 
-docker run --network host frontend-build -v $WORKSPACE/frontend/cypress:/app/cypress bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && yarn run-e2e-tests"
+docker run -it --network host frontend-build -v $WORKSPACE/frontend/cypress:/app/cypress bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && yarn run-e2e-tests"
 
 # This is to ensure that th generated files are always in sync with FastAPI code
 mv ./frontend/src/generated /tmp/src-generated
 
-docker run --network host frontend-build -v $WORKSPACE/frontend/src/generated/:/app/src/generated bash -c "apt-get update && apt-get install -qq default-jre && yarn config set script-shell /bin/bash && yarn genapi"
+docker run -it --network host frontend-build -v $WORKSPACE/frontend/src/generated/:/app/src/generated bash -c "apt-get update && apt-get install -qq default-jre && yarn config set script-shell /bin/bash && yarn genapi"
 
 diff -r /tmp/src-generated ./frontend/src/generated || (echo "Generated files changed. Please make sure they are in sync" && exit 1)

@@ -37,7 +37,10 @@ else
     WORKSPACE="${RUNNER_WORKSPACE}/${PROJECT_NAME}"
 fi
 
-docker run -v $WORKSPACE/frontend/cypress:/app/cypress -i --network host frontend-build bash -c "apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && yarn run-e2e-tests"
+echo $(pwd), $WORKSPACE
+ls $WORKSPACE
+
+docker run -v $WORKSPACE/frontend/cypress:/app/cypress -i --network host frontend-build bash -c "find /app | grep -v node_modules && apt-get update && apt-get install -qq xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 && yarn run-e2e-tests"
 
 # This is to ensure that th generated files are always in sync with FastAPI code
 mv ./frontend/src/generated /tmp/src-generated

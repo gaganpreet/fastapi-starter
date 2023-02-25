@@ -13,6 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+        cache: 'yarn'
+
     - name: Install dependencies
       run: |
         apk update && apk add py3-pip python3
@@ -27,7 +33,6 @@ jobs:
       run: |
         cd ./test-project
         docker-compose logs -t
-        find . | grep cypress | grep -v node_modules
 
     - name: Archive cypress screenshots
       if: always()
@@ -35,4 +40,4 @@ jobs:
       with:
         name: cypress-screenshots
         path: |
-          test-project/cypress/
+          test-project/frontend/cypress/

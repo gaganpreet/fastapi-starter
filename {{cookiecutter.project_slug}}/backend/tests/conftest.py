@@ -1,8 +1,9 @@
 import asyncio
 import uuid
-from typing import Callable, Generator
+from typing import Callable
 
 import pytest
+from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm.session import sessionmaker
 from starlette.testclient import TestClient
@@ -52,9 +53,9 @@ def app():
 
 
 @pytest.fixture(scope="session")
-def client(app) -> Generator:
-    with TestClient(app) as c:
-        yield c
+async def client(app):
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        yield ac
 
 
 @pytest.fixture(scope="function", autouse=True)

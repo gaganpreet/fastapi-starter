@@ -51,6 +51,7 @@ else
     yarn install --frozen-lockfile
     yarn run-e2e-tests
     yarn genapi
+    cd ..
 fi
 #
 # This is to ensure that the generated API client is always in sync with FastAPI code

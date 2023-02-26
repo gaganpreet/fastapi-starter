@@ -14,7 +14,7 @@ from app.models.user import User
 from tests.utils import generate_random_string
 
 engine = create_async_engine(
-    settings.DATABASE_URL,
+    settings.ASYNC_DATABASE_URL,
 )
 async_session_maker = sessionmaker(
     engine,

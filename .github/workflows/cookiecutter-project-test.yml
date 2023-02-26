@@ -5,7 +5,6 @@ on: [workflow_dispatch, push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: docker/compose:1.29.2
 
     env:
       COMPOSE_DOCKER_CLI_BUILD: 1
@@ -13,23 +12,39 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Install dependencies
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install cookiecutter
       run: |
-        apk update && apk add py3-pip python3
         pip3 install cookiecutter
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+        cache-dependency-path: '{{cookiecutter.project_slug}}/frontend/yarn.lock'
+        cache: 'yarn'
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
 
     - name: Run test script
       run: |
-        sh -x scripts/test.sh
+        bash -x scripts/test.sh
 
     - name: Log docker status
       if: ${{ always() }}
       run: |
         cd ./test-project
         docker-compose logs -t
+
     - name: Archive cypress screenshots
+      if: always()
       uses: actions/upload-artifact@v3
       with:
         name: cypress-screenshots
         path: |
-          /app/cypress/screenshots/
+          test-project/frontend/cypress/

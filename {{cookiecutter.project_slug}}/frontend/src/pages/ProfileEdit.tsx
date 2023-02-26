@@ -12,7 +12,6 @@ import {
   useNotify,
   SaveContextProvider,
   useGetIdentity,
-  usePermissions,
   useRedirect,
   Toolbar,
   SaveButton,
@@ -53,14 +52,14 @@ const CustomToolbar = (props: any) => (
 
 export const ProfileEdit = ({ ...props }) => {
   const notify = useNotify();
-  const { isLoading: isPermissionsLoading, permissions } = usePermissions();
   const redirect = useRedirect();
-  if (!isPermissionsLoading && !permissions?.email) {
-    redirect("/login");
-  }
   const [saving, setSaving] = useState(false);
   const { refreshProfile, profileVersion } = useProfile();
-  const { isLoading: isUserIdentityLoading, identity } = useGetIdentity();
+  const { isLoading: isUserIdentityLoading, data } = useGetIdentity();
+
+  if (!isUserIdentityLoading && !data?.email) {
+    redirect("/login");
+  }
 
   const handleSave = useCallback(
     (values) => {
@@ -81,7 +80,7 @@ export const ProfileEdit = ({ ...props }) => {
           );
         });
     },
-    [notify, refreshProfile]
+    [notify, refreshProfile, redirect]
   );
 
   if (isUserIdentityLoading) {
@@ -93,7 +92,7 @@ export const ProfileEdit = ({ ...props }) => {
       value={{ save: handleSave, saving }}
       key={profileVersion}
     >
-      <SimpleForm record={identity ? identity : {}} toolbar={<CustomToolbar />}>
+      <SimpleForm record={data ? data : {}} toolbar={<CustomToolbar />}>
         <TextInput source="id" disabled />
         <TextInput source="email" validate={required()} />
       </SimpleForm>

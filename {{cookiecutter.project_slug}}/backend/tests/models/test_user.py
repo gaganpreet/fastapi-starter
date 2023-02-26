@@ -1,12 +1,12 @@
 from uuid import uuid4
 
-from sqlalchemy.orm.session import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.user import User
 
 
-def test_user_model(db: Session):
+async def test_user_model(db: AsyncSession):
     user = User(id=uuid4(), email="test@example.com", hashed_password="1234")
     db.add(user)
-    db.commit()
+    await db.commit()
     assert user.id

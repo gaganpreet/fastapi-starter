@@ -1,5 +1,4 @@
 from httpx import AsyncClient
-from sqlalchemy.orm.session import Session
 
 from app.core.config import settings
 from app.models.item import Item
@@ -12,9 +11,7 @@ class TestGetItems:
         resp = await client.get(settings.API_PATH + "/items")
         assert resp.status_code == 401
 
-    async def test_get_items(
-        self, db: Session, client: AsyncClient, create_user, create_item
-    ):
+    async def test_get_items(self, client: AsyncClient, create_user, create_item):
         user: User = await create_user()
         await create_item(user=user)
         jwt_header = get_jwt_header(user)
@@ -25,9 +22,7 @@ class TestGetItems:
 
 
 class TestGetSingleItem:
-    async def test_get_single_item(
-        self, db: Session, client: AsyncClient, create_user, create_item
-    ):
+    async def test_get_single_item(self, client: AsyncClient, create_user, create_item):
         user: User = await create_user()
         item: Item = await create_item(user=user)
         jwt_header = get_jwt_header(user)
@@ -41,7 +36,7 @@ class TestGetSingleItem:
 
 
 class TestCreateItem:
-    async def test_create_item(self, db: Session, client: AsyncClient, create_user):
+    async def test_create_item(self, client: AsyncClient, create_user):
         user: User = await create_user()
         jwt_header = get_jwt_header(user)
 
@@ -53,9 +48,7 @@ class TestCreateItem:
 
 
 class TestDeleteItem:
-    async def test_delete_item(
-        self, db: Session, client: AsyncClient, create_user, create_item
-    ):
+    async def test_delete_item(self, client: AsyncClient, create_user, create_item):
         user: User = await create_user()
         item: Item = await create_item(user=user)
         jwt_header = get_jwt_header(user)
@@ -65,9 +58,7 @@ class TestDeleteItem:
         )
         assert resp.status_code == 200
 
-    async def test_delete_item_does_not_exist(
-        self, db: Session, client: AsyncClient, create_user
-    ):
+    async def test_delete_item_does_not_exist(self, client: AsyncClient, create_user):
         user: User = await create_user()
         jwt_header = get_jwt_header(user)
 
@@ -78,9 +69,7 @@ class TestDeleteItem:
 
 
 class TestUpdateItem:
-    async def test_update_item(
-        self, db: Session, client: AsyncClient, create_user, create_item
-    ):
+    async def test_update_item(self, client: AsyncClient, create_user, create_item):
         user: User = await create_user()
         item: Item = await create_item(user=user)
         jwt_header = get_jwt_header(user)

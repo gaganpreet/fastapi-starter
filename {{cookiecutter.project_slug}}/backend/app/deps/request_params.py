@@ -1,5 +1,5 @@
 import json
-from typing import Optional
+from typing import Callable, Optional
 
 from fastapi import HTTPException, Query
 from sqlalchemy import asc, desc
@@ -8,7 +8,7 @@ from sqlalchemy.ext.declarative import DeclarativeMeta
 from app.schemas.request_params import RequestParams
 
 
-def parse_react_admin_params(model: DeclarativeMeta) -> RequestParams:
+def parse_react_admin_params(model: DeclarativeMeta) -> Callable:
     """Parses sort and range parameters coming from a react-admin request"""
 
     def inner(
@@ -24,7 +24,7 @@ def parse_react_admin_params(model: DeclarativeMeta) -> RequestParams:
             description="Format: `[start, end]`",
             example="[0, 10]",
         ),
-    ):
+    ) -> RequestParams:
         skip, limit = 0, 10
         if range_:
             start, end = json.loads(range_)

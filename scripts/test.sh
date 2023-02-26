@@ -27,7 +27,7 @@ docker-compose exec -T backend alembic upgrade head
 
 docker build --target build -t frontend-build:latest frontend
 
-mv ./frontend/src/generated /tmp/src-generated
+mv $(pwd)/frontend/src/generated /tmp/src-generated
 
 PACKAGE_LIST="xvfb libnss3 libatk1.0 libatk-bridge2.0 libgtk-3.0 libgbm1 libasound2 default-jre"
 # If GITHUB_REPOSITORY is not set, then we can just run it in docker
@@ -54,4 +54,4 @@ else
 fi
 #
 # This is to ensure that the generated API client is always in sync with FastAPI code
-diff -r /tmp/src-generated ./frontend/src/generated || (echo "Generated files changed. Please make sure they are in sync" && exit 1)
+diff -r /tmp/src-generated $(pwd)/frontend/src/generated || (echo "Generated files changed. Please make sure they are in sync" && exit 1)

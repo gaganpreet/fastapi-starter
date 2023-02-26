@@ -31,6 +31,7 @@ const dataProvider = simpleRestProvider(`${basePath}/api/v1`, httpClient);
 const App = () => {
   return (
     <Admin
+      disableTelemetry
       dataProvider={dataProvider}
       authProvider={authProvider}
       loginPage={LoginPage}

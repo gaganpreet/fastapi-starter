@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import registry, sessionmaker
+from sqlalchemy.orm import DeclarativeBase, registry, sessionmaker
 
 from app.core.config import settings
 
@@ -18,3 +18,7 @@ engine = create_engine(settings.DATABASE_URL, future=True)
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 
 mapper_registry = registry()
+
+
+class Base(DeclarativeBase):
+    pass

@@ -8,6 +8,7 @@ from sqlalchemy.orm.session import sessionmaker
 from starlette.testclient import TestClient
 
 from app.core.config import settings
+from app.db import Base
 from app.deps.users import get_user_manager
 from app.factory import create_app
 from app.models.item import Item
@@ -24,6 +25,12 @@ async_session_maker = sessionmaker(
     autocommit=False,
     autoflush=False,
 )
+
+
+@pytest.fixture(scope="session", autouse=True)
+async def init_db():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
 
 
 @pytest.fixture(scope="session")

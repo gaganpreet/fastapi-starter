@@ -1,6 +1,7 @@
-from sqlalchemy import create_engine
+from typing import Any
+
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import DeclarativeBase, registry, sessionmaker
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 from app.core.config import settings
 
@@ -13,12 +14,6 @@ async_session_maker = sessionmaker(
     autoflush=False,
 )
 
-# We still have a second old style sync SQLAlchemy engine for shell and alembic
-engine = create_engine(settings.DATABASE_URL, future=True)
-SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
-
-mapper_registry = registry()
-
 
 class Base(DeclarativeBase):
-    pass
+    id: Any

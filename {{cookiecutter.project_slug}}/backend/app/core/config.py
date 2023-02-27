@@ -40,7 +40,7 @@ class Settings(BaseSettings):
     def build_async_database_url(cls, v: Optional[str], values: Dict[str, Any]):
         """Builds ASYNC_DATABASE_URL from DATABASE_URL."""
         v = values["DATABASE_URL"]
-        return v.replace("postgresql", "postgresql+asyncpg") if v else v
+        return v.replace("postgresql", "postgresql+asyncpg", 1) if v else v
 
     SECRET_KEY: str
     #  END: required environment variables

@@ -1,14 +1,14 @@
 import json
-from typing import Callable, Optional
+from typing import Callable, Optional, Type
 
 from fastapi import HTTPException, Query
-from sqlalchemy import asc, desc
-from sqlalchemy.ext.declarative import DeclarativeMeta
+from sqlalchemy import UnaryExpression, asc, desc
 
+from app.db import Base
 from app.schemas.request_params import RequestParams
 
 
-def parse_react_admin_params(model: DeclarativeMeta) -> Callable:
+def parse_react_admin_params(model: Type[Base]) -> Callable:
     """Parses sort and range parameters coming from a react-admin request"""
 
     def inner(
@@ -30,7 +30,7 @@ def parse_react_admin_params(model: DeclarativeMeta) -> Callable:
             start, end = json.loads(range_)
             skip, limit = start, (end - start + 1)
 
-        order_by = desc(model.id)
+        order_by: UnaryExpression = desc(model.id)
         if sort_:
             sort_column, sort_order = json.loads(sort_)
             if sort_order.lower() == "asc":

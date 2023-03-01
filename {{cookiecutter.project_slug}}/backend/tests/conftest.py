@@ -4,8 +4,7 @@ from typing import Callable
 
 import pytest
 from httpx import AsyncClient
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm.session import sessionmaker
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from starlette.testclient import TestClient
 
 from app.core.config import settings
@@ -19,7 +18,7 @@ from tests.utils import generate_random_string
 engine = create_async_engine(
     settings.ASYNC_DATABASE_URL,
 )
-async_session_maker = sessionmaker(
+async_session_maker = async_sessionmaker(
     engine,
     class_=AsyncSession,
     expire_on_commit=False,

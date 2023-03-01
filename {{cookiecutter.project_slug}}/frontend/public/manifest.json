@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "{{ cookiecutter.project_name }}",
+  "name": "{{ cookiecutter.project_name }}",
   "icons": [
     {
       "src": "favicon.ico",

@@ -14,7 +14,7 @@
     "ra-data-json-server": "^4.8.1",
     "ra-data-simple-rest": "^4.8.1",
     "react": "^17.0.2",
-    "react-admin": "^4.8.1",
+    "react-admin": "^4.8.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",

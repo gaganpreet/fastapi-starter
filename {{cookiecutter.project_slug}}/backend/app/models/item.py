@@ -28,4 +28,4 @@ class Item(Base):
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
     )
 
-    value: Mapped[str]
+    value: Mapped[str | None]

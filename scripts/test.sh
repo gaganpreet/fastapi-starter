@@ -21,9 +21,10 @@ docker-compose exec -T postgres createdb -U postgres apptest
 
 docker-compose exec -T backend pytest -v --cov --cov-report term-missing
 
-
 # Run cypress tests
 docker-compose exec -T backend alembic upgrade head
+
+docker-compose exec -T backend alembic check
 
 docker build --target build -t frontend-build:latest frontend
 

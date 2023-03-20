@@ -18,7 +18,12 @@ updates:
   - package-ecosystem: "docker"
     directory: "{{cookiecutter.project_slug}}/backend/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "{{cookiecutter.project_slug}}/"
+    schedule:
+      interval: "daily"
 
   - package-ecosystem: "pip"
     directory: "{{cookiecutter.project_slug}}/backend/"

@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: "github-actions"
-    directory: "{{cookiecutter.project_slug}}/"
+    directory: "{{cookiecutter.project_slug}}/.github/workflows/"
     schedule:
       interval: "daily"
 
@@ -18,7 +18,12 @@ updates:
   - package-ecosystem: "docker"
     directory: "{{cookiecutter.project_slug}}/backend/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "{{cookiecutter.project_slug}}/"
+    schedule:
+      interval: "daily"
 
   - package-ecosystem: "pip"
     directory: "{{cookiecutter.project_slug}}/backend/"

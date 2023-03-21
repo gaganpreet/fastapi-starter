@@ -29,7 +29,7 @@
     "format": "prettier src --write",
     "run-e2e-tests": "cypress run",
     "open-e2e-test": "cypress open",
-    "genapi": "openapi-generator-cli generate -i <(curl -s 'http://localhost:{{ cookiecutter.backend_port }}/api/v1/openapi.json') -g typescript-axios -o src/generated -p withSeparateModelsAndApi=true,apiPackage=api,modelPackage=models,useSingleRequestParameter=true"
+    "genapi": "openapi-generator-cli generate -i 'http://localhost:{{ cookiecutter.backend_port }}/api/v1/openapi.json' -g typescript-axios -o src/generated -p withSeparateModelsAndApi=true,apiPackage=api,modelPackage=models,useSingleRequestParameter=true"
   },
   "eslintConfig": {
     "extends": [

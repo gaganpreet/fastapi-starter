@@ -19,7 +19,7 @@ fastapi-users = {extras = ["sqlalchemy"], version = "^10.4.1"}
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
-pytest = "^7.2.2"
+pytest = "^7.3.0"
 ipython = "^8.12.0"
 pytest-cov = "^4.0.0"
 httpx = "^0.23.3"

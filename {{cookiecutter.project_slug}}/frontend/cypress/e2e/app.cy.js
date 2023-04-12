@@ -29,16 +29,14 @@ describe("Test register, login and item", () => {
     cy.get("input").first().type(username);
     cy.get("input").last().type(defaultPassword);
     cy.get("button").first().click();
-    cy.get("button")
-      .first()
-      .click()
-      .should(
-        () => {
-          // eslint-disable-next-line no-unused-expressions
-          expect(localStorage.getItem("token")).to.be.not.null;
-        },
-        { timeout: 2000 }
-      );
+    cy.get("button").first().click();
+    cy.get("button").should(
+      () => {
+        // eslint-disable-next-line no-unused-expressions
+        expect(localStorage.getItem("token")).to.be.not.null;
+      },
+      { timeout: 2000 }
+    );
     cy.contains("Welcome to admin");
     cy.saveLocalStorage();
   });
@@ -71,9 +69,8 @@ describe("Test register, login and item", () => {
     cy.get('input[id="email"]', { timeout: 1000 })
       .should("have.value", username)
       .click({ force: true });
-    cy.get(`input[id="email"]`)
-      .clear({ force: true })
-      .type(newUsername, { force: true });
+    cy.get(`input[id="email"]`).clear({ force: true });
+    cy.get(`input[id="email"]`).type(newUsername, { force: true });
     cy.contains("Save").click({ force: true });
     cy.contains("Your profile has been updated");
   });

@@ -9331,10 +9331,10 @@ ra-language-english@^4.9.3:
   dependencies:
     ra-core "^4.9.3"
 
-ra-ui-materialui@^4.9.3:
-  version "4.9.3"
-  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-4.9.3.tgz#7ec1fb21c6ed44b2b5495deac4ff4c5667cbfe3b"
-  integrity sha512-6Hoz11+Zpk4/GIwXXDigOuj8DgiNM/Mc5BG8OiEcDTvh7azo1R5196DC1RUZ4EfnrLYNIwPi/3lGtqn0lpp27w==
+ra-ui-materialui@^4.9.4:
+  version "4.9.4"
+  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-4.9.4.tgz#64fcc5c4ea49bcbc43e28cec094c476895cac114"
+  integrity sha512-o0azWhnGbA6Mi3Fyp8eYqWLwwiJgqC9L8WdLBuHxTTkFb9hiLCdroDaE7U2cMmcODI9YFp8OZ995QURmwXsBlg==
   dependencies:
     autosuggest-highlight "^3.1.1"
     clsx "^1.1.1"
@@ -9379,10 +9379,10 @@ raw-body@2.4.3:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-admin@^4.9.3:
-  version "4.9.3"
-  resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-4.9.3.tgz#1191aa990eb7c9ec2ef5460a1f662cefeed5288a"
-  integrity sha512-kkAraOYXd9TgvMX5iLNAVkMZ0yNkcPGgC6386zXVgkzXShWugSZnVl3OQT3xx6IIHaD5ewHGZ6Q3PMhORtYm9g==
+react-admin@^4.9.4:
+  version "4.9.4"
+  resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-4.9.4.tgz#a614d0e8c6499a68e80a83ad80b644a20e15dd59"
+  integrity sha512-ZJ6HYEroz7rjYJ/q6z7ZfYyj9Y4v8oQG2ifCOa0uTZbfq34qLu4a5pWwYaM8S8fp8YneR54g9K0vl1FHHzLwfA==
   dependencies:
     "@emotion/react" "^11.4.1"
     "@emotion/styled" "^11.3.0"
@@ -9392,7 +9392,7 @@ react-admin@^4.9.3:
     ra-core "^4.9.3"
     ra-i18n-polyglot "^4.9.3"
     ra-language-english "^4.9.3"
-    ra-ui-materialui "^4.9.3"
+    ra-ui-materialui "^4.9.4"
     react-hook-form "^7.40.0"
     react-router "^6.1.0"
     react-router-dom "^6.1.0"

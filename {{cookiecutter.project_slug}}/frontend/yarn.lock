@@ -9301,13 +9301,13 @@ ra-core@^4.10.1, ra-core@^4.9.3:
     react-is "^17.0.2"
     react-query "^3.32.1"
 
-ra-data-json-server@^4.9.3:
-  version "4.9.3"
-  resolved "https://registry.yarnpkg.com/ra-data-json-server/-/ra-data-json-server-4.9.3.tgz#4975cd9495baf1ccea9d3906e3b55a1e85551e59"
-  integrity sha512-pAS/oihXtrlPHtw5Q/G+zJYibrpt3jAbpVGHKqqsll77jAXo3J6DJq+n3Rclm13gOWztV5xAZbE228F+JRK4+Q==
+ra-data-json-server@^4.10.1:
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/ra-data-json-server/-/ra-data-json-server-4.10.1.tgz#6f20b5426a96faa693e9e15afd38aa514a9b7651"
+  integrity sha512-ztBijmr1hKOGcttJU+ddZ/VBXyoyDpsCFTxnmgQMxsf15OsQEd76HMMtw0nLTYbCJyPHq3XrLELLiF6RiKuApg==
   dependencies:
     query-string "^7.1.1"
-    ra-core "^4.9.3"
+    ra-core "^4.10.1"
 
 ra-data-simple-rest@^4.9.3:
   version "4.9.3"

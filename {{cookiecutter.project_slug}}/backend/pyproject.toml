@@ -22,7 +22,7 @@ black = "^23.3.0"
 pytest = "^7.3.1"
 ipython = "^8.13.2"
 pytest-cov = "^4.0.0"
-httpx = "^0.24.0"
+httpx = "^0.24.1"
 pytest-asyncio = "^0.21.0"
 
 [build-system]

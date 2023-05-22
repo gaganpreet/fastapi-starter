@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Test project
- * Test project API
+ * {{cookiecutter.project_name}}
+ * {{cookiecutter.project_name}} API
  *
  * The version of the OpenAPI document: 0.1.0
  * 

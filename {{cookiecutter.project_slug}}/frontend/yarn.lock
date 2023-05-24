@@ -4809,10 +4809,10 @@ cypress-localstorage-commands@^2.2.3:
   resolved "https://registry.yarnpkg.com/cypress-localstorage-commands/-/cypress-localstorage-commands-2.2.3.tgz#ef5b736226b8316b7d948e30bc4b94a157cfa025"
   integrity sha512-EUEaHzbstw9AsEheIqr+RyXuxIzUS64nBBwl+Q4/mSdzfXpfcaV1nrHF+6H9zbTuFVTc+oWu6eC1l8aSjiWW6w==
 
-cypress@^12.12.0:
-  version "12.12.0"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-12.12.0.tgz#0da622a34c970d8699ca6562d8e905ed7ce33c77"
-  integrity sha512-UU5wFQ7SMVCR/hyKok/KmzG6fpZgBHHfrXcHzDmPHWrT+UUetxFzQgt7cxCszlwfozckzwkd22dxMwl/vNkWRw==
+cypress@^12.13.0:
+  version "12.13.0"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-12.13.0.tgz#725b6617ea19e41e5c59cc509fc3e08097142b01"
+  integrity sha512-QJlSmdPk+53Zhy69woJMySZQJoWfEWun3X5OOenGsXjRPVfByVTHorxNehbzhZrEzH9RDUDqVcck0ahtlS+N/Q==
   dependencies:
     "@cypress/request" "^2.88.10"
     "@cypress/xvfb" "^1.2.4"

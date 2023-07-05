@@ -11,6 +11,18 @@ pip3 install cookiecutter
 cookiecutter https://github.com/gaganpreet/fastapi-starter
 ```
 
+### Input variables
+
+The generator (cookiecutter) will ask you for some data, you might want to have at hand before generating the project.
+
+The input variables, with their default values [default value], are:
+
+* `project_name`: The name of the project 
+* `project_slug`: The development-friendly name of the project. By default, based on the project name.
+* `backend_port`: The backend port on the localhost.
+* `front_end_port`: The frontend port on the localhost.
+
+
 If you want to keep up to date with upstream changes (i.e. changes in this template), then it's better to use [Cruft](https://cruft.github.io/cruft/), which is fully compatible with Cookiecutter.
 
 ```bash

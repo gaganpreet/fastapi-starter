@@ -4,6 +4,10 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/gaganpreet/fastapi-starter/cookiecutter-project-test.yml)
+
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/gaganpreet/fastapi-starter/main)
+
 A FastAPI based starter that relies heavily on existing plugins/frameworks. Integrates with OpenAPI Generator for a Typescript client, FastAPI Users for authentication, async-first with SQLAlchemy 2.0.
 
 ---

@@ -46,6 +46,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "alexey-sveshnikov",
+      "name": "Alexey Sveshnikov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/447089?v=4",
+      "profile": "https://github.com/alexey-sveshnikov",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

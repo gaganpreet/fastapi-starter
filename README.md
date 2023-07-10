@@ -1,5 +1,9 @@
 # FastAPI-Starter
 
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 A FastAPI based starter that relies heavily on existing plugins/frameworks. Integrates with OpenAPI Generator for a Typescript client, FastAPI Users for authentication, async-first with SQLAlchemy 2.0.
 
 ---
@@ -69,20 +73,6 @@ cruft update
 ![Item page](assets/items.png)
 
 
-[![All Contributors](https://img.shields.io/github/all-contributors/gaganpreet/fastapi-starter?color=ee8449&style=flat-square)](#contributors)
-
-## Contributors
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-
 ## Features not included
 
 The following features were left out in favour of simplicity:
@@ -94,3 +84,39 @@ The following features were left out in favour of simplicity:
 
 - [ ] Migrate to Ruff
 - [ ] Email templates
+
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/nadavof"><img src="https://avatars.githubusercontent.com/u/93834717?v=4?s=100" width="100px;" alt="nadavof"/><br /><sub><b>nadavof</b></sub></a><br /><a href="https://github.com/gaganpreet/fastapi-starter/commits?author=nadavof" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://dustindavis.me/"><img src="https://avatars.githubusercontent.com/u/177353?v=4?s=100" width="100px;" alt="Dustin Davis"/><br /><sub><b>Dustin Davis</b></sub></a><br /><a href="https://github.com/gaganpreet/fastapi-starter/commits?author=djedi" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/hugo-tinoco/"><img src="https://avatars.githubusercontent.com/u/43675476?v=4?s=100" width="100px;" alt="Hugo Tinoco"/><br /><sub><b>Hugo Tinoco</b></sub></a><br /><a href="https://github.com/gaganpreet/fastapi-starter/commits?author=h4ndzdatm0ld" title="Documentation">📖</a> <a href="https://github.com/gaganpreet/fastapi-starter/commits?author=h4ndzdatm0ld" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://mixedneeds.com/"><img src="https://avatars.githubusercontent.com/u/158175?v=4?s=100" width="100px;" alt="Michael Bunsen"/><br /><sub><b>Michael Bunsen</b></sub></a><br /><a href="https://github.com/gaganpreet/fastapi-starter/commits?author=mihow" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/alexey-sveshnikov"><img src="https://avatars.githubusercontent.com/u/447089?v=4?s=100" width="100px;" alt="Alexey Sveshnikov"/><br /><sub><b>Alexey Sveshnikov</b></sub></a><br /><a href="https://github.com/gaganpreet/fastapi-starter/commits?author=alexey-sveshnikov" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td align="center" size="13px" colspan="7">
+        <img src="https://raw.githubusercontent.com/all-contributors/all-contributors-cli/1b8533af435da9854653492b1327a23a4dbd0a10/assets/logo-small.svg">
+          <a href="https://all-contributors.js.org/docs/en/bot/usage">Add your contributions</a>
+        </img>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

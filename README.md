@@ -1,7 +1,7 @@
 # FastAPI-Starter
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A FastAPI based starter that relies heavily on existing plugins/frameworks. Integrates with OpenAPI Generator for a Typescript client, FastAPI Users for authentication, async-first with SQLAlchemy 2.0.
@@ -97,6 +97,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/nadavof"><img src="https://avatars.githubusercontent.com/u/93834717?v=4?s=100" width="100px;" alt="nadavof"/><br /><sub><b>nadavof</b></sub></a><br /><a href="https://github.com/gaganpreet/fastapi-starter/commits?author=nadavof" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://dustindavis.me/"><img src="https://avatars.githubusercontent.com/u/177353?v=4?s=100" width="100px;" alt="Dustin Davis"/><br /><sub><b>Dustin Davis</b></sub></a><br /><a href="https://github.com/gaganpreet/fastapi-starter/commits?author=djedi" title="Documentation">📖</a></td>
     </tr>
   </tbody>
   <tfoot>

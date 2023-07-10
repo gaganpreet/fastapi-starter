@@ -18,6 +18,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "djedi",
+      "name": "Dustin Davis",
+      "avatar_url": "https://avatars.githubusercontent.com/u/177353?v=4",
+      "profile": "http://dustindavis.me/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

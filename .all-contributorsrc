@@ -37,6 +37,15 @@
         "doc",
         "code"
       ]
+    },
+    {
+      "login": "mihow",
+      "name": "Michael Bunsen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/158175?v=4",
+      "profile": "https://mixedneeds.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

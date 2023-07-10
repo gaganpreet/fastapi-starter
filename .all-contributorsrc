@@ -27,6 +27,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "h4ndzdatm0ld",
+      "name": "Hugo Tinoco",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43675476?v=4",
+      "profile": "https://www.linkedin.com/in/hugo-tinoco/",
+      "contributions": [
+        "doc",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

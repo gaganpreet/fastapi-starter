@@ -56,6 +56,6 @@
     "cypress": "^12.17.1",
     "cypress-localstorage-commands": "^2.2.3",
     "eslint-plugin-cypress": "^2.13.3",
-    "prettier": "^2.8.8"
+    "prettier": "^3.0.0"
   }
 }

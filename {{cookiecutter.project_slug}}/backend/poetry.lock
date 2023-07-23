@@ -620,13 +620,13 @@ all = ["email-validator (>=1.1.1)", "httpx (>=0.23.0)", "itsdangerous (>=1.1.0)"
 
 [[package]]
 name = "fastapi-users"
-version = "12.0.0"
+version = "12.1.0"
 description = "Ready-to-use and customizable users management for FastAPI"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "fastapi_users-12.0.0-py3-none-any.whl", hash = "sha256:df4a49de7aad5394a4eb7a5e327afef8c284790ace5f7aef52f16d730877d3df"},
-    {file = "fastapi_users-12.0.0.tar.gz", hash = "sha256:694cf58f08fff4f76b3e6e1989b8c4bbcda4bc68d20e61a3859b071c5c02b45b"},
+    {file = "fastapi_users-12.1.0-py3-none-any.whl", hash = "sha256:ed1ca9d4cc2abd41f1a72223ccad039f1bff7c89f78cf985c1d3435a652ed788"},
+    {file = "fastapi_users-12.1.0.tar.gz", hash = "sha256:b56eaaa328c5b1a0ead959df5fc217cb296ea9d93beebc93552d6576de442ffa"},
 ]
 
 [package.dependencies]
@@ -1650,4 +1650,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "f7f77f52ac7360df1b95fd2d00e55408f43126752d23e5214be8eba6b315ec8b"
+content-hash = "f4b7570cfca1c15a516a46c6279330449a946ec29f9e6a6acd665f3569c65efb"

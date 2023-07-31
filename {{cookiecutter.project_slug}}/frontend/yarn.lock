@@ -2398,10 +2398,10 @@
     prop-types "^15.8.1"
     react-is "^17.0.2"
 
-"@nestjs/axios@0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@nestjs/axios/-/axios-0.0.8.tgz#4e321e36b6bc3ab0f02d80bafe04ae39edfdcacf"
-  integrity sha512-oJyfR9/h9tVk776il0829xyj3b2e81yTu6HjPraxynwNtMNGqZBHHmAQL24yMB3tVbBM0RvG3eUXH8+pRCGwlg==
+"@nestjs/axios@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/axios/-/axios-0.1.0.tgz#6cf93df11ef93b598b3c7411adb980eedd13b3e3"
+  integrity sha512-b2TT2X6BFbnNoeteiaxCIiHaFcSbVW+S5yygYqiIq5i6H77yIU3IVuLdpQkHq8/EqOWFwMopLN8jdkUT71Am9w==
   dependencies:
     axios "0.27.2"
 
@@ -2456,12 +2456,12 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
-"@openapitools/openapi-generator-cli@^2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@openapitools/openapi-generator-cli/-/openapi-generator-cli-2.6.0.tgz#5e4afad66394b4ab907847c454066ac37608644c"
-  integrity sha512-M/aOpR7G+Y1nMf+ofuar8pGszajgfhs1aSPSijkcr2tHTxKAI3sA3YYcOGbszxaNRKFyvOcDq+KP9pcJvKoCHg==
+"@openapitools/openapi-generator-cli@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@openapitools/openapi-generator-cli/-/openapi-generator-cli-2.7.0.tgz#5e8001a01b088bbb65ee7aa85cb73cdf88a0363e"
+  integrity sha512-ieEpHTA/KsDz7ANw03lLPYyjdedDEXYEyYoGBRWdduqXWSX65CJtttjqa8ZaB1mNmIjMtchUHwAYQmTLVQ8HYg==
   dependencies:
-    "@nestjs/axios" "0.0.8"
+    "@nestjs/axios" "0.1.0"
     "@nestjs/common" "9.3.11"
     "@nestjs/core" "9.3.11"
     "@nuxtjs/opencollective" "0.3.2"

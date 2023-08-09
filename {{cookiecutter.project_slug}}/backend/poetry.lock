@@ -620,13 +620,13 @@ all = ["email-validator (>=1.1.1)", "httpx (>=0.23.0)", "itsdangerous (>=1.1.0)"
 
 [[package]]
 name = "fastapi-users"
-version = "12.1.0"
+version = "12.1.1"
 description = "Ready-to-use and customizable users management for FastAPI"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "fastapi_users-12.1.0-py3-none-any.whl", hash = "sha256:ed1ca9d4cc2abd41f1a72223ccad039f1bff7c89f78cf985c1d3435a652ed788"},
-    {file = "fastapi_users-12.1.0.tar.gz", hash = "sha256:b56eaaa328c5b1a0ead959df5fc217cb296ea9d93beebc93552d6576de442ffa"},
+    {file = "fastapi_users-12.1.1-py3-none-any.whl", hash = "sha256:1118f25284b42955414142bf3ecfc47feb6c5864a4b52cffde4a91f705889c29"},
+    {file = "fastapi_users-12.1.1.tar.gz", hash = "sha256:d3ba4278799a53137c4414725840847874cead4578c42aad721de3e2aae42805"},
 ]
 
 [package.dependencies]
@@ -635,7 +635,7 @@ fastapi = ">=0.65.2"
 fastapi-users-db-sqlalchemy = {version = ">=6.0.0", optional = true, markers = "extra == \"sqlalchemy\""}
 makefun = ">=1.11.2,<2.0.0"
 passlib = {version = "1.7.4", extras = ["bcrypt"]}
-pyjwt = {version = "2.7.0", extras = ["crypto"]}
+pyjwt = {version = "2.8.0", extras = ["crypto"]}
 python-multipart = "0.0.6"
 
 [package.extras]
@@ -1301,13 +1301,13 @@ plugins = ["importlib-metadata"]
 
 [[package]]
 name = "pyjwt"
-version = "2.7.0"
+version = "2.8.0"
 description = "JSON Web Token implementation in Python"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "PyJWT-2.7.0-py3-none-any.whl", hash = "sha256:ba2b425b15ad5ef12f200dc67dd56af4e26de2331f965c5439994dad075876e1"},
-    {file = "PyJWT-2.7.0.tar.gz", hash = "sha256:bd6ca4a3c4285c1a2d4349e5a035fdf8fb94e04ccd0fcbe6ba289dae9cc3e074"},
+    {file = "PyJWT-2.8.0-py3-none-any.whl", hash = "sha256:59127c392cc44c2da5bb3192169a91f429924e17aff6534d70fdc02ab3e04320"},
+    {file = "PyJWT-2.8.0.tar.gz", hash = "sha256:57e28d156e3d5c10088e0c68abb90bfac3df82b40a71bd0daa20c65ccd5c23de"},
 ]
 
 [package.dependencies]
@@ -1634,4 +1634,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "78eeca8d8994b0228e75dbafb566a06d423e0453967814a6f5c35c887a3a38d8"
+content-hash = "aa021cd2b34b1d2c0b1183e505e614816288a040f6845ec1562924df35080741"

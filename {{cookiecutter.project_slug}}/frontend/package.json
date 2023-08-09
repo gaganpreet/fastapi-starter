@@ -55,7 +55,7 @@
     "@types/react-router": "^5.1.20",
     "cypress": "^12.17.3",
     "cypress-localstorage-commands": "^2.2.3",
-    "eslint-plugin-cypress": "^2.13.3",
+    "eslint-plugin-cypress": "^2.14.0",
     "prettier": "^3.0.0"
   }
 }

@@ -1,4 +1,5 @@
 import uuid
+from typing import Annotated
 
 from fastapi import Depends
 from fastapi_users import FastAPIUsers
@@ -10,7 +11,6 @@ from fastapi_users.authentication import (
 from fastapi_users.manager import BaseUserManager, UUIDIDMixin
 from fastapi_users_db_sqlalchemy import SQLAlchemyUserDatabase
 from sqlalchemy.ext.asyncio import AsyncSession
-from typing import Annotated
 
 from app.core.config import settings
 from app.deps.db import get_async_session
@@ -19,6 +19,7 @@ from app.models.user import User as UserModel
 bearer_transport = BearerTransport(tokenUrl="auth/jwt/login")
 
 CurrentAsyncSession = Annotated[AsyncSession, Depends(get_async_session)]
+
 
 def get_jwt_strategy() -> JWTStrategy:
     return JWTStrategy(

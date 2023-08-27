@@ -1,10 +1,9 @@
-from typing import Any, List, Optional
+from typing import Annotated, Any, List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio.session import AsyncSession
 from starlette.responses import Response
-from typing import Annotated
 
 from app.deps.db import get_async_session
 from app.deps.request_params import parse_react_admin_params
@@ -19,6 +18,7 @@ router = APIRouter(prefix="/items")
 CurrentAsyncSession = Annotated[AsyncSession, Depends(get_async_session)]
 ItemRequestParams = Annotated[RequestParams, Depends(parse_react_admin_params(Item))]
 CurrentUser = Annotated[User, Depends(current_user)]
+
 
 @router.get("", response_model=List[ItemSchema])
 async def get_items(

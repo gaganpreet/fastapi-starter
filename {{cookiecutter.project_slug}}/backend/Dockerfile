@@ -1,4 +1,4 @@
-ARG PYTHON_VER=3.10
+ARG PYTHON_VER=3.11
 
 FROM python:${PYTHON_VER} AS base
 
@@ -18,12 +18,12 @@ RUN poetry install --no-root
 
 COPY . /app
 
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 
 COPY --from=base /app /app
-COPY --from=base /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
+COPY --from=base /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
 COPY --from=base /usr/local/bin /usr/local/bin
 
 CMD uvicorn --host 0.0.0.0 --port 8000 main:app

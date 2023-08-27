@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio.session import AsyncSession
 from starlette.responses import Response
+from typing import Annotated
 
 from app.deps.db import get_async_session
 from app.deps.request_params import parse_react_admin_params
@@ -15,14 +16,16 @@ from app.schemas.item import ItemCreate, ItemUpdate
 from app.schemas.request_params import RequestParams
 
 router = APIRouter(prefix="/items")
-
+CurrentAsyncSession = Annotated[AsyncSession, Depends(get_async_session)]
+ItemRequestParams = Annotated[RequestParams, Depends(parse_react_admin_params(Item))]
+CurrentUser = Annotated[User, Depends(current_user)]
 
 @router.get("", response_model=List[ItemSchema])
 async def get_items(
     response: Response,
-    session: AsyncSession = Depends(get_async_session),
-    request_params: RequestParams = Depends(parse_react_admin_params(Item)),
-    user: User = Depends(current_user),
+    session: CurrentAsyncSession,
+    request_params: ItemRequestParams,
+    user: CurrentUser,
 ) -> Any:
     total = await session.scalar(
         select(func.count(Item.id).filter(Item.user_id == user.id))
@@ -49,8 +52,8 @@ async def get_items(
 @router.post("", response_model=ItemSchema, status_code=201)
 async def create_item(
     item_in: ItemCreate,
-    session: AsyncSession = Depends(get_async_session),
-    user: User = Depends(current_user),
+    session: CurrentAsyncSession,
+    user: CurrentUser,
 ) -> Any:
     item = Item(**item_in.dict())
     item.user_id = user.id
@@ -63,8 +66,8 @@ async def create_item(
 async def update_item(
     item_id: int,
     item_in: ItemUpdate,
-    session: AsyncSession = Depends(get_async_session),
-    user: User = Depends(current_user),
+    session: CurrentAsyncSession,
+    user: CurrentUser,
 ) -> Any:
     item: Optional[Item] = await session.get(Item, item_id)
     if not item or item.user_id != user.id:
@@ -80,8 +83,8 @@ async def update_item(
 @router.get("/{item_id}", response_model=ItemSchema)
 async def get_item(
     item_id: int,
-    session: AsyncSession = Depends(get_async_session),
-    user: User = Depends(current_user),
+    session: CurrentAsyncSession,
+    user: CurrentUser,
 ) -> Any:
     item: Optional[Item] = await session.get(Item, item_id)
     if not item or item.user_id != user.id:
@@ -92,8 +95,8 @@ async def get_item(
 @router.delete("/{item_id}")
 async def delete_item(
     item_id: int,
-    session: AsyncSession = Depends(get_async_session),
-    user: User = Depends(current_user),
+    session: CurrentAsyncSession,
+    user: CurrentUser,
 ) -> Any:
     item: Optional[Item] = await session.get(Item, item_id)
     if not item or item.user_id != user.id:

@@ -1,19 +1,15 @@
-from typing import Annotated, Any, List
+from typing import Any, List
 
-from fastapi.params import Depends
 from fastapi.routing import APIRouter
 from sqlalchemy import func, select
-from sqlalchemy.ext.asyncio.session import AsyncSession
 from starlette.responses import Response
 
-from app.deps.db import get_async_session
-from app.deps.users import current_superuser
+from app.deps.db import CurrentAsyncSession
+from app.deps.users import CurrentSuperuser
 from app.models.user import User
 from app.schemas.user import UserRead
 
 router = APIRouter()
-CurrentAsyncSession = Annotated[AsyncSession, Depends(get_async_session)]
-CurrentSuperuser = Annotated[User, Depends(current_superuser)]
 
 
 @router.get("/users", response_model=List[UserRead])

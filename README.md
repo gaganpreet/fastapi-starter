@@ -1,7 +1,7 @@
 # FastAPI-Starter
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/gaganpreet/fastapi-starter/cookiecutter-project-test.yml)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/gaganpreet/fastapi-starter/main)
@@ -103,6 +103,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/hugo-tinoco/"><img src="https://avatars.githubusercontent.com/u/43675476?v=4?s=100" width="100px;" alt="Hugo Tinoco"/><br /><sub><b>Hugo Tinoco</b></sub></a><br /><a href="https://github.com/gaganpreet/fastapi-starter/commits?author=h4ndzdatm0ld" title="Documentation">📖</a> <a href="https://github.com/gaganpreet/fastapi-starter/commits?author=h4ndzdatm0ld" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://mixedneeds.com/"><img src="https://avatars.githubusercontent.com/u/158175?v=4?s=100" width="100px;" alt="Michael Bunsen"/><br /><sub><b>Michael Bunsen</b></sub></a><br /><a href="https://github.com/gaganpreet/fastapi-starter/commits?author=mihow" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/alexey-sveshnikov"><img src="https://avatars.githubusercontent.com/u/447089?v=4?s=100" width="100px;" alt="Alexey Sveshnikov"/><br /><sub><b>Alexey Sveshnikov</b></sub></a><br /><a href="https://github.com/gaganpreet/fastapi-starter/commits?author=alexey-sveshnikov" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/javi-aranda"><img src="https://avatars.githubusercontent.com/u/24555230?v=4?s=100" width="100px;" alt="Javier Aranda Santos"/><br /><sub><b>Javier Aranda Santos</b></sub></a><br /><a href="https://github.com/gaganpreet/fastapi-starter/commits?author=javi-aranda" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>

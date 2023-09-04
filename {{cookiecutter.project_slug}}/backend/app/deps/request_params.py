@@ -1,10 +1,11 @@
 import json
-from typing import Callable, Optional, Type
+from typing import Annotated, Callable, Optional, Type
 
-from fastapi import HTTPException, Query
+from fastapi import Depends, HTTPException, Query
 from sqlalchemy import UnaryExpression, asc, desc
 
 from app.db import Base
+from app.models.item import Item
 from app.schemas.request_params import RequestParams
 
 
@@ -44,3 +45,6 @@ def parse_react_admin_params(model: Type[Base]) -> Callable:
         return RequestParams(skip=skip, limit=limit, order_by=order_by)
 
     return inner
+
+
+ItemRequestParams = Annotated[RequestParams, Depends(parse_react_admin_params(Item))]

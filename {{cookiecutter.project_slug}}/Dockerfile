@@ -2,7 +2,7 @@
 # Uses FastAPI to serve static assets
 # Uses gunicorn as a process manager to run the FastAPI app
 
-FROM node:16 as frontend-build
+FROM node:21 as frontend-build
 
 WORKDIR /app
 

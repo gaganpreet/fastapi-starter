@@ -18,7 +18,7 @@ RUN poetry install --no-root
 
 COPY . /app
 
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 WORKDIR /app
 

@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   backend:
     image: "{{ cookiecutter.project_slug }}-backend:latest"

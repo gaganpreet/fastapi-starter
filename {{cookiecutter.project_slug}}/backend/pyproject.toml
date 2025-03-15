@@ -5,7 +5,7 @@ description = ""
 authors = []
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.13"
 fastapi = "^0.115.11"
 uvicorn = "^0.23.2"
 pydantic = "^1.10.12"

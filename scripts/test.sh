@@ -3,7 +3,7 @@
 set -eou pipefail
 
 # Stop containers from previous run, if any
-(cd ./test-project && docker-compose -f docker-compose.yml down --rmi local -v && cd ..) || true
+(cd ./test-project && docker compose -f docker-compose.yml down --rmi local -v && cd ..) || true
 
 # Run this from the root of the project
 rm -rf ./test-project
@@ -13,18 +13,18 @@ cookiecutter --no-input -f ./ project_slug="test-project" project_name="Test pro
 cd ./test-project/
 
 # Start docker containers
-docker-compose -f docker-compose.yml up -d --build
+docker compose -f docker-compose.yml up -d --build
 
 
 # Run backend tests
-docker-compose exec -T postgres createdb -U postgres apptest
+docker compose exec -T postgres createdb -U postgres apptest
 
-docker-compose exec -T backend pytest -v --cov --cov-report term-missing
+docker compose exec -T backend pytest -v --cov --cov-report term-missing
 
 # Run cypress tests
-docker-compose exec -T backend alembic upgrade head
+docker compose exec -T backend alembic upgrade head
 
-docker-compose exec -T backend alembic check
+docker compose exec -T backend alembic check
 
 docker build --target build -t frontend-build:latest frontend
 

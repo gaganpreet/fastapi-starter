@@ -39,7 +39,7 @@ jobs:
       if: ${{ always() }}
       run: |
         cd ./test-project
-        docker-compose logs -t
+        docker compose logs -t
 
     - name: Archive cypress screenshots
       if: always()

@@ -1,5 +1,6 @@
 .gitignore
 .npmignore
+.openapi-generator-ignore
 api.ts
 api/auth-api.ts
 api/items-api.ts

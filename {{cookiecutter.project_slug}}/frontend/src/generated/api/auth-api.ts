@@ -13,23 +13,24 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
-import { Configuration } from '../configuration';
+import type { Configuration } from '../configuration';
+import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
-import { BearerResponse } from '../models';
+import type { BearerResponse } from '../models';
 // @ts-ignore
-import { ErrorModel } from '../models';
+import type { ErrorModel } from '../models';
 // @ts-ignore
-import { HTTPValidationError } from '../models';
+import type { HTTPValidationError } from '../models';
 // @ts-ignore
-import { UserCreate } from '../models';
+import type { UserCreate } from '../models';
 // @ts-ignore
-import { UserRead } from '../models';
+import type { UserRead } from '../models';
 /**
  * AuthApi - axios parameter creator
  * @export
@@ -48,7 +49,7 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authJwtLogin: async (username: string, password: string, grantType?: string, scope?: string, clientId?: string, clientSecret?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        authJwtLogin: async (username: string, password: string, grantType?: string, scope?: string, clientId?: string, clientSecret?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'username' is not null or undefined
             assertParamExists('authJwtLogin', 'username', username)
             // verify required parameter 'password' is not null or undefined
@@ -110,7 +111,7 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authJwtLogout: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        authJwtLogout: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/v1/auth/jwt/logout`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -145,7 +146,7 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        registerRegister: async (userCreate: UserCreate, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        registerRegister: async (userCreate: UserCreate, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userCreate' is not null or undefined
             assertParamExists('registerRegister', 'userCreate', userCreate)
             const localVarPath = `/api/v1/auth/register`;
@@ -196,9 +197,11 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authJwtLogin(username: string, password: string, grantType?: string, scope?: string, clientId?: string, clientSecret?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BearerResponse>> {
+        async authJwtLogin(username: string, password: string, grantType?: string, scope?: string, clientId?: string, clientSecret?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BearerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.authJwtLogin(username, password, grantType, scope, clientId, clientSecret, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AuthApi.authJwtLogin']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
@@ -206,9 +209,11 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authJwtLogout(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async authJwtLogout(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.authJwtLogout(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AuthApi.authJwtLogout']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
@@ -217,9 +222,11 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async registerRegister(userCreate: UserCreate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRead>> {
+        async registerRegister(userCreate: UserCreate, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRead>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.registerRegister(userCreate, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AuthApi.registerRegister']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
 };
@@ -234,17 +241,12 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @summary Auth:Jwt.Login
-         * @param {string} username 
-         * @param {string} password 
-         * @param {string} [grantType] 
-         * @param {string} [scope] 
-         * @param {string} [clientId] 
-         * @param {string} [clientSecret] 
+         * @param {AuthApiAuthJwtLoginRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authJwtLogin(username: string, password: string, grantType?: string, scope?: string, clientId?: string, clientSecret?: string, options?: any): AxiosPromise<BearerResponse> {
-            return localVarFp.authJwtLogin(username, password, grantType, scope, clientId, clientSecret, options).then((request) => request(axios, basePath));
+        authJwtLogin(requestParameters: AuthApiAuthJwtLoginRequest, options?: RawAxiosRequestConfig): AxiosPromise<BearerResponse> {
+            return localVarFp.authJwtLogin(requestParameters.username, requestParameters.password, requestParameters.grantType, requestParameters.scope, requestParameters.clientId, requestParameters.clientSecret, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -252,18 +254,18 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authJwtLogout(options?: any): AxiosPromise<any> {
+        authJwtLogout(options?: RawAxiosRequestConfig): AxiosPromise<any> {
             return localVarFp.authJwtLogout(options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Register:Register
-         * @param {UserCreate} userCreate 
+         * @param {AuthApiRegisterRegisterRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        registerRegister(userCreate: UserCreate, options?: any): AxiosPromise<UserRead> {
-            return localVarFp.registerRegister(userCreate, options).then((request) => request(axios, basePath));
+        registerRegister(requestParameters: AuthApiRegisterRegisterRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserRead> {
+            return localVarFp.registerRegister(requestParameters.userCreate, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -346,7 +348,7 @@ export class AuthApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    public authJwtLogin(requestParameters: AuthApiAuthJwtLoginRequest, options?: AxiosRequestConfig) {
+    public authJwtLogin(requestParameters: AuthApiAuthJwtLoginRequest, options?: RawAxiosRequestConfig) {
         return AuthApiFp(this.configuration).authJwtLogin(requestParameters.username, requestParameters.password, requestParameters.grantType, requestParameters.scope, requestParameters.clientId, requestParameters.clientSecret, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -357,7 +359,7 @@ export class AuthApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    public authJwtLogout(options?: AxiosRequestConfig) {
+    public authJwtLogout(options?: RawAxiosRequestConfig) {
         return AuthApiFp(this.configuration).authJwtLogout(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -369,7 +371,8 @@ export class AuthApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    public registerRegister(requestParameters: AuthApiRegisterRegisterRequest, options?: AxiosRequestConfig) {
+    public registerRegister(requestParameters: AuthApiRegisterRegisterRequest, options?: RawAxiosRequestConfig) {
         return AuthApiFp(this.configuration).registerRegister(requestParameters.userCreate, options).then((request) => request(this.axios, this.basePath));
     }
 }
+

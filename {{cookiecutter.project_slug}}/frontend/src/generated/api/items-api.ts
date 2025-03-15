@@ -13,21 +13,22 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
-import { Configuration } from '../configuration';
+import type { Configuration } from '../configuration';
+import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
-import { HTTPValidationError } from '../models';
+import type { HTTPValidationError } from '../models';
 // @ts-ignore
-import { Item } from '../models';
+import type { Item } from '../models';
 // @ts-ignore
-import { ItemCreate } from '../models';
+import type { ItemCreate } from '../models';
 // @ts-ignore
-import { ItemUpdate } from '../models';
+import type { ItemUpdate } from '../models';
 /**
  * ItemsApi - axios parameter creator
  * @export
@@ -41,7 +42,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createItem: async (itemCreate: ItemCreate, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createItem: async (itemCreate: ItemCreate, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemCreate' is not null or undefined
             assertParamExists('createItem', 'itemCreate', itemCreate)
             const localVarPath = `/api/v1/items`;
@@ -81,7 +82,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteItem: async (itemId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteItem: async (itemId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('deleteItem', 'itemId', itemId)
             const localVarPath = `/api/v1/items/{item_id}`
@@ -119,7 +120,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItem: async (itemId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getItem: async (itemId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('getItem', 'itemId', itemId)
             const localVarPath = `/api/v1/items/{item_id}`
@@ -158,7 +159,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItems: async (sort?: string, range?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getItems: async (sort?: string, range?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/v1/items`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -202,7 +203,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateItem: async (itemId: number, itemUpdate: ItemUpdate, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateItem: async (itemId: number, itemUpdate: ItemUpdate, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('updateItem', 'itemId', itemId)
             // verify required parameter 'itemUpdate' is not null or undefined
@@ -255,9 +256,11 @@ export const ItemsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createItem(itemCreate: ItemCreate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
+        async createItem(itemCreate: ItemCreate, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createItem(itemCreate, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ItemsApi.createItem']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
@@ -266,9 +269,11 @@ export const ItemsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteItem(itemId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async deleteItem(itemId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteItem(itemId, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ItemsApi.deleteItem']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
@@ -277,9 +282,11 @@ export const ItemsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getItem(itemId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
+        async getItem(itemId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getItem(itemId, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ItemsApi.getItem']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
@@ -289,9 +296,11 @@ export const ItemsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getItems(sort?: string, range?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>> {
+        async getItems(sort?: string, range?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getItems(sort, range, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ItemsApi.getItems']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
@@ -301,9 +310,11 @@ export const ItemsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateItem(itemId: number, itemUpdate: ItemUpdate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
+        async updateItem(itemId: number, itemUpdate: ItemUpdate, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateItem(itemId, itemUpdate, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ItemsApi.updateItem']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
 };
@@ -318,54 +329,52 @@ export const ItemsApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Create Item
-         * @param {ItemCreate} itemCreate 
+         * @param {ItemsApiCreateItemRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createItem(itemCreate: ItemCreate, options?: any): AxiosPromise<Item> {
-            return localVarFp.createItem(itemCreate, options).then((request) => request(axios, basePath));
+        createItem(requestParameters: ItemsApiCreateItemRequest, options?: RawAxiosRequestConfig): AxiosPromise<Item> {
+            return localVarFp.createItem(requestParameters.itemCreate, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Delete Item
-         * @param {number} itemId 
+         * @param {ItemsApiDeleteItemRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteItem(itemId: number, options?: any): AxiosPromise<any> {
-            return localVarFp.deleteItem(itemId, options).then((request) => request(axios, basePath));
+        deleteItem(requestParameters: ItemsApiDeleteItemRequest, options?: RawAxiosRequestConfig): AxiosPromise<any> {
+            return localVarFp.deleteItem(requestParameters.itemId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get Item
-         * @param {number} itemId 
+         * @param {ItemsApiGetItemRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItem(itemId: number, options?: any): AxiosPromise<Item> {
-            return localVarFp.getItem(itemId, options).then((request) => request(axios, basePath));
+        getItem(requestParameters: ItemsApiGetItemRequest, options?: RawAxiosRequestConfig): AxiosPromise<Item> {
+            return localVarFp.getItem(requestParameters.itemId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get Items
-         * @param {string} [sort] Format: &#x60;[\&quot;field_name\&quot;, \&quot;direction\&quot;]&#x60;
-         * @param {string} [range] Format: &#x60;[start, end]&#x60;
+         * @param {ItemsApiGetItemsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItems(sort?: string, range?: string, options?: any): AxiosPromise<Array<Item>> {
-            return localVarFp.getItems(sort, range, options).then((request) => request(axios, basePath));
+        getItems(requestParameters: ItemsApiGetItemsRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<Array<Item>> {
+            return localVarFp.getItems(requestParameters.sort, requestParameters.range, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Update Item
-         * @param {number} itemId 
-         * @param {ItemUpdate} itemUpdate 
+         * @param {ItemsApiUpdateItemRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateItem(itemId: number, itemUpdate: ItemUpdate, options?: any): AxiosPromise<Item> {
-            return localVarFp.updateItem(itemId, itemUpdate, options).then((request) => request(axios, basePath));
+        updateItem(requestParameters: ItemsApiUpdateItemRequest, options?: RawAxiosRequestConfig): AxiosPromise<Item> {
+            return localVarFp.updateItem(requestParameters.itemId, requestParameters.itemUpdate, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -469,7 +478,7 @@ export class ItemsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public createItem(requestParameters: ItemsApiCreateItemRequest, options?: AxiosRequestConfig) {
+    public createItem(requestParameters: ItemsApiCreateItemRequest, options?: RawAxiosRequestConfig) {
         return ItemsApiFp(this.configuration).createItem(requestParameters.itemCreate, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -481,7 +490,7 @@ export class ItemsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public deleteItem(requestParameters: ItemsApiDeleteItemRequest, options?: AxiosRequestConfig) {
+    public deleteItem(requestParameters: ItemsApiDeleteItemRequest, options?: RawAxiosRequestConfig) {
         return ItemsApiFp(this.configuration).deleteItem(requestParameters.itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -493,7 +502,7 @@ export class ItemsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public getItem(requestParameters: ItemsApiGetItemRequest, options?: AxiosRequestConfig) {
+    public getItem(requestParameters: ItemsApiGetItemRequest, options?: RawAxiosRequestConfig) {
         return ItemsApiFp(this.configuration).getItem(requestParameters.itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -505,7 +514,7 @@ export class ItemsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public getItems(requestParameters: ItemsApiGetItemsRequest = {}, options?: AxiosRequestConfig) {
+    public getItems(requestParameters: ItemsApiGetItemsRequest = {}, options?: RawAxiosRequestConfig) {
         return ItemsApiFp(this.configuration).getItems(requestParameters.sort, requestParameters.range, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -517,7 +526,8 @@ export class ItemsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public updateItem(requestParameters: ItemsApiUpdateItemRequest, options?: AxiosRequestConfig) {
+    public updateItem(requestParameters: ItemsApiUpdateItemRequest, options?: RawAxiosRequestConfig) {
         return ItemsApiFp(this.configuration).updateItem(requestParameters.itemId, requestParameters.itemUpdate, options).then((request) => request(this.axios, this.basePath));
     }
 }
+

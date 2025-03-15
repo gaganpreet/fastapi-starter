@@ -13,7 +13,7 @@ requests = "^2.31.0"
 alembic = "^1.15.1"
 psycopg2-binary = "^2.9.10"
 asyncpg = "^0.28.0"
-SQLAlchemy = "^2.0.20"
+SQLAlchemy = "^2.0.39"
 gunicorn = "^21.2.0"
 fastapi-users = {extras = ["sqlalchemy"], version = "^12.1.2"}
 

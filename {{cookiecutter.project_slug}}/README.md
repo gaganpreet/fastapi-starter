@@ -16,16 +16,16 @@ The frontend of this project uses React Admin. Follow the quick tutorial to unde
 
 ## Step 1: Getting started
 
-Start a local development instance with docker-compose
+Start a local development instance with docker compose
 
 ```bash
-docker-compose up -d
+docker compose up -d
 
 # Run database migration
-docker-compose exec backend alembic upgrade head
+docker compose exec backend alembic upgrade head
 
 # Create database used for testing
-docker-compose exec postgres createdb apptest -U postgres
+docker compose exec postgres createdb apptest -U postgres
 ```
 
 Now you can navigate to the following URLs:
@@ -43,10 +43,10 @@ pre-commit install
 
 ### Local development
 
-The backend setup of docker-compose is set to automatically reload the app whenever code is updated. However, for frontend it's easier to develop locally.
+The backend setup of docker compose is set to automatically reload the app whenever code is updated. However, for frontend it's easier to develop locally.
 
 ```bash
-docker-compose stop frontend
+docker compose stop frontend
 cd frontend
 yarn
 yarn start
@@ -66,7 +66,7 @@ Don't forget to edit the `.env` file and update the `BACKEND_CORS_ORIGINS` value
 If you add a dependency, you'll need to rebuild your containers like this:
 
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 ### Regenerate front-end API package
@@ -83,10 +83,10 @@ These two are the most used commands when working with alembic. For more info, f
 
 ```bash
 # Auto generate a revision
-docker-compose exec backend alembic revision --autogenerate -m 'message'
+docker compose exec backend alembic revision --autogenerate -m 'message'
 
 # Apply latest changes
-docker-compose exec backend alembic upgrade head
+docker compose exec backend alembic upgrade head
 ```
 
 ### Backend tests
@@ -94,13 +94,13 @@ docker-compose exec backend alembic upgrade head
 The `Backend` service uses a hardcoded database named `apptest`. First, ensure that it's created
 
 ```bash
-docker-compose exec postgres createdb apptest -U postgres
+docker compose exec postgres createdb apptest -U postgres
 ```
 
 Then you can run tests with this command:
 
 ```bash
-docker-compose run backend pytest --cov --cov-report term-missing
+docker compose run backend pytest --cov --cov-report term-missing
 ```
 
 ### Single docker image

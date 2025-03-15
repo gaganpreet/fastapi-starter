@@ -37,9 +37,9 @@ async def get_items(
         .scalars()
         .all()
     )
-    response.headers[
-        "Content-Range"
-    ] = f"{request_params.skip}-{request_params.skip + len(items)}/{total}"
+    response.headers["Content-Range"] = (
+        f"{request_params.skip}-{request_params.skip + len(items)}/{total}"
+    )
     return items
 
 

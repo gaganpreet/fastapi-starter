@@ -1,7 +1,7 @@
 exclude: "(src/generated/|alembic/versions|test.yaml)"
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.3.0
+    rev: v5.0.0
     hooks:
       - id: check-yaml
       - id: end-of-file-fixer
@@ -9,13 +9,13 @@ repos:
 
   # Backend hooks
   - repo: https://github.com/psf/black
-    rev: 22.3.0
+    rev: 25.1.0
     hooks:
       - id: black
         files: backend/
         types: [file, python]
   - repo: https://github.com/myint/autoflake
-    rev: v1.4
+    rev: v2.3.1
     hooks:
       - id: autoflake
         args:
@@ -25,7 +25,7 @@ repos:
         types: [file, python]
 
   - repo: https://github.com/pycqa/isort
-    rev: 5.11.5
+    rev: 6.0.1
     hooks:
       - id: isort
         name: isort (python)
@@ -42,7 +42,7 @@ repos:
         types: [pyi]
 
   - repo: https://github.com/pycqa/flake8
-    rev: 3.8.3
+    rev: 7.1.2
     hooks:
       - id: flake8
         files: backend/

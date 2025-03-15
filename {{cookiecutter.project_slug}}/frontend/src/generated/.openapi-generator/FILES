@@ -11,6 +11,7 @@ configuration.ts
 git_push.sh
 index.ts
 models/bearer-response.ts
+models/detail.ts
 models/error-model.ts
 models/httpvalidation-error.ts
 models/index.ts
@@ -20,4 +21,5 @@ models/item.ts
 models/user-create.ts
 models/user-read.ts
 models/user-update.ts
+models/validation-error-loc-inner.ts
 models/validation-error.ts

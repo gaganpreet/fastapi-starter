@@ -1,4 +1,5 @@
 export * from './bearer-response';
+export * from './detail';
 export * from './error-model';
 export * from './httpvalidation-error';
 export * from './item';
@@ -8,3 +9,4 @@ export * from './user-create';
 export * from './user-read';
 export * from './user-update';
 export * from './validation-error';
+export * from './validation-error-loc-inner';

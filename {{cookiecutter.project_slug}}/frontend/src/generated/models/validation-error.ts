@@ -13,6 +13,9 @@
  */
 
 
+// May contain unused imports in some cases
+// @ts-ignore
+import type { ValidationErrorLocInner } from './validation-error-loc-inner';
 
 /**
  * 
@@ -22,10 +25,10 @@
 export interface ValidationError {
     /**
      * 
-     * @type {Array<string | number>}
+     * @type {Array<ValidationErrorLocInner>}
      * @memberof ValidationError
      */
-    'loc': Array<string | number>;
+    'loc': Array<ValidationErrorLocInner>;
     /**
      * 
      * @type {string}

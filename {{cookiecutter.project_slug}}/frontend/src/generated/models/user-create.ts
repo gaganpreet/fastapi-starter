@@ -37,18 +37,18 @@ export interface UserCreate {
      * @type {boolean}
      * @memberof UserCreate
      */
-    'is_active'?: boolean;
+    'is_active'?: boolean | null;
     /**
      * 
      * @type {boolean}
      * @memberof UserCreate
      */
-    'is_superuser'?: boolean;
+    'is_superuser'?: boolean | null;
     /**
      * 
      * @type {boolean}
      * @memberof UserCreate
      */
-    'is_verified'?: boolean;
+    'is_verified'?: boolean | null;
 }
 

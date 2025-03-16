@@ -25,30 +25,30 @@ export interface UserUpdate {
      * @type {string}
      * @memberof UserUpdate
      */
-    'password'?: string;
+    'password'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UserUpdate
      */
-    'email'?: string;
+    'email'?: string | null;
     /**
      * 
      * @type {boolean}
      * @memberof UserUpdate
      */
-    'is_active'?: boolean;
+    'is_active'?: boolean | null;
     /**
      * 
      * @type {boolean}
      * @memberof UserUpdate
      */
-    'is_superuser'?: boolean;
+    'is_superuser'?: boolean | null;
     /**
      * 
      * @type {boolean}
      * @memberof UserUpdate
      */
-    'is_verified'?: boolean;
+    'is_verified'?: boolean | null;
 }
 

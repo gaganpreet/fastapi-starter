@@ -15,17 +15,17 @@
 
 
 /**
- * Base User model.
+ * 
  * @export
  * @interface UserRead
  */
 export interface UserRead {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof UserRead
      */
-    'id'?: any;
+    'id': string;
     /**
      * 
      * @type {string}

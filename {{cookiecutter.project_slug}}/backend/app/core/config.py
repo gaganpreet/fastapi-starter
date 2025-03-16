@@ -1,8 +1,9 @@
 import sys
 from typing import Any, Dict, List, Optional
 
-from pydantic import BaseSettings, HttpUrl, PostgresDsn, validator
+from pydantic import HttpUrl, PostgresDsn, field_validator
 from pydantic.networks import AnyHttpUrl
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
@@ -22,24 +23,24 @@ class Settings(BaseSettings):
     DATABASE_URL: PostgresDsn
     ASYNC_DATABASE_URL: Optional[PostgresDsn]
 
-    @validator("DATABASE_URL", pre=True)
-    def build_test_database_url(cls, v: Optional[str], values: Dict[str, Any]):
+    @field_validator("DATABASE_URL", mode="before")
+    def build_test_database_url(cls, v: Optional[str], info: Dict[str, Any]):
         """Overrides DATABASE_URL with TEST_DATABASE_URL in test environment."""
         url = v
         if "pytest" in sys.modules:
-            if not values.get("TEST_DATABASE_URL"):
+            if not info.data.get("TEST_DATABASE_URL"):
                 raise Exception(
                     "pytest detected, but TEST_DATABASE_URL is not set in environment"
                 )
-            url = values["TEST_DATABASE_URL"]
+            url = info.data["TEST_DATABASE_URL"]
         if url:
             return url.replace("postgres://", "postgresql://")
         return url
 
-    @validator("ASYNC_DATABASE_URL")
-    def build_async_database_url(cls, v: Optional[str], values: Dict[str, Any]):
+    @field_validator("ASYNC_DATABASE_URL")
+    def build_async_database_url(cls, v: Optional[str], info: Dict[str, Any]):
         """Builds ASYNC_DATABASE_URL from DATABASE_URL."""
-        v = values["DATABASE_URL"]
+        v = info.data["DATABASE_URL"]
         return v.replace("postgresql", "postgresql+asyncpg", 1) if v else v
 
     SECRET_KEY: str

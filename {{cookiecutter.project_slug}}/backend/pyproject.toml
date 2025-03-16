@@ -15,7 +15,7 @@ psycopg2-binary = "^2.9.10"
 asyncpg = "^0.30.0"
 SQLAlchemy = "^2.0.39"
 gunicorn = "^21.2.0"
-fastapi-users = {extras = ["sqlalchemy"], version = "^14.0.1"}
+fastapi-users = { extras = ["sqlalchemy"], version = "^14.0.1" }
 email-validator = "^2.2.0"
 pydantic-settings = "^2.8.1"
 
@@ -42,15 +42,15 @@ target-version = "py313"
 line-length = 88
 
 select = [
-    "E",  # pycodestyle errors
-    "W",  # pycodestyle warnings
-    "F",  # pyflakes
-    "I",  # isort
-    "C",  # flake8-comprehensions
-    "B",  # flake8-bugbear
-    "UP",  # pyupgrade
+  "E",  # pycodestyle errors
+  "W",  # pycodestyle warnings
+  "F",  # pyflakes
+  "C",  # flake8-comprehensions
+  "B",  # flake8-bugbear
+  "UP", # pyupgrade
+  #    "I",  # isort - disabled for now
 ]
 ignore = [
-    "B008",  # do not perform function calls in argument defaults
-    "F401",  # imported but unused, too annoyiong for my liking
+  "B008", # do not perform function calls in argument defaults
+  "F401", # imported but unused, too annoyiong for my liking
 ]

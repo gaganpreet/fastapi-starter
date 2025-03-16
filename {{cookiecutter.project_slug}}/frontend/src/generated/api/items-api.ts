@@ -154,12 +154,12 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Get Items
-         * @param {string} [sort] Format: &#x60;[\&quot;field_name\&quot;, \&quot;direction\&quot;]&#x60;
-         * @param {string} [range] Format: &#x60;[start, end]&#x60;
+         * @param {string | null} [sort] Format: &#x60;[\&quot;field_name\&quot;, \&quot;direction\&quot;]&#x60;
+         * @param {string | null} [range] Format: &#x60;[start, end]&#x60;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItems: async (sort?: string, range?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getItems: async (sort?: string | null, range?: string | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/v1/items`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -291,12 +291,12 @@ export const ItemsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get Items
-         * @param {string} [sort] Format: &#x60;[\&quot;field_name\&quot;, \&quot;direction\&quot;]&#x60;
-         * @param {string} [range] Format: &#x60;[start, end]&#x60;
+         * @param {string | null} [sort] Format: &#x60;[\&quot;field_name\&quot;, \&quot;direction\&quot;]&#x60;
+         * @param {string | null} [range] Format: &#x60;[start, end]&#x60;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getItems(sort?: string, range?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>> {
+        async getItems(sort?: string | null, range?: string | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getItems(sort, range, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ItemsApi.getItems']?.[localVarOperationServerIndex]?.url;
@@ -432,14 +432,14 @@ export interface ItemsApiGetItemsRequest {
      * @type {string}
      * @memberof ItemsApiGetItems
      */
-    readonly sort?: string
+    readonly sort?: string | null
 
     /**
      * Format: &#x60;[start, end]&#x60;
      * @type {string}
      * @memberof ItemsApiGetItems
      */
-    readonly range?: string
+    readonly range?: string | null
 }
 
 /**

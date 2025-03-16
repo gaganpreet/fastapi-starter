@@ -42,14 +42,14 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
          * @summary Auth:Jwt.Login
          * @param {string} username 
          * @param {string} password 
-         * @param {string} [grantType] 
+         * @param {string | null} [grantType] 
          * @param {string} [scope] 
-         * @param {string} [clientId] 
-         * @param {string} [clientSecret] 
+         * @param {string | null} [clientId] 
+         * @param {string | null} [clientSecret] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authJwtLogin: async (username: string, password: string, grantType?: string, scope?: string, clientId?: string, clientSecret?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        authJwtLogin: async (username: string, password: string, grantType?: string | null, scope?: string, clientId?: string | null, clientSecret?: string | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'username' is not null or undefined
             assertParamExists('authJwtLogin', 'username', username)
             // verify required parameter 'password' is not null or undefined
@@ -190,14 +190,14 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @summary Auth:Jwt.Login
          * @param {string} username 
          * @param {string} password 
-         * @param {string} [grantType] 
+         * @param {string | null} [grantType] 
          * @param {string} [scope] 
-         * @param {string} [clientId] 
-         * @param {string} [clientSecret] 
+         * @param {string | null} [clientId] 
+         * @param {string | null} [clientSecret] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authJwtLogin(username: string, password: string, grantType?: string, scope?: string, clientId?: string, clientSecret?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BearerResponse>> {
+        async authJwtLogin(username: string, password: string, grantType?: string | null, scope?: string, clientId?: string | null, clientSecret?: string | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BearerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.authJwtLogin(username, password, grantType, scope, clientId, clientSecret, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AuthApi.authJwtLogin']?.[localVarOperationServerIndex]?.url;
@@ -295,7 +295,7 @@ export interface AuthApiAuthJwtLoginRequest {
      * @type {string}
      * @memberof AuthApiAuthJwtLogin
      */
-    readonly grantType?: string
+    readonly grantType?: string | null
 
     /**
      * 
@@ -309,14 +309,14 @@ export interface AuthApiAuthJwtLoginRequest {
      * @type {string}
      * @memberof AuthApiAuthJwtLogin
      */
-    readonly clientId?: string
+    readonly clientId?: string | null
 
     /**
      * 
      * @type {string}
      * @memberof AuthApiAuthJwtLogin
      */
-    readonly clientSecret?: string
+    readonly clientSecret?: string | null
 }
 
 /**

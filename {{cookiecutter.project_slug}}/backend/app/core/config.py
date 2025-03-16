@@ -1,4 +1,5 @@
 import sys
+from functools import cached_property
 from typing import Any, Dict, List, Optional
 
 from pydantic import HttpUrl, PostgresDsn, field_validator
@@ -21,7 +22,6 @@ class Settings(BaseSettings):
 
     TEST_DATABASE_URL: Optional[PostgresDsn]
     DATABASE_URL: PostgresDsn
-    ASYNC_DATABASE_URL: Optional[PostgresDsn]
 
     @field_validator("DATABASE_URL", mode="before")
     def build_test_database_url(cls, v: Optional[str], info: Dict[str, Any]):
@@ -37,10 +37,10 @@ class Settings(BaseSettings):
             return url.replace("postgres://", "postgresql://")
         return url
 
-    @field_validator("ASYNC_DATABASE_URL", mode="before")
-    def build_async_database_url(cls, v: Optional[str], info: Dict[str, Any]):
+    @cached_property
+    def ASYNC_DATABASE_URL(self):
         """Builds ASYNC_DATABASE_URL from DATABASE_URL."""
-        v = info.data["DATABASE_URL"]
+        v = str(self.DATABASE_URL)
         return v.replace("postgresql", "postgresql+asyncpg", 1) if v else v
 
     SECRET_KEY: str

@@ -20,6 +20,8 @@ COPY . /app
 
 FROM python:${PYTHON_VER}
 
+ARG PYTHON_VER
+
 WORKDIR /app
 
 COPY --from=base /app /app

@@ -37,7 +37,7 @@ class Settings(BaseSettings):
             return url.replace("postgres://", "postgresql://")
         return url
 
-    @field_validator("ASYNC_DATABASE_URL")
+    @field_validator("ASYNC_DATABASE_URL", mode="before")
     def build_async_database_url(cls, v: Optional[str], info: Dict[str, Any]):
         """Builds ASYNC_DATABASE_URL from DATABASE_URL."""
         v = info.data["DATABASE_URL"]

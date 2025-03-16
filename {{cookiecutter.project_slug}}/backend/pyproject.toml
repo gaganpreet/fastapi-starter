@@ -36,3 +36,20 @@ skip = [".env"]
 
 [tool.pytest.ini_options]
 asyncio_mode = 'auto'
+
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+    "UP",  # pyupgrade
+]
+ignore = [
+    "B008",  # do not perform function calls in argument defaults
+]

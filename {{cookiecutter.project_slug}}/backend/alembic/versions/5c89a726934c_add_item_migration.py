@@ -1,3 +1,4 @@
+# ruff: noqa: E501
 """Add item migration
 
 Revision ID: 5c89a726934c

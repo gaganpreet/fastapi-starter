@@ -7,22 +7,11 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
 
-  # Backend hooks
-  - repo: https://github.com/psf/black
-    rev: 25.1.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.0
     hooks:
-      - id: black
-        files: backend/
-        types: [file, python]
-  - repo: https://github.com/myint/autoflake
-    rev: v2.3.1
-    hooks:
-      - id: autoflake
-        args:
-          - --in-place
-          - --imports=sqlalchemy,pydantic
-        files: backend/
-        types: [file, python]
+      - id: ruff
+      - id: ruff-format
 
   - repo: https://github.com/pycqa/isort
     rev: 6.0.1
@@ -40,19 +29,6 @@ repos:
         files: backend/
         name: isort (pyi)
         types: [pyi]
-
-  - repo: https://github.com/pycqa/flake8
-    rev: 7.1.2
-    hooks:
-      - id: flake8
-        files: backend/
-        # B008: Do not perform function calls in argument defaults. (FastAPI relies heavily on these)
-        # F401: Unused imports (kinda annoying, remove this rule if you want to enforce it)
-        args: [--max-line-length=131, --ignore, "B008,F401"]
-
-        types: [file, python]
-        additional_dependencies:
-          [flake8-comprehensions, flake8-bugbear]
 
   # Frontend hooks
   - repo: https://github.com/pre-commit/mirrors-prettier

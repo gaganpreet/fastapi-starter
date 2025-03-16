@@ -1,3 +1,4 @@
+# ruff: noqa: E501,I001
 """${message}
 
 Revision ID: ${up_revision}

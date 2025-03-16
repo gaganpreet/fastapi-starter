@@ -1,5 +1,3 @@
-from typing import Any, List, Optional
-
 from fastapi import APIRouter, HTTPException
 from sqlalchemy import func, select
 from starlette.responses import Response
@@ -14,13 +12,13 @@ from app.schemas.item import ItemCreate, ItemUpdate
 router = APIRouter(prefix="/items")
 
 
-@router.get("", response_model=List[ItemSchema])
+@router.get("", response_model=list[ItemSchema])
 async def get_items(
     response: Response,
     session: CurrentAsyncSession,
     request_params: ItemRequestParams,
     user: CurrentUser,
-) -> Any:
+):
     total = await session.scalar(
         select(func.count(Item.id).filter(Item.user_id == user.id))
     )
@@ -48,8 +46,8 @@ async def create_item(
     item_in: ItemCreate,
     session: CurrentAsyncSession,
     user: CurrentUser,
-) -> Any:
-    item = Item(**item_in.dict())
+):
+    item = Item(**item_in.model_dump())
     item.user_id = user.id
     session.add(item)
     await session.commit()
@@ -62,11 +60,11 @@ async def update_item(
     item_in: ItemUpdate,
     session: CurrentAsyncSession,
     user: CurrentUser,
-) -> Any:
-    item: Optional[Item] = await session.get(Item, item_id)
+):
+    item: Item | None = await session.get(Item, item_id)
     if not item or item.user_id != user.id:
         raise HTTPException(404)
-    update_data = item_in.dict(exclude_unset=True)
+    update_data = item_in.model_dump(exclude_unset=True)
     for field, value in update_data.items():
         setattr(item, field, value)
     session.add(item)
@@ -79,8 +77,8 @@ async def get_item(
     item_id: int,
     session: CurrentAsyncSession,
     user: CurrentUser,
-) -> Any:
-    item: Optional[Item] = await session.get(Item, item_id)
+):
+    item: Item | None = await session.get(Item, item_id)
     if not item or item.user_id != user.id:
         raise HTTPException(404)
     return item
@@ -91,8 +89,8 @@ async def delete_item(
     item_id: int,
     session: CurrentAsyncSession,
     user: CurrentUser,
-) -> Any:
-    item: Optional[Item] = await session.get(Item, item_id)
+):
+    item: Item | None = await session.get(Item, item_id)
     if not item or item.user_id != user.id:
         raise HTTPException(404)
     await session.delete(item)

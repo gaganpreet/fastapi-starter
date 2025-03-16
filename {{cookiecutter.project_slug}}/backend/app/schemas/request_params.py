@@ -6,4 +6,4 @@ from pydantic.main import BaseModel
 class RequestParams(BaseModel):
     skip: int
     limit: int
-    order_by: Any
+    order_by: Any = None

@@ -1,5 +1,3 @@
-from typing import Any
-
 from fastapi import APIRouter
 
 from app.schemas.msg import Msg
@@ -13,5 +11,5 @@ router = APIRouter()
     status_code=200,
     include_in_schema=False,
 )
-def test_hello_world() -> Any:
+def test_hello_world():
     return {"msg": "Hello world!"}

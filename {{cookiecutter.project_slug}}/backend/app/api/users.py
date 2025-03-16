@@ -1,5 +1,3 @@
-from typing import Any, List
-
 from fastapi.routing import APIRouter
 from sqlalchemy import func, select
 from starlette.responses import Response
@@ -12,14 +10,14 @@ from app.schemas.user import UserRead
 router = APIRouter()
 
 
-@router.get("/users", response_model=List[UserRead])
+@router.get("/users", response_model=list[UserRead])
 async def get_users(
     response: Response,
     session: CurrentAsyncSession,
     user: CurrentSuperuser,
     skip: int = 0,
     limit: int = 100,
-) -> Any:
+):
     total = await session.scalar(select(func.count(User.id)))
     users = (
         (await session.execute(select(User).offset(skip).limit(limit))).scalars().all()

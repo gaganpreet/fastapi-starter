@@ -15,7 +15,7 @@ COPY frontend /app/
 RUN yarn build
 
 
-FROM python:3.13
+FROM python:3.14
 
 ENV PYTHONUNBUFFERED=1
 
